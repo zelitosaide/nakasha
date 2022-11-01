@@ -1,8 +1,10 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import { Cart } from "../assets/icons/cart";
 import { Home } from "../assets/icons/home";
 import { Rancho } from "../assets/icons/rancho";
+import { Ajuda } from "../assets/icons/ajuda";
+import { Receitas } from "../assets/icons/receitas";
 
 export function Root() {
   return (
@@ -134,10 +136,66 @@ export function Root() {
               </div>
             </li>
             <li style={{ float: "right" }}>
-              <Link to="/ajuda">Ajuda</Link>
+              <NavLink
+                to="/ajuda"
+                style={{
+                  height: 84,
+                  display: "block",
+                  position: "relative",
+                  textDecoration: "none",
+                  width: 70,
+                }}
+              >
+                <Ajuda
+                  style={{
+                    position: "absolute",
+                    top: 18,
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                  }}
+                />
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 45,
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    color: "#fff",
+                    fontSize: 14
+                  }}
+                >Ajuda</div>
+              </NavLink>
             </li>
             <li style={{ float: "right" }}>
-              <Link to="/receitas">Receitas</Link>
+              <NavLink
+                to="/receitas"
+                style={{
+                  height: 84,
+                  display: "block",
+                  position: "relative",
+                  textDecoration: "none",
+                  width: 70,
+                }}
+              >
+                <Receitas
+                  style={{
+                    position: "absolute",
+                    top: 18,
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                  }}
+                />
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 45,
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    color: "#fff",
+                    fontSize: 14
+                  }}
+                >Receitas</div>
+              </NavLink>
             </li>
           </ul>
         </nav>
