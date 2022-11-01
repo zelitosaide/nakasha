@@ -3,13 +3,28 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 import { Root } from "./routes/root";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
-    errorElement: <h1>Something went wrong!</h1>
+    errorElement: <p>Something went wrong!</p>,
+    children: [
+      {
+        path: "rancho"
+      },
+      {
+        path: "carinho"
+      },
+      {
+        path: "receitas"
+      },
+      {
+        path: "ajuda"
+      }
+    ]
   }
 ]);
 
