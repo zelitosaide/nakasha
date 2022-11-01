@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Cart } from "../assets/icons/cart";
 
 export function Root() {
   return (
@@ -16,7 +17,7 @@ export function Root() {
           style={{
             position: "absolute",
             bottom: 0,
-            height: 88,
+            height: 84,
             right: 0,
             left: 0,
           }}
@@ -40,40 +41,49 @@ export function Root() {
             <li
               style={{
                 position: "absolute",
-                top: -55,
+                top: -52,
                 left: "50%",
                 transform: "translateX(-50%)",
                 background: "#fff",
-                width: 110,
-                height: 110,
-                borderRadius: 55,
+                width: 104,
+                height: 104,
+                borderRadius: 52,
               }}
             >
               <div
                 style={{
                   position: "absolute",
                   background: "#33A02B",
-                  width: 96,
-                  height: 96,
-                  borderRadius: 48,
+                  width: 90,
+                  height: 90,
+                  borderRadius: 45,
                   left: "50%",
                   top: "50%",
                   transform: "translate(-50%, -50%)"
                 }}
               >
-
+                <div>
+                  <Cart
+                    style={{
+                      position: "absolute",
+                      left: "50%",
+                      top: "50%",
+                      transform: "translate(-50%, -50%)"
+                    }}
+                  />
+                </div>
+                {/* <Link
+                  to="/carinho"
+                  style={{
+                    position: "absolute",
+                    left: "50%",
+                    top: "50%",
+                    transform: "translate(-50%, -50%)"
+                  }}
+                >
+                  Carinho
+                </Link> */}
               </div>
-              {/* <Link
-                to="/carinho"
-                style={{
-                  position: "absolute",
-                  left: "50%",
-                  top: "50%",
-                  transform: "translate(-50%, -50%)"
-                }}
-              >
-                Carinho
-              </Link> */}
             </li>
             <li style={{ float: "right" }}>
               <Link to="/ajuda">Ajuda</Link>
