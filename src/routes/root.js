@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-import { Cart } from "../assets/icons/cart";
+import { Cart } from "../assets/icons/carinho";
 import { Home } from "../assets/icons/home";
 import { Rancho } from "../assets/icons/rancho";
 import { Ajuda } from "../assets/icons/ajuda";
@@ -54,7 +54,7 @@ export function Root() {
                     top: 18,
                     left: "50%",
                     transform: "translateX(-50%)",
-                    fill: "#F2F2F2"
+                    color: "#F2F2F2"
                   }}
                 />
                 <div
@@ -86,6 +86,7 @@ export function Root() {
                     top: 18,
                     left: "50%",
                     transform: "translateX(-50%)",
+                    color: "#F2F2F2",
                   }}
                 />
                 <div
@@ -130,7 +131,8 @@ export function Root() {
                       position: "absolute",
                       left: "50%",
                       top: "50%",
-                      transform: "translate(-50%, -50%)"
+                      transform: "translate(-50%, -50%)",
+                      color: "#F2F2F2",
                     }}
                   />
                 </NavLink>
@@ -153,6 +155,7 @@ export function Root() {
                     top: 18,
                     left: "50%",
                     transform: "translateX(-50%)",
+                    color: "#F2F2F2",
                   }}
                 />
                 <div
@@ -184,6 +187,7 @@ export function Root() {
                     top: 18,
                     left: "50%",
                     transform: "translateX(-50%)",
+                    color: "#F2F2F2",
                   }}
                 />
                 <div
