@@ -1,5 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+
 import { Cart } from "../assets/icons/cart";
+import { Home } from "../assets/icons/home";
+import { Rancho } from "../assets/icons/rancho";
 
 export function Root() {
   return (
@@ -33,10 +36,66 @@ export function Root() {
             }}
           >
             <li style={{ float: "left" }}>
-              <Link to="/">Home</Link>
+              <NavLink
+                to="/"
+                style={{
+                  height: 84,
+                  display: "block",
+                  position: "relative",
+                  textDecoration: "none",
+                  width: 70,
+                }}
+              >
+                <Home
+                  style={{
+                    position: "absolute",
+                    top: 18,
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                  }}
+                />
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 45,
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    color: "#7BC676",
+                    fontSize: 14
+                  }}
+                >Home</div>
+              </NavLink>
             </li>
             <li style={{ float: "left" }}>
-              <Link to="/rancho">Rancho</Link>
+              <NavLink
+                style={{
+                  height: 84,
+                  display: "block",
+                  position: "relative",
+                  textDecoration: "none",
+                  width: 70,
+                }}
+                to="/rancho"
+              >
+                <Rancho
+                  style={{
+                    position: "absolute",
+                    top: 18,
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                  }}
+                />
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 45,
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    color: "#fff",
+                    fontSize: 14
+                  }}
+                >Rancho</div>
+              </NavLink>
             </li>
             <li
               style={{
@@ -62,7 +121,7 @@ export function Root() {
                   transform: "translate(-50%, -50%)"
                 }}
               >
-                <div>
+                <NavLink to="/">
                   <Cart
                     style={{
                       position: "absolute",
@@ -71,18 +130,7 @@ export function Root() {
                       transform: "translate(-50%, -50%)"
                     }}
                   />
-                </div>
-                {/* <Link
-                  to="/carinho"
-                  style={{
-                    position: "absolute",
-                    left: "50%",
-                    top: "50%",
-                    transform: "translate(-50%, -50%)"
-                  }}
-                >
-                  Carinho
-                </Link> */}
+                </NavLink>
               </div>
             </li>
             <li style={{ float: "right" }}>
