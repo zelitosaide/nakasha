@@ -16,25 +16,70 @@ export function Root() {
           style={{
             position: "absolute",
             bottom: 0,
-            height: 96,
-            background: "pink"
+            height: 88,
+            right: 0,
+            left: 0,
           }}
         >
-          <ul style={{ margin: 0, padding: 0 }}>
-            <li>
+          <ul
+            style={{
+              margin: 0,
+              padding: 0,
+              listStyle: "none",
+              position: "relative",
+              background: "#33A02B",
+              height: "inherit"
+            }}
+          >
+            <li style={{ float: "left" }}>
               <Link to="/">Home</Link>
             </li>
-            <li>
+            <li style={{ float: "left" }}>
               <Link to="/rancho">Rancho</Link>
             </li>
-            <li>
-              <Link to="/carinho">Carinho</Link>
+            <li
+              style={{
+                position: "absolute",
+                top: -55,
+                left: "50%",
+                transform: "translateX(-50%)",
+                background: "#fff",
+                width: 110,
+                height: 110,
+                borderRadius: 55,
+              }}
+            >
+              <div
+                style={{
+                  position: "absolute",
+                  background: "#33A02B",
+                  width: 96,
+                  height: 96,
+                  borderRadius: 48,
+                  left: "50%",
+                  top: "50%",
+                  transform: "translate(-50%, -50%)"
+                }}
+              >
+
+              </div>
+              {/* <Link
+                to="/carinho"
+                style={{
+                  position: "absolute",
+                  left: "50%",
+                  top: "50%",
+                  transform: "translate(-50%, -50%)"
+                }}
+              >
+                Carinho
+              </Link> */}
             </li>
-            <li>
-              <Link to="/receitas">Receitas</Link>
-            </li>
-            <li>
+            <li style={{ float: "right" }}>
               <Link to="/ajuda">Ajuda</Link>
+            </li>
+            <li style={{ float: "right" }}>
+              <Link to="/receitas">Receitas</Link>
             </li>
           </ul>
         </nav>
