@@ -54,6 +54,7 @@ export function Root() {
                     top: 18,
                     left: "50%",
                     transform: "translateX(-50%)",
+                    fill: "#F2F2F2"
                   }}
                 />
                 <div
@@ -62,7 +63,7 @@ export function Root() {
                     top: 45,
                     left: "50%",
                     transform: "translateX(-50%)",
-                    color: "#7BC676",
+                    color: "#F2F2F2",
                     fontSize: 14
                   }}
                 >Home</div>
@@ -93,7 +94,7 @@ export function Root() {
                     top: 45,
                     left: "50%",
                     transform: "translateX(-50%)",
-                    color: "#fff",
+                    color: "#F2F2F2",
                     fontSize: 14
                   }}
                 >Rancho</div>
@@ -123,7 +124,7 @@ export function Root() {
                   transform: "translate(-50%, -50%)"
                 }}
               >
-                <NavLink to="/">
+                <NavLink to="/carinho">
                   <Cart
                     style={{
                       position: "absolute",
@@ -160,7 +161,7 @@ export function Root() {
                     top: 45,
                     left: "50%",
                     transform: "translateX(-50%)",
-                    color: "#fff",
+                    color: "#F2F2F2",
                     fontSize: 14
                   }}
                 >Ajuda</div>
@@ -191,7 +192,7 @@ export function Root() {
                     top: 45,
                     left: "50%",
                     transform: "translateX(-50%)",
-                    color: "#fff",
+                    color: "#F2F2F2",
                     fontSize: 14
                   }}
                 >Receitas</div>
