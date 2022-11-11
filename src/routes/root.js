@@ -45,13 +45,13 @@ export function Root() {
             padding: "10px 20px",
           }}
         >
-          <h3>Categorias</h3>
+          <h5 style={{ color: "#333" }}>Categorias</h5>
 
           <div
             className="cat"
             style={{ display: "flex", gap: 10 }}
           >
-            <div style={{ background: "#ccc", padding: 5 }}>
+            <div style={{ background: "#999", padding: 5 }}>
               <img
                 src={vegetais}
                 alt="vegetais"
@@ -59,7 +59,7 @@ export function Root() {
               />
               <div style={{ textAlign: "center" }}>Vegetais</div>
             </div>
-            <div style={{ background: "#ccc", padding: 5 }}>
+            <div style={{ background: "#999", padding: 5 }}>
               <img
                 src={frutas}
                 alt="frutas"
@@ -67,7 +67,7 @@ export function Root() {
               />
               <div style={{ textAlign: "center" }}>Frutas</div>
             </div>
-            <div style={{ background: "#ccc", padding: 5 }}>
+            <div style={{ background: "#999", padding: 5 }}>
               <img
                 src={mercearia}
                 alt="mercearia"
@@ -79,16 +79,18 @@ export function Root() {
             </div>
           </div>
         </div>
-        <div id="banner">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum.
+        <div
+          id="banner"
+          style={{
+            height: 150,
+            background: "#ccc",
+            marginTop: 10,
+            display: "flex",
+            // justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <h5 style={{ paddingLeft: 20 }}>Banner</h5>
         </div>
         <div id="lazy-load">
           Lorem Ipsum is simply dummy text of the printing and typesetting
