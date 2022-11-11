@@ -199,11 +199,12 @@ export function Root() {
               height: 180,
               marginLeft: 20,
               marginRight: 20,
-              background: "#ddd",
+              background: "#f8f8f0",
               flexGrow: 1,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
+              border: "1px solid #d9dddd",
             }}
           >
             <h5>Banner</h5>
