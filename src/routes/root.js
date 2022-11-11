@@ -149,7 +149,7 @@ export function Root() {
 
         <div
           id="lazy-load"
-          style={{ marginBottom: 150 }}
+          style={{ marginBottom: 160 }}
         >
           <h5 style={{ marginLeft: 20 }}>Frescos e saudaveis</h5>
           <div style={{ marginLeft: 20, marginRight: 20 }}>
