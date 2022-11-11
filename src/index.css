@@ -16,3 +16,13 @@ code {
 .active div {
   color: #7bc676 !important;
 }
+
+.cat {
+  box-sizing: border-box;
+}
+
+.cat::after {
+  content: "";
+  display: table;
+  clear: both;
+}

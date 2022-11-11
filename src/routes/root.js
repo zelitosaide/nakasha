@@ -6,6 +6,8 @@ import { Rancho } from "../assets/icons/rancho";
 import { Ajuda } from "../assets/icons/ajuda";
 import { Receitas } from "../assets/icons/receitas";
 
+import vegetais from "../assets/images/vegetais.png";
+
 export function Root() {
   return (
     <>
@@ -13,7 +15,7 @@ export function Root() {
         <div
           id="head"
           style={{
-            background: "#eee",
+            background: "#ccc",
             position: "fixed",
             top: 0,
             right: 0,
@@ -37,10 +39,40 @@ export function Root() {
         <div
           id="categorias"
           style={{
-            marginTop: 100,
+            marginTop: 70,
+            padding: 10,
           }}
         >
           <h3>Categorias</h3>
+
+          <div
+            className="cat"
+            style={{ display: "flex", gap: 10 }}
+          >
+            <div style={{ background: "#ccc" }}>
+              <img
+                src={vegetais}
+                alt="vegetais"
+              />
+              <div style={{ textAlign: "center" }}>Vegetais</div>
+            </div>
+            <div style={{ background: "#ccc" }}>
+              <img
+                src={vegetais}
+                alt="vegetais"
+              />
+              <div style={{ textAlign: "center" }}>Vegetais</div>
+            </div>
+            <div style={{ background: "#ccc" }}>
+              <img
+                src={vegetais}
+                alt="vegetais"
+              />
+              <div style={{ textAlign: "center", paddingBottom: 10 }}>
+                Vegetais
+              </div>
+            </div>
+          </div>
         </div>
         <div id="banner">
           Lorem Ipsum is simply dummy text of the printing and typesetting
