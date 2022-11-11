@@ -20,7 +20,7 @@ export function Root() {
 
         <nav
           style={{
-            position: "absolute",
+            position: "fixed",
             bottom: 0,
             height: 84,
             right: 0,
@@ -34,7 +34,7 @@ export function Root() {
               listStyle: "none",
               position: "relative",
               background: "#33A02B",
-              height: "inherit"
+              height: "inherit",
             }}
           >
             <li style={{ float: "left" }}>
@@ -54,7 +54,7 @@ export function Root() {
                     top: 18,
                     left: "50%",
                     transform: "translateX(-50%)",
-                    color: "#F2F2F2"
+                    color: "#F2F2F2",
                   }}
                 />
                 <div
@@ -64,9 +64,11 @@ export function Root() {
                     left: "50%",
                     transform: "translateX(-50%)",
                     color: "#F2F2F2",
-                    fontSize: 14
+                    fontSize: 14,
                   }}
-                >Home</div>
+                >
+                  Home
+                </div>
               </NavLink>
             </li>
             <li style={{ float: "left" }}>
@@ -96,9 +98,11 @@ export function Root() {
                     left: "50%",
                     transform: "translateX(-50%)",
                     color: "#F2F2F2",
-                    fontSize: 14
+                    fontSize: 14,
                   }}
-                >Rancho</div>
+                >
+                  Rancho
+                </div>
               </NavLink>
             </li>
             <li
@@ -122,7 +126,7 @@ export function Root() {
                   borderRadius: 45,
                   left: "50%",
                   top: "50%",
-                  transform: "translate(-50%, -50%)"
+                  transform: "translate(-50%, -50%)",
                 }}
               >
                 <NavLink to="/carinho">
@@ -165,9 +169,11 @@ export function Root() {
                     left: "50%",
                     transform: "translateX(-50%)",
                     color: "#F2F2F2",
-                    fontSize: 14
+                    fontSize: 14,
                   }}
-                >Ajuda</div>
+                >
+                  Ajuda
+                </div>
               </NavLink>
             </li>
             <li style={{ float: "right" }}>
@@ -197,9 +203,11 @@ export function Root() {
                     left: "50%",
                     transform: "translateX(-50%)",
                     color: "#F2F2F2",
-                    fontSize: 14
+                    fontSize: 14,
                   }}
-                >Receitas</div>
+                >
+                  Receitas
+                </div>
               </NavLink>
             </li>
           </ul>
