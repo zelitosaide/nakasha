@@ -83,13 +83,22 @@ export function Root() {
           id="banner"
           style={{
             height: 180,
-            background: "#ccc",
             marginTop: 10,
-            display: "flex",
-            alignItems: "center",
           }}
         >
-          <h5 style={{ paddingLeft: 20 }}>Banner</h5>
+          <div
+            style={{
+              height: 180,
+              marginLeft: 20,
+              marginRight: 20,
+              background: "#ccc",
+              flexGrow: 1,
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <h5 style={{ paddingLeft: 10 }}>Banner</h5>
+          </div>
         </div>
         <div id="lazy-load">
           Lorem Ipsum is simply dummy text of the printing and typesetting
