@@ -13,23 +13,24 @@ const router = createBrowserRouter([
     errorElement: <p>Something went wrong!</p>,
     children: [
       {
-        path: "rancho"
+        path: "home",
       },
       {
-        path: "carinho"
+        path: "rancho",
       },
       {
-        path: "receitas"
+        path: "carinho",
       },
       {
-        path: "ajuda"
-      }
-    ]
-  }
+        path: "receitas",
+      },
+      {
+        path: "ajuda",
+      },
+    ],
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(
-  <RouterProvider router={router} />
-);
+root.render(<RouterProvider router={router} />);

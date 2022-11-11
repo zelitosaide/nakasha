@@ -39,13 +39,16 @@ export function Root() {
           >
             <li style={{ float: "left" }}>
               <NavLink
-                to="/"
+                to="/home"
                 style={{
                   height: 84,
                   display: "block",
                   position: "relative",
                   textDecoration: "none",
                   width: 70,
+                }}
+                className={function ({ isActive }) {
+                  return isActive ? "active" : "";
                 }}
               >
                 <Home
