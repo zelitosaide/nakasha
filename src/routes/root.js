@@ -12,7 +12,8 @@ import frutas from "../assets/images/frutas.png";
 import mercearia from "../assets/images/mercearia.png";
 import { LazyLoad } from "./lazy-load";
 
-let page = 1;
+let page = 1,
+  page2 = 1;
 const LIMIT = 5;
 
 export function Root() {
@@ -22,8 +23,16 @@ export function Root() {
     items: [],
   });
 
+  const [state2, setState2] = useState({
+    hasNextPage: true,
+    isNextPageLoading: false,
+    items: [],
+  });
+
   async function loadNextPage() {
-    return fetch(`http://localhost:5000/invoices?limit=${LIMIT}&page=${page++}`)
+    return fetch(
+      `http://localhost:5000/invoices?limit=${LIMIT}&page=${page++}&favorite=true`
+    )
       .then(function (response) {
         setState(function (prevState) {
           return {
@@ -34,7 +43,34 @@ export function Root() {
         return response.json();
       })
       .then(function ({ items, pageInfo: { totalResults } }) {
+        console.log(totalResults);
         setState(function (prevState) {
+          return {
+            ...prevState,
+            hasNextPage: prevState.items.length < totalResults,
+            isNextPageLoading: false,
+            items: [...prevState.items].concat(items),
+          };
+        });
+      });
+  }
+
+  async function loadNextPage2() {
+    return fetch(
+      `http://localhost:5000/invoices?limit=${LIMIT}&page=${page2++}`
+    )
+      .then(function (response) {
+        setState2(function (prevState) {
+          return {
+            ...prevState,
+            isNextPageLoading: true,
+          };
+        });
+        return response.json();
+      })
+      .then(function ({ items, pageInfo: { totalResults } }) {
+        console.log(totalResults);
+        setState2(function (prevState) {
           return {
             ...prevState,
             hasNextPage: prevState.items.length < totalResults,
@@ -154,10 +190,10 @@ export function Root() {
           <h5 style={{ marginLeft: 20 }}>Frescos e saudaveis</h5>
           <div style={{ marginLeft: 20, marginRight: 20 }}>
             <LazyLoad
-              hasNextPage={state.hasNextPage}
-              isNextPageLoading={state.isNextPageLoading}
-              items={state.items}
-              loadNextPage={loadNextPage}
+              hasNextPage={state2.hasNextPage}
+              isNextPageLoading={state2.isNextPageLoading}
+              items={state2.items}
+              loadNextPage={loadNextPage2}
             />
           </div>
         </div>
