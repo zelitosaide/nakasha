@@ -82,7 +82,7 @@ export function Root() {
         <div
           id="banner"
           style={{
-            height: 150,
+            height: 170,
             background: "#ccc",
             marginTop: 10,
             display: "flex",
