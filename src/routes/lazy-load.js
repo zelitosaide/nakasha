@@ -55,13 +55,14 @@ export function LazyLoad({
       {({ onItemsRendered, ref }) => (
         <List
           className="List"
-          height={75}
+          height={95}
           itemCount={itemCount}
           itemSize={100}
           onItemsRendered={onItemsRendered}
           ref={ref}
           width={300}
           layout="horizontal"
+          style={{ width: "100%" }}
         >
           {Item}
         </List>
