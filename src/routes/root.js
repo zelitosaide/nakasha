@@ -40,7 +40,7 @@ export function Root() {
           id="categorias"
           style={{
             marginTop: 70,
-            padding: 10,
+            padding: "10px 20px",
           }}
         >
           <h3>Categorias</h3>
@@ -69,7 +69,7 @@ export function Root() {
               <img
                 src={vegetais}
                 alt="vegetais"
-                style={{ width: 100 }}
+                style={{ width: 90 }}
               />
               <div style={{ textAlign: "center", paddingBottom: 10 }}>
                 Vegetais
