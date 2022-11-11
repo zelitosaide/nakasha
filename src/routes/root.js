@@ -53,6 +53,7 @@ export function Root() {
               <img
                 src={vegetais}
                 alt="vegetais"
+                style={{ width: 100 }}
               />
               <div style={{ textAlign: "center" }}>Vegetais</div>
             </div>
@@ -60,6 +61,7 @@ export function Root() {
               <img
                 src={vegetais}
                 alt="vegetais"
+                style={{ width: 100 }}
               />
               <div style={{ textAlign: "center" }}>Vegetais</div>
             </div>
@@ -67,6 +69,7 @@ export function Root() {
               <img
                 src={vegetais}
                 alt="vegetais"
+                style={{ width: 100 }}
               />
               <div style={{ textAlign: "center", paddingBottom: 10 }}>
                 Vegetais
