@@ -7,6 +7,8 @@ import { Ajuda } from "../assets/icons/ajuda";
 import { Receitas } from "../assets/icons/receitas";
 
 import vegetais from "../assets/images/vegetais.png";
+import frutas from "../assets/images/frutas.png";
+import mercearia from "../assets/images/mercearia.png";
 
 export function Root() {
   return (
@@ -49,30 +51,30 @@ export function Root() {
             className="cat"
             style={{ display: "flex", gap: 10 }}
           >
-            <div style={{ background: "#ccc" }}>
-              <img
-                src={vegetais}
-                alt="vegetais"
-                style={{ width: 100 }}
-              />
-              <div style={{ textAlign: "center" }}>Vegetais</div>
-            </div>
-            <div style={{ background: "#ccc" }}>
-              <img
-                src={vegetais}
-                alt="vegetais"
-                style={{ width: 100 }}
-              />
-              <div style={{ textAlign: "center" }}>Vegetais</div>
-            </div>
-            <div style={{ background: "#ccc" }}>
+            <div style={{ background: "#ccc", padding: 5 }}>
               <img
                 src={vegetais}
                 alt="vegetais"
                 style={{ width: 90 }}
               />
+              <div style={{ textAlign: "center" }}>Vegetais</div>
+            </div>
+            <div style={{ background: "#ccc", padding: 5 }}>
+              <img
+                src={frutas}
+                alt="frutas"
+                style={{ width: 80 }}
+              />
+              <div style={{ textAlign: "center" }}>Frutas</div>
+            </div>
+            <div style={{ background: "#ccc", padding: 5 }}>
+              <img
+                src={mercearia}
+                alt="mercearia"
+                style={{ width: 80 }}
+              />
               <div style={{ textAlign: "center", paddingBottom: 10 }}>
-                Vegetais
+                Mercearia
               </div>
             </div>
           </div>
