@@ -24,7 +24,13 @@ export function Root() {
             type="text"
             name="q"
             placeholder="Pesquisar por produto"
-            style={{ width: "90%", margin: "40px auto", display: "block" }}
+            style={{
+              width: "90%",
+              margin: "40px auto",
+              display: "block",
+              height: "40px",
+              paddingLeft: 10,
+            }}
           />
         </div>
 
