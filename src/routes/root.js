@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import { Cart } from "../assets/icons/carinho";
@@ -9,8 +10,41 @@ import { Receitas } from "../assets/icons/receitas";
 import vegetais from "../assets/images/vegetais.png";
 import frutas from "../assets/images/frutas.png";
 import mercearia from "../assets/images/mercearia.png";
+import { LazyLoad } from "./lazy-load";
+
+let page = 1;
+const LIMIT = 5;
 
 export function Root() {
+  const [state, setState] = useState({
+    hasNextPage: true,
+    isNextPageLoading: false,
+    items: [],
+  });
+
+  async function loadNextPage() {
+    return fetch(`http://localhost:5000/invoices?limit=${LIMIT}&page=${page++}`)
+      .then(function (response) {
+        setState(function (prevState) {
+          return {
+            ...prevState,
+            isNextPageLoading: true,
+          };
+        });
+        return response.json();
+      })
+      .then(function ({ items, pageInfo: { totalResults } }) {
+        setState(function (prevState) {
+          return {
+            ...prevState,
+            hasNextPage: prevState.items.length < totalResults,
+            isNextPageLoading: false,
+            items: [...prevState.items].concat(items),
+          };
+        });
+      });
+  }
+
   return (
     <>
       <div style={{ height: "100vh", position: "relative" }}>
@@ -91,7 +125,7 @@ export function Root() {
               height: 180,
               marginLeft: 20,
               marginRight: 20,
-              background: "#ccc",
+              background: "#ddd",
               flexGrow: 1,
               display: "flex",
               alignItems: "center",
@@ -102,15 +136,30 @@ export function Root() {
           </div>
         </div>
         <div id="lazy-load">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum.
+          <h5 style={{ marginLeft: 20 }}>Frutas da epoca</h5>
+          <div style={{ marginLeft: 20, marginRight: 20 }}>
+            <LazyLoad
+              hasNextPage={state.hasNextPage}
+              isNextPageLoading={state.isNextPageLoading}
+              items={state.items}
+              loadNextPage={loadNextPage}
+            />
+          </div>
+        </div>
+
+        <div
+          id="lazy-load"
+          style={{ marginBottom: 150 }}
+        >
+          <h5 style={{ marginLeft: 20 }}>Frescos e saudaveis</h5>
+          <div style={{ marginLeft: 20, marginRight: 20 }}>
+            <LazyLoad
+              hasNextPage={state.hasNextPage}
+              isNextPageLoading={state.isNextPageLoading}
+              items={state.items}
+              loadNextPage={loadNextPage}
+            />
+          </div>
         </div>
         <nav
           style={{
