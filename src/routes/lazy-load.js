@@ -33,7 +33,13 @@ export function LazyLoad({
     if (!isItemLoaded(index)) {
       content = "Loading...";
     } else {
-      content = items[index].amount;
+      content = (
+        <p>
+          {items[index].amount}
+          <br />
+          favorite: {items[index].favorite.toString()}
+        </p>
+      );
     }
 
     return (
@@ -57,7 +63,7 @@ export function LazyLoad({
           className="List"
           height={95}
           itemCount={itemCount}
-          itemSize={100}
+          itemSize={120}
           onItemsRendered={onItemsRendered}
           ref={ref}
           width={300}

@@ -43,7 +43,6 @@ export function Root() {
         return response.json();
       })
       .then(function ({ items, pageInfo: { totalResults } }) {
-        console.log(totalResults);
         setState(function (prevState) {
           return {
             ...prevState,
@@ -69,7 +68,6 @@ export function Root() {
         return response.json();
       })
       .then(function ({ items, pageInfo: { totalResults } }) {
-        console.log(totalResults);
         setState2(function (prevState) {
           return {
             ...prevState,
