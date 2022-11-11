@@ -25,8 +25,8 @@ export function Root() {
             name="q"
             placeholder="Pesquisar por produto"
             style={{
-              width: "90%",
-              margin: "40px auto",
+              width: "80%",
+              margin: "20px auto",
               display: "block",
               height: "40px",
               paddingLeft: 10,
