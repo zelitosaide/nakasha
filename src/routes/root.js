@@ -13,7 +13,8 @@ import mercearia from "../assets/images/mercearia.png";
 import { LazyLoad } from "./lazy-load";
 
 let page = 1,
-  page2 = 1;
+  page2 = 1,
+  page3 = 1;
 const LIMIT = 5;
 
 export function Root() {
@@ -21,12 +22,21 @@ export function Root() {
     hasNextPage: true,
     isNextPageLoading: false,
     items: [],
+    totalResults: 0,
   });
 
   const [state2, setState2] = useState({
     hasNextPage: true,
     isNextPageLoading: false,
     items: [],
+    totalResults: 0,
+  });
+
+  const [state3, setState3] = useState({
+    hasNextPage: true,
+    isNextPageLoading: false,
+    items: [],
+    totalResults: 0,
   });
 
   async function loadNextPage() {
@@ -49,6 +59,34 @@ export function Root() {
             hasNextPage: prevState.items.length < totalResults,
             isNextPageLoading: false,
             items: [...prevState.items].concat(items),
+            totalResults: totalResults,
+          };
+        });
+      });
+  }
+
+  async function loadNextPage3() {
+    return fetch(
+      `http://localhost:5000/invoices?limit=${LIMIT}&page=${page3++}&favorite=false`
+    )
+      .then(function (response) {
+        setState3(function (prevState) {
+          return {
+            ...prevState,
+            isNextPageLoading: true,
+          };
+        });
+        return response.json();
+      })
+      .then(function ({ items, pageInfo: { totalResults } }) {
+        console.log(totalResults);
+        setState3(function (prevState) {
+          return {
+            ...prevState,
+            hasNextPage: prevState.items.length < totalResults,
+            isNextPageLoading: false,
+            items: [...prevState.items].concat(items),
+            totalResults: totalResults,
           };
         });
       });
@@ -74,6 +112,7 @@ export function Root() {
             hasNextPage: prevState.items.length < totalResults,
             isNextPageLoading: false,
             items: [...prevState.items].concat(items),
+            totalResults: totalResults,
           };
         });
       });
@@ -90,6 +129,7 @@ export function Root() {
             top: 0,
             right: 0,
             left: 0,
+            zIndex: 100,
           }}
         >
           <input
@@ -170,7 +210,17 @@ export function Root() {
           </div>
         </div>
         <div id="lazy-load">
-          <h5 style={{ marginLeft: 20 }}>Frutas da epoca</h5>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              flexDirection: "row",
+            }}
+          >
+            <h5 style={{ marginLeft: 20 }}>Frutas da epoca</h5>
+            <i style={{ paddingRight: 20 }}>Total: {state.totalResults}</i>
+          </div>
           <div style={{ marginLeft: 20, marginRight: 20 }}>
             <LazyLoad
               hasNextPage={state.hasNextPage}
@@ -181,11 +231,43 @@ export function Root() {
           </div>
         </div>
 
+        <div id="lazy-load">
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              flexDirection: "row",
+            }}
+          >
+            <h5 style={{ marginLeft: 20 }}>Saborosas e Epicas</h5>
+            <i style={{ paddingRight: 20 }}>Total: {state3.totalResults}</i>
+          </div>
+          <div style={{ marginLeft: 20, marginRight: 20 }}>
+            <LazyLoad
+              hasNextPage={state3.hasNextPage}
+              isNextPageLoading={state3.isNextPageLoading}
+              items={state3.items}
+              loadNextPage={loadNextPage3}
+            />
+          </div>
+        </div>
+
         <div
           id="lazy-load"
           style={{ paddingBottom: 140 }}
         >
-          <h5 style={{ marginLeft: 20 }}>Frescos e saudaveis</h5>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              flexDirection: "row",
+            }}
+          >
+            <h5 style={{ marginLeft: 20 }}>Frescos e saudaveis</h5>
+            <i style={{ paddingRight: 20 }}>Total: {state2.totalResults}</i>
+          </div>
           <div style={{ marginLeft: 20, marginRight: 20 }}>
             <LazyLoad
               hasNextPage={state2.hasNextPage}
