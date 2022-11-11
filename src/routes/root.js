@@ -51,7 +51,7 @@ export function Root() {
         <div
           id="head"
           style={{
-            background: "#ccc",
+            background: "#33A02B",
             position: "fixed",
             top: 0,
             right: 0,
@@ -85,7 +85,7 @@ export function Root() {
             className="cat"
             style={{ display: "flex", gap: 10 }}
           >
-            <div style={{ background: "#999", padding: 5 }}>
+            <div style={{ border: "1px solid #d9dddd", padding: 5 }}>
               <img
                 src={vegetais}
                 alt="vegetais"
@@ -93,7 +93,7 @@ export function Root() {
               />
               <div style={{ textAlign: "center" }}>Vegetais</div>
             </div>
-            <div style={{ background: "#999", padding: 5 }}>
+            <div style={{ border: "1px solid #d9dddd", padding: 5 }}>
               <img
                 src={frutas}
                 alt="frutas"
@@ -101,7 +101,7 @@ export function Root() {
               />
               <div style={{ textAlign: "center" }}>Frutas</div>
             </div>
-            <div style={{ background: "#999", padding: 5 }}>
+            <div style={{ border: "1px solid #d9dddd", padding: 5 }}>
               <img
                 src={mercearia}
                 alt="mercearia"
