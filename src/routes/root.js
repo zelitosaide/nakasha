@@ -95,9 +95,10 @@ export function Root() {
               flexGrow: 1,
               display: "flex",
               alignItems: "center",
+              justifyContent: "center",
             }}
           >
-            <h5 style={{ paddingLeft: 10 }}>Banner</h5>
+            <h5>Banner</h5>
           </div>
         </div>
         <div id="lazy-load">
