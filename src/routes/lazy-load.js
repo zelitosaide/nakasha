@@ -15,6 +15,8 @@ export function LazyLoad({
 
   // Callback function responsible for loading the next page of items.
   loadNextPage,
+  // Manage State
+  setState,
 }) {
   // If there are more items to be loaded then add an extra row to hold a loading indicator.
   // const itemCount = hasNextPage ? items.length + 1 : items.length;
@@ -28,6 +30,34 @@ export function LazyLoad({
   const isItemLoaded = (index) => !hasNextPage || index < items.length;
 
   // Render an item or a loading indicator.
+  // const Item = ({ index, style }) => {
+  //   let content;
+  //   if (!isItemLoaded(index)) {
+  //     content = "Loading...";
+  //   } else {
+  //     content = (
+  //       <p>
+  //         {items[index].amount}
+  //         <br />
+  //         favorite: {items[index].favorite.toString()}
+  //         <br />
+  //         <button>-</button>
+  //         <span>0</span>
+  //         <button>+</button>
+  //       </p>
+  //     );
+  //   }
+
+  //   return (
+  //     <div
+  //       className={index % 2 ? "ListItemOdd" : "ListItemEven"}
+  //       style={style}
+  //     >
+  //       {content}
+  //     </div>
+  //   );
+  // };
+
   const Item = ({ index, style }) => {
     let content;
     if (!isItemLoaded(index)) {
@@ -35,13 +65,50 @@ export function LazyLoad({
     } else {
       content = (
         <p>
-          {items[index].amount}
-          <br />
           favorite: {items[index].favorite.toString()}
+          <br />
+          {items[index].count ? (
+            <button
+              onClick={function () {
+                setState(function (prevState) {
+                  return {
+                    ...prevState,
+                    items: prevState.items.map(function (invoice, i) {
+                      if (i === index) {
+                        return { ...invoice, count: invoice.count - 1 };
+                      } else {
+                        return invoice;
+                      }
+                    }),
+                  };
+                });
+              }}
+            >
+              -
+            </button>
+          ) : null}
+          <span>{items[index].count}</span>
+          <button
+            onClick={function () {
+              setState(function (prevState) {
+                return {
+                  ...prevState,
+                  items: prevState.items.map(function (invoice, i) {
+                    if (i === index) {
+                      return { ...invoice, count: invoice.count + 1 };
+                    } else {
+                      return invoice;
+                    }
+                  }),
+                };
+              });
+            }}
+          >
+            +
+          </button>
         </p>
       );
     }
-
     return (
       <div
         className={index % 2 ? "ListItemOdd" : "ListItemEven"}

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 
 import { Cart } from "../assets/icons/carinho";
 import { Home } from "../assets/icons/home";
@@ -79,7 +79,6 @@ export function Root() {
         return response.json();
       })
       .then(function ({ items, pageInfo: { totalResults } }) {
-        console.log(totalResults);
         setState3(function (prevState) {
           return {
             ...prevState,
@@ -154,7 +153,6 @@ export function Root() {
           }}
         >
           <h5 style={{ color: "#333" }}>Categorias</h5>
-
           <div
             className="cat"
             style={{ display: "flex", gap: 10 }}
@@ -220,7 +218,9 @@ export function Root() {
             }}
           >
             <h5 style={{ marginLeft: 20 }}>Frutas da epoca</h5>
-            <i style={{ paddingRight: 20 }}>Total: {state.totalResults}</i>
+            <Link to="/frutasepoca">
+              <i style={{ paddingRight: 20 }}>Ver todos</i>
+            </Link>
           </div>
           <div style={{ marginLeft: 20, marginRight: 20 }}>
             <LazyLoad
@@ -228,6 +228,7 @@ export function Root() {
               isNextPageLoading={state.isNextPageLoading}
               items={state.items}
               loadNextPage={loadNextPage}
+              setState={setState}
             />
           </div>
         </div>
@@ -242,7 +243,9 @@ export function Root() {
             }}
           >
             <h5 style={{ marginLeft: 20 }}>Saborosas e Epicas</h5>
-            <i style={{ paddingRight: 20 }}>Total: {state3.totalResults}</i>
+            <Link to="/saborosasepicas">
+              <i style={{ paddingRight: 20 }}>Ver todos</i>
+            </Link>
           </div>
           <div style={{ marginLeft: 20, marginRight: 20 }}>
             <LazyLoad
@@ -250,6 +253,7 @@ export function Root() {
               isNextPageLoading={state3.isNextPageLoading}
               items={state3.items}
               loadNextPage={loadNextPage3}
+              setState={setState3}
             />
           </div>
         </div>
@@ -267,7 +271,9 @@ export function Root() {
             }}
           >
             <h5 style={{ marginLeft: 20 }}>Frescos e saudaveis</h5>
-            <i style={{ paddingRight: 20 }}>Total: {state2.totalResults}</i>
+            <Link to="/frescossaudaveis">
+              <i style={{ paddingRight: 20 }}>Ver todos</i>
+            </Link>
           </div>
           <div style={{ marginLeft: 20, marginRight: 20 }}>
             <LazyLoad
@@ -275,6 +281,7 @@ export function Root() {
               isNextPageLoading={state2.isNextPageLoading}
               items={state2.items}
               loadNextPage={loadNextPage2}
+              setState={setState2}
             />
           </div>
         </div>
@@ -475,6 +482,10 @@ export function Root() {
             </li>
           </ul>
         </nav>
+      </div>
+
+      <div id="details">
+        <Outlet />
       </div>
     </>
   );
