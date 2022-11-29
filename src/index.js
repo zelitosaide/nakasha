@@ -7,11 +7,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Root } from "./routes/root";
 import { Home } from "./routes/home";
 import { Boxes } from "./routes/boxes";
-import { Receitas } from "./routes/receitas";
+import { Recipes } from "./routes/recipes";
 import { Help } from "./routes/help";
 import { Provider } from "./provider";
 import { ProductCategory } from "./routes/product-category";
-import { CategoriaRancho } from "./routes/categoria-rancho";
+import { BoxCategory } from "./routes/box-category";
 import { loader as singleRanchoLoader, Box } from "./routes/box";
 import { loader as swapLoader, Swap } from "./routes/swap";
 import { Cart } from "./routes/cart";
@@ -30,7 +30,6 @@ const router = createBrowserRouter([
             element: <Home />,
           },
           {
-            // path: ":categoriaProdutoId",
             path: ":productCategoryId",
             element: <ProductCategory />,
           },
@@ -44,11 +43,10 @@ const router = createBrowserRouter([
             element: <Boxes />,
           },
           {
-            path: ":categoriaRanchoId",
-            element: <CategoriaRancho />,
+            path: ":boxCategoryId",
+            element: <BoxCategory />,
           },
           {
-            // path: ":categoriaRanchoId/:ranchoId",
             path: ":boxCategoryId/:boxId",
             loader: singleRanchoLoader,
             element: <Box />,
@@ -68,7 +66,7 @@ const router = createBrowserRouter([
       },
       {
         path: "recipes",
-        element: <Receitas />,
+        element: <Recipes />,
       },
       {
         path: "help",

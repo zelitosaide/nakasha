@@ -1,21 +1,27 @@
 import { useContext, useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { Link } from "react-router-dom";
 
 import { CartContext } from "../provider";
 
 const style = {
-  height: 30,
+  height: 50,
   border: "1px solid green",
-  margin: 6,
+  marginRight: 12,
+  marginBottom: 12,
   padding: 8,
   width: "40%",
   display: "inline-block",
 };
 
-export function CategoriaRancho() {
+export function BoxCategory() {
   const [loadedItemsState, setLoadedItemsState] = useState({
     hasNextPage: true,
     items: Array.from({ length: 20 }).fill(0),
+  });
+
+  const empty = loadedItemsState.items.every(function (item) {
+    return !item;
   });
 
   const [page, setPage] = useState(1);
@@ -68,7 +74,7 @@ export function CategoriaRancho() {
         marginBottom: 100,
       }}
     >
-      <h3>Caixas da epoca</h3>
+      <h4>Categoria das Caixas: hortalicas</h4>
       <InfiniteScroll
         dataLength={loadedItemsState.items.length}
         next={fetchMoreData}
@@ -96,13 +102,20 @@ export function CategoriaRancho() {
                 </button>
               ) : null}
               <span>{boxFoundInCart ? boxFoundInCart.quantity : ""}</span>
-              <button
-                onClick={function () {
-                  add(loadedItemsState.items[index]);
-                }}
-              >
-                +
-              </button>
+              {!empty && (
+                <button
+                  onClick={function () {
+                    add(loadedItemsState.items[index]);
+                  }}
+                >
+                  +
+                </button>
+              )}
+              {!empty && (
+                <div>
+                  <Link to={loadedItemsState.items[index]._id}>See more</Link>
+                </div>
+              )}
             </div>
           );
         })}

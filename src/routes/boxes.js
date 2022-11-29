@@ -13,11 +13,15 @@ export function Boxes() {
     isNextPageLoading: false,
     items: [],
   });
-  const LIMIT = 5;
   const [page, setPage] = useState(1);
 
+  const LIMIT = 5;
+  const baseUrl = "http://localhost:5000/";
+
   async function loadNextPage() {
-    return fetch(`http://localhost:5000/boxes?limit=${LIMIT}&page=${page}`)
+    return fetch(
+      `${baseUrl}boxes?limit=${LIMIT}&page=${page}&category=hortalica`
+    )
       .then(function (response) {
         setState(function (prevState) {
           return {
@@ -121,7 +125,7 @@ export function Boxes() {
           }}
         >
           <h5 style={{ marginLeft: 20 }}>Caixas da epoca</h5>
-          <Link to="cat">
+          <Link to="hortalica">
             <span style={{ paddingRight: 20 }}>Ver todos</span>
           </Link>
         </div>

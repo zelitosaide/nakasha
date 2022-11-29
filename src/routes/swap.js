@@ -7,7 +7,9 @@ const baseURL = "http://localhost:5000/";
 
 export async function loader({ params }) {
   const boxCategoryId = params.boxCategoryId;
-  const response = await fetch(baseURL + "products?category=" + boxCategoryId);
+  const response = await fetch(
+    baseURL + "products?category=" + boxCategoryId + "&limit=100"
+  );
   const products = await response.json();
   return products;
 }

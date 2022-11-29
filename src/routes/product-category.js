@@ -6,7 +6,8 @@ import { CartContext } from "../provider";
 const style = {
   height: 30,
   border: "1px solid green",
-  margin: 6,
+  marginRight: 12,
+  marginBottom: 12,
   padding: 8,
   width: "40%",
   display: "inline-block",
@@ -32,7 +33,6 @@ export function ProductCategory() {
         setPage(function (prevPage) {
           return prevPage + 1;
         });
-
         setLoadedItemsState(function (prevState) {
           return {
             ...prevState,
@@ -99,6 +99,8 @@ export function ProductCategory() {
     });
   }
 
+  console.log(loadedItemsState.hasNextPage);
+
   return (
     <div
       style={{
@@ -107,7 +109,7 @@ export function ProductCategory() {
         marginBottom: 100,
       }}
     >
-      <h3>Frutas da epoca</h3>
+      <h4>Categoria das Produtos: hortalicas</h4>
       <InfiniteScroll
         dataLength={loadedItemsState.items.length}
         next={fetchMoreData}

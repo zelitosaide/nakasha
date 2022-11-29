@@ -94,16 +94,17 @@ export function Box() {
             <p>
               <b>Adicionar ao carinho</b>
             </p>
-            <button
-              onClick={function () {
-                remove(box);
-              }}
-            >
-              -
-            </button>
-            <span>
-              {boxFoundInCart.quantity ? boxFoundInCart.quantity : "0"}
-            </span>
+            {!!boxFoundInCart.quantity && (
+              <button
+                onClick={function () {
+                  remove(box);
+                }}
+              >
+                -
+              </button>
+            )}
+
+            <span>{!!boxFoundInCart.quantity && boxFoundInCart.quantity}</span>
             <button
               onClick={function () {
                 add({ ...box, products });

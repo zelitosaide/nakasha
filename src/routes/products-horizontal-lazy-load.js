@@ -18,13 +18,13 @@ export function ProdutoHorizontalLazyLoad({
 
   const { cart, add, remove } = useContext(CartContext);
 
-  const Item = ({ index, style }) => {
+  function Item({ index, style }) {
     let content;
 
     if (!isItemLoaded(index)) {
       content = "Loading...";
     } else {
-      const boxFoundInCart = cart.items.find(function (item) {
+      const productFoundInCart = cart.items.find(function (item) {
         return item._id === items[index]._id;
       });
 
@@ -34,7 +34,7 @@ export function ProdutoHorizontalLazyLoad({
             ? items[index].name
             : items[index].name.split(" ")[0]}
           <br />
-          {boxFoundInCart ? (
+          {productFoundInCart ? (
             <button
               onClick={function () {
                 remove(items[index]);
@@ -43,7 +43,7 @@ export function ProdutoHorizontalLazyLoad({
               -
             </button>
           ) : null}
-          <span>{boxFoundInCart ? boxFoundInCart.quantity : ""}</span>
+          <span>{productFoundInCart ? productFoundInCart.quantity : ""}</span>
           <button
             onClick={function () {
               add(items[index]);
@@ -63,7 +63,7 @@ export function ProdutoHorizontalLazyLoad({
         {content}
       </div>
     );
-  };
+  }
 
   return (
     <InfiniteLoader

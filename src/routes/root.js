@@ -71,13 +71,14 @@ export function Root() {
                   {!!items.length && item.name === "Carinho" ? (
                     <span
                       style={{
-                        background: "pink",
+                        background: "#243879",
                         display: "inline-block",
                         padding: "2px 6px",
                         borderRadius: "10px",
+                        color: "white",
+                        marginLeft: 5,
                       }}
                     >
-                      {" "}
                       {items.length}
                     </span>
                   ) : (
