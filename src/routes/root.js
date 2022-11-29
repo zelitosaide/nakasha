@@ -1,490 +1,95 @@
-import { useState } from "react";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { useContext } from "react";
+import { NavLink, Outlet } from "react-router-dom";
 
-import { Cart } from "../assets/icons/carinho";
-import { Home } from "../assets/icons/home";
-import { Rancho } from "../assets/icons/rancho";
-import { Ajuda } from "../assets/icons/ajuda";
-import { Receitas } from "../assets/icons/receitas";
-
-import vegetais from "../assets/images/vegetais.png";
-import frutas from "../assets/images/frutas.png";
-import mercearia from "../assets/images/mercearia.png";
-import { LazyLoad } from "./lazy-load";
-
-let page = 1,
-  page2 = 1,
-  page3 = 1;
-const LIMIT = 5;
+import { CartContext } from "../provider";
 
 export function Root() {
-  const [state, setState] = useState({
-    hasNextPage: true,
-    isNextPageLoading: false,
-    items: [],
-    totalResults: 0,
-  });
+  const navItems = [
+    { name: "Home", path: "home" },
+    { name: "Rancho", path: "boxes" },
+    { name: "Carinho", path: "cart" },
+    { name: "Receitas", path: "recipes" },
+    { name: "Ajuda", path: "help" },
+  ];
 
-  const [state2, setState2] = useState({
-    hasNextPage: true,
-    isNextPageLoading: false,
-    items: [],
-    totalResults: 0,
-  });
-
-  const [state3, setState3] = useState({
-    hasNextPage: true,
-    isNextPageLoading: false,
-    items: [],
-    totalResults: 0,
-  });
-
-  async function loadNextPage() {
-    return fetch(
-      `http://localhost:5000/invoices?limit=${LIMIT}&page=${page++}&favorite=true`
-    )
-      .then(function (response) {
-        setState(function (prevState) {
-          return {
-            ...prevState,
-            isNextPageLoading: true,
-          };
-        });
-        return response.json();
-      })
-      .then(function ({ items, pageInfo: { totalResults } }) {
-        setState(function (prevState) {
-          return {
-            ...prevState,
-            hasNextPage: prevState.items.length < totalResults,
-            isNextPageLoading: false,
-            items: [...prevState.items].concat(items),
-            totalResults: totalResults,
-          };
-        });
-      });
-  }
-
-  async function loadNextPage3() {
-    return fetch(
-      `http://localhost:5000/invoices?limit=${LIMIT}&page=${page3++}&favorite=false`
-    )
-      .then(function (response) {
-        setState3(function (prevState) {
-          return {
-            ...prevState,
-            isNextPageLoading: true,
-          };
-        });
-        return response.json();
-      })
-      .then(function ({ items, pageInfo: { totalResults } }) {
-        setState3(function (prevState) {
-          return {
-            ...prevState,
-            hasNextPage: prevState.items.length < totalResults,
-            isNextPageLoading: false,
-            items: [...prevState.items].concat(items),
-            totalResults: totalResults,
-          };
-        });
-      });
-  }
-
-  async function loadNextPage2() {
-    return fetch(
-      `http://localhost:5000/invoices?limit=${LIMIT}&page=${page2++}`
-    )
-      .then(function (response) {
-        setState2(function (prevState) {
-          return {
-            ...prevState,
-            isNextPageLoading: true,
-          };
-        });
-        return response.json();
-      })
-      .then(function ({ items, pageInfo: { totalResults } }) {
-        setState2(function (prevState) {
-          return {
-            ...prevState,
-            hasNextPage: prevState.items.length < totalResults,
-            isNextPageLoading: false,
-            items: [...prevState.items].concat(items),
-            totalResults: totalResults,
-          };
-        });
-      });
-  }
+  const {
+    cart: { items },
+  } = useContext(CartContext);
 
   return (
     <>
-      <div style={{ height: "100vh", position: "relative" }}>
-        <div
-          id="head"
+      <div
+        style={{
+          background: "#33A02B",
+          position: "fixed",
+          top: 0,
+          right: 0,
+          left: 0,
+          zIndex: 100,
+          padding: 20,
+        }}
+      >
+        <input
+          type="text"
+          name="q"
+          placeholder="Pesquisar por produto"
           style={{
-            background: "#33A02B",
-            position: "fixed",
-            top: 0,
-            right: 0,
-            left: 0,
-            zIndex: 100,
+            width: "100%",
+            display: "block",
+            height: "40px",
+            boxSizing: "border-box",
+            padding: "0 10px",
           }}
-        >
-          <input
-            type="text"
-            name="q"
-            placeholder="Pesquisar por produto"
-            style={{
-              width: "80%",
-              margin: "20px auto",
-              display: "block",
-              height: "40px",
-              paddingLeft: 10,
-            }}
-          />
-        </div>
-
-        <div
-          id="categorias"
-          style={{
-            marginTop: 70,
-            padding: "10px 20px",
-          }}
-        >
-          <h5 style={{ color: "#333" }}>Categorias</h5>
-          <div
-            className="cat"
-            style={{ display: "flex", gap: 10 }}
-          >
-            <div style={{ border: "1px solid #d9dddd", padding: 5 }}>
-              <img
-                src={vegetais}
-                alt="vegetais"
-                style={{ width: 90 }}
-              />
-              <div style={{ textAlign: "center" }}>Vegetais</div>
-            </div>
-            <div style={{ border: "1px solid #d9dddd", padding: 5 }}>
-              <img
-                src={frutas}
-                alt="frutas"
-                style={{ width: 80 }}
-              />
-              <div style={{ textAlign: "center" }}>Frutas</div>
-            </div>
-            <div style={{ border: "1px solid #d9dddd", padding: 5 }}>
-              <img
-                src={mercearia}
-                alt="mercearia"
-                style={{ width: 80 }}
-              />
-              <div style={{ textAlign: "center", paddingBottom: 10 }}>
-                Mercearia
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          id="banner"
-          style={{
-            height: 180,
-            marginTop: 10,
-          }}
-        >
-          <div
-            style={{
-              height: 180,
-              marginLeft: 20,
-              marginRight: 20,
-              background: "#f8f8f0",
-              flexGrow: 1,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              border: "1px solid #d9dddd",
-            }}
-          >
-            <h5>Banner</h5>
-          </div>
-        </div>
-        <div id="lazy-load">
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              flexDirection: "row",
-            }}
-          >
-            <h5 style={{ marginLeft: 20 }}>Frutas da epoca</h5>
-            <Link to="/frutasepoca">
-              <i style={{ paddingRight: 20 }}>Ver todos</i>
-            </Link>
-          </div>
-          <div style={{ marginLeft: 20, marginRight: 20 }}>
-            <LazyLoad
-              hasNextPage={state.hasNextPage}
-              isNextPageLoading={state.isNextPageLoading}
-              items={state.items}
-              loadNextPage={loadNextPage}
-              setState={setState}
-            />
-          </div>
-        </div>
-
-        <div id="lazy-load">
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              flexDirection: "row",
-            }}
-          >
-            <h5 style={{ marginLeft: 20 }}>Saborosas e Epicas</h5>
-            <Link to="/saborosasepicas">
-              <i style={{ paddingRight: 20 }}>Ver todos</i>
-            </Link>
-          </div>
-          <div style={{ marginLeft: 20, marginRight: 20 }}>
-            <LazyLoad
-              hasNextPage={state3.hasNextPage}
-              isNextPageLoading={state3.isNextPageLoading}
-              items={state3.items}
-              loadNextPage={loadNextPage3}
-              setState={setState3}
-            />
-          </div>
-        </div>
-
-        <div
-          id="lazy-load"
-          style={{ paddingBottom: 140 }}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              flexDirection: "row",
-            }}
-          >
-            <h5 style={{ marginLeft: 20 }}>Frescos e saudaveis</h5>
-            <Link to="/frescossaudaveis">
-              <i style={{ paddingRight: 20 }}>Ver todos</i>
-            </Link>
-          </div>
-          <div style={{ marginLeft: 20, marginRight: 20 }}>
-            <LazyLoad
-              hasNextPage={state2.hasNextPage}
-              isNextPageLoading={state2.isNextPageLoading}
-              items={state2.items}
-              loadNextPage={loadNextPage2}
-              setState={setState2}
-            />
-          </div>
-        </div>
-        <nav
-          style={{
-            position: "fixed",
-            bottom: 0,
-            height: 84,
-            right: 0,
-            left: 0,
-          }}
-        >
-          <ul
-            style={{
-              margin: 0,
-              padding: 0,
-              listStyle: "none",
-              position: "relative",
-              background: "#33A02B",
-              height: "inherit",
-            }}
-          >
-            <li style={{ float: "left" }}>
-              <NavLink
-                to="/home"
-                style={{
-                  height: 84,
-                  display: "block",
-                  position: "relative",
-                  textDecoration: "none",
-                  width: 70,
-                }}
-                className={function ({ isActive }) {
-                  return isActive ? "active" : "";
-                }}
-              >
-                <Home
-                  style={{
-                    position: "absolute",
-                    top: 18,
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                    color: "#F2F2F2",
-                  }}
-                />
-                <div
-                  style={{
-                    position: "absolute",
-                    top: 45,
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                    color: "#F2F2F2",
-                    fontSize: 14,
-                  }}
-                >
-                  Home
-                </div>
-              </NavLink>
-            </li>
-            <li style={{ float: "left" }}>
-              <NavLink
-                style={{
-                  height: 84,
-                  display: "block",
-                  position: "relative",
-                  textDecoration: "none",
-                  width: 70,
-                }}
-                to="/rancho"
-              >
-                <Rancho
-                  style={{
-                    position: "absolute",
-                    top: 18,
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                    color: "#F2F2F2",
-                  }}
-                />
-                <div
-                  style={{
-                    position: "absolute",
-                    top: 45,
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                    color: "#F2F2F2",
-                    fontSize: 14,
-                  }}
-                >
-                  Rancho
-                </div>
-              </NavLink>
-            </li>
-            <li
-              style={{
-                position: "absolute",
-                top: -52,
-                left: "50%",
-                transform: "translateX(-50%)",
-                background: "#fff",
-                width: 104,
-                height: 104,
-                borderRadius: 52,
-              }}
-            >
-              <div
-                style={{
-                  position: "absolute",
-                  background: "#33A02B",
-                  width: 90,
-                  height: 90,
-                  borderRadius: 45,
-                  left: "50%",
-                  top: "50%",
-                  transform: "translate(-50%, -50%)",
-                }}
-              >
-                <NavLink to="/carinho">
-                  <Cart
-                    style={{
-                      position: "absolute",
-                      left: "50%",
-                      top: "50%",
-                      transform: "translate(-50%, -50%)",
-                      color: "#F2F2F2",
-                    }}
-                  />
-                </NavLink>
-              </div>
-            </li>
-            <li style={{ float: "right" }}>
-              <NavLink
-                to="/ajuda"
-                style={{
-                  height: 84,
-                  display: "block",
-                  position: "relative",
-                  textDecoration: "none",
-                  width: 70,
-                }}
-              >
-                <Ajuda
-                  style={{
-                    position: "absolute",
-                    top: 18,
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                    color: "#F2F2F2",
-                  }}
-                />
-                <div
-                  style={{
-                    position: "absolute",
-                    top: 45,
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                    color: "#F2F2F2",
-                    fontSize: 14,
-                  }}
-                >
-                  Ajuda
-                </div>
-              </NavLink>
-            </li>
-            <li style={{ float: "right" }}>
-              <NavLink
-                to="/receitas"
-                style={{
-                  height: 84,
-                  display: "block",
-                  position: "relative",
-                  textDecoration: "none",
-                  width: 70,
-                }}
-              >
-                <Receitas
-                  style={{
-                    position: "absolute",
-                    top: 18,
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                    color: "#F2F2F2",
-                  }}
-                />
-                <div
-                  style={{
-                    position: "absolute",
-                    top: 45,
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                    color: "#F2F2F2",
-                    fontSize: 14,
-                  }}
-                >
-                  Receitas
-                </div>
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
+        />
       </div>
-
-      <div id="details">
+      <nav
+        style={{
+          position: "fixed",
+          bottom: 0,
+          height: 84,
+          right: 0,
+          left: 0,
+          background: "#33A02B",
+          zIndex: 100,
+        }}
+      >
+        <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
+          {navItems.map(function (item, index) {
+            return (
+              <li
+                key={index}
+                style={{ fontSize: 14, float: "left", padding: "5px 1px" }}
+              >
+                <NavLink
+                  to={item.path}
+                  style={{ padding: "5px 10px" }}
+                  className={function ({ isActive, isPending }) {
+                    return isActive ? "active" : isPending ? "pending" : "";
+                  }}
+                >
+                  {item.name}
+                  {!!items.length && item.name === "Carinho" ? (
+                    <span
+                      style={{
+                        background: "pink",
+                        display: "inline-block",
+                        padding: "2px 6px",
+                        borderRadius: "10px",
+                      }}
+                    >
+                      {" "}
+                      {items.length}
+                    </span>
+                  ) : (
+                    ""
+                  )}
+                </NavLink>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+      <div>
         <Outlet />
       </div>
     </>

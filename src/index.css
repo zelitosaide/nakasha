@@ -12,6 +12,23 @@ code {
     monospace;
 }
 
+.active {
+  background: #777;
+  color: white;
+}
+
+.ListItemOdd {
+  background: #33a02b;
+}
+
+.ListItemEven {
+  background: pink;
+}
+
+.pending {
+  color: red;
+}
+/* 
 .active svg,
 .active div {
   color: #7bc676 !important;
@@ -55,4 +72,4 @@ code {
 
 .GridItemEven {
   background-color: #f8f8f0;
-}
+} */

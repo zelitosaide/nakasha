@@ -5,46 +5,74 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { Root } from "./routes/root";
-import { Category } from "./routes/category";
+import { Home } from "./routes/home";
+import { Boxes } from "./routes/boxes";
+import { Receitas } from "./routes/receitas";
+import { Help } from "./routes/help";
+import { Provider } from "./provider";
+import { ProductCategory } from "./routes/product-category";
+import { CategoriaRancho } from "./routes/categoria-rancho";
+import { loader as singleRanchoLoader, Box } from "./routes/box";
+import { loader as swapLoader, Swap } from "./routes/swap";
+import { Cart } from "./routes/cart";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    // element: <Root />,
+    element: <Root />,
     errorElement: <p>Something went wrong!</p>,
     children: [
       {
         path: "home",
-        element: <Root />,
+        children: [
+          {
+            index: true,
+            element: <Home />,
+          },
+          {
+            // path: ":categoriaProdutoId",
+            path: ":productCategoryId",
+            element: <ProductCategory />,
+          },
+        ],
       },
       {
-        path: "rancho",
-        element: <h3 style={{ padding: 10 }}>rancho</h3>,
+        path: "boxes",
+        children: [
+          {
+            index: true,
+            element: <Boxes />,
+          },
+          {
+            path: ":categoriaRanchoId",
+            element: <CategoriaRancho />,
+          },
+          {
+            // path: ":categoriaRanchoId/:ranchoId",
+            path: ":boxCategoryId/:boxId",
+            loader: singleRanchoLoader,
+            element: <Box />,
+            children: [
+              {
+                path: "swap",
+                loader: swapLoader,
+                element: <Swap />,
+              },
+            ],
+          },
+        ],
       },
       {
-        path: "carinho",
-        element: <h3 style={{ padding: 10 }}>carinho</h3>,
+        path: "cart",
+        element: <Cart />,
       },
       {
-        path: "receitas",
-        element: <h3 style={{ padding: 10 }}>receitas</h3>,
+        path: "recipes",
+        element: <Receitas />,
       },
       {
-        path: "ajuda",
-        element: <h3 style={{ padding: 10 }}>ajuda</h3>,
-      },
-      // categorias
-      {
-        path: "frutasepoca",
-        element: <Category name="Frutas da epoca" />,
-      },
-      {
-        path: "saborosasepicas",
-        element: <Category name="Saborosas e epicas" />,
-      },
-      {
-        path: "frescossaudaveis",
-        element: <Category name="Frescos e saudaveis" />,
+        path: "help",
+        element: <Help />,
       },
     ],
   },
@@ -52,4 +80,8 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(<RouterProvider router={router} />);
+root.render(
+  <Provider>
+    <RouterProvider router={router} />
+  </Provider>
+);
