@@ -19,7 +19,7 @@ export function Recipes() {
 
   async function loadNextPage() {
     return fetch(
-      `${baseUrl}boxes?limit=${LIMIT}&page=${page}&category=hortalica`
+      `${baseUrl}recipes?limit=${LIMIT}&page=${page}&category=breakfast`
     )
       .then(function (response) {
         setState(function (prevState) {
@@ -123,8 +123,8 @@ export function Recipes() {
             flexDirection: "row",
           }}
         >
-          <h5 style={{ marginLeft: 20 }}>Receitas da epoca</h5>
-          <Link to="hortalica">
+          <h5 style={{ marginLeft: 20 }}>Categoria: breakfast</h5>
+          <Link to="breakfast">
             <span style={{ paddingRight: 20 }}>Ver todos</span>
           </Link>
         </div>

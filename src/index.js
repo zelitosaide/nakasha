@@ -12,9 +12,11 @@ import { Help } from "./routes/help";
 import { Provider } from "./provider";
 import { ProductCategory } from "./routes/product-category";
 import { BoxCategory } from "./routes/box-category";
-import { loader as singleRanchoLoader, Box } from "./routes/box";
+import { loader as boxLoader, Box } from "./routes/box";
 import { loader as swapLoader, Swap } from "./routes/swap";
 import { Cart } from "./routes/cart";
+import { Recipe } from "./routes/recipe";
+import { RecipeCategory } from "./routes/recipe-category";
 
 const router = createBrowserRouter([
   {
@@ -48,7 +50,7 @@ const router = createBrowserRouter([
           },
           {
             path: ":boxCategoryId/:boxId",
-            loader: singleRanchoLoader,
+            loader: boxLoader,
             element: <Box />,
             children: [
               {
@@ -66,7 +68,21 @@ const router = createBrowserRouter([
       },
       {
         path: "recipes",
-        element: <Recipes />,
+        children: [
+          {
+            index: true,
+            element: <Recipes />,
+          },
+          {
+            path: ":recipeCategoryId",
+            element: <RecipeCategory />,
+          },
+          {
+            path: ":recipeCategoryId/:recipeId",
+            loader: "singleRanchoLoader",
+            element: <Recipe />,
+          },
+        ],
       },
       {
         path: "help",
