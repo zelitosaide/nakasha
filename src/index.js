@@ -15,7 +15,7 @@ import { BoxCategory } from "./routes/box-category";
 import { loader as boxLoader, Box } from "./routes/box";
 import { loader as swapLoader, Swap } from "./routes/swap";
 import { Cart } from "./routes/cart";
-import { Recipe } from "./routes/recipe";
+import { loader as recipeLoader, Recipe } from "./routes/recipe";
 import { RecipeCategory } from "./routes/recipe-category";
 
 const router = createBrowserRouter([
@@ -79,7 +79,7 @@ const router = createBrowserRouter([
           },
           {
             path: ":recipeCategoryId/:recipeId",
-            loader: "singleRanchoLoader",
+            loader: recipeLoader,
             element: <Recipe />,
           },
         ],
