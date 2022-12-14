@@ -48,7 +48,7 @@ export function Root() {
         style={{
           position: "fixed",
           bottom: 0,
-          height: 84,
+          height: 66,
           right: 0,
           left: 0,
           background: "#33A02B",
@@ -65,23 +65,36 @@ export function Root() {
                   float: "left",
                   width: "20%",
                   position: item.name === "Carinho" ? "relative" : "",
-                  background: item.name === "Carinho" ? "white" : "",
                 }}
               >
                 {item.name === "Carinho" && (
                   <div
                     style={{
-                      background: "red",
+                      background: "white",
                       position: "absolute",
                       transform: "translateX(-50%)",
                       left: "50%",
                       width: "4rem",
-                      top: "-10px",
+                      top: "-28px",
                       height: "4rem",
                       borderRadius: "2rem",
                     }}
-                  ></div>
+                  >
+                    <div
+                      style={{
+                        background: " #33A02B",
+                        position: "absolute",
+                        transform: "translate(-50%, -50%)",
+                        left: "50%",
+                        top: "50%",
+                        width: "3.4rem",
+                        height: "3.4rem",
+                        borderRadius: "1.7rem",
+                      }}
+                    ></div>
+                  </div>
                 )}
+
                 <NavLink
                   to={item.path}
                   style={{
