@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { NavLink, Outlet } from "react-router-dom";
+
 import { Cart } from "../assets/icons/cart";
+import { Home } from "../assets/icons/home";
 
 import { CartContext } from "../provider";
 
@@ -106,7 +108,7 @@ export function Root() {
                             height: "3.8rem",
                           }}
                         >
-                          <div
+                          <NavLink
                             to={item.path}
                             style={{
                               background: "#33A02B",
@@ -117,7 +119,7 @@ export function Root() {
                             }}
                           >
                             <Cart style={{ width: 30, color: "white" }} />
-                          </div>
+                          </NavLink>
                           {!!items.length && (
                             <div
                               style={{
@@ -152,7 +154,17 @@ export function Root() {
                         return isActive ? "active" : isPending ? "pending" : "";
                       }}
                     >
-                      {item.name}
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                      >
+                        <Home style={{ width: 30, color: "white" }} />
+                        <span style={{ fontSize: 14 }}>{item.name}</span>
+                      </div>
                     </NavLink>
                   </div>
                 )}
