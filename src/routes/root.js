@@ -76,7 +76,7 @@ export function Root() {
                       transform: "translateX(-50%)",
                       left: "50%",
                       width: "4.6rem",
-                      top: "-28px",
+                      top: "-30px",
                       height: "4.6rem",
                       borderRadius: "2.3rem",
                     }}
