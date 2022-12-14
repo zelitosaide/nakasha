@@ -64,8 +64,22 @@ export function Root() {
                   fontSize: 14,
                   float: "left",
                   width: "20%",
+                  position: item.name === "Carinho" ? "relative" : "",
+                  background: item.name === "Carinho" ? "white" : "",
                 }}
               >
+                {item.name === "Carinho" && (
+                  <div
+                    style={{
+                      background: "red",
+                      position: "absolute",
+                      transform: "translateX(-50%)",
+                      left: "50%",
+                    }}
+                  >
+                    ola
+                  </div>
+                )}
                 <NavLink
                   to={item.path}
                   style={{
