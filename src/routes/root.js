@@ -87,9 +87,9 @@ export function Root() {
                         transform: "translate(-50%, -50%)",
                         left: "50%",
                         top: "50%",
-                        width: "3.4rem",
-                        height: "3.4rem",
-                        borderRadius: "1.7rem",
+                        width: "3.8rem",
+                        height: "3.8rem",
+                        borderRadius: "2.9rem",
                       }}
                     ></div>
                   </div>
