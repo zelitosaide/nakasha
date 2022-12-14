@@ -1,4 +1,4 @@
-export const Rancho = (props) => (
+export const Boxes = (props) => (
   <svg
     width="20"
     height="20"

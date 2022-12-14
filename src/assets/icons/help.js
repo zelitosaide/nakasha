@@ -1,4 +1,4 @@
-export const Ajuda = (props) => (
+export const Help = (props) => (
   <svg
     width="22"
     height="22"

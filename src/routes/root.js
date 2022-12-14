@@ -1,8 +1,11 @@
 import { useContext } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 
+import { Boxes } from "../assets/icons/boxes";
 import { Cart } from "../assets/icons/cart";
+import { Help } from "../assets/icons/help";
 import { Home } from "../assets/icons/home";
+import { Recipes } from "../assets/icons/recipes";
 
 import { CartContext } from "../provider";
 
@@ -162,15 +165,49 @@ export function Root() {
                           alignItems: "center",
                         }}
                       >
-                        <Home
-                          style={{
-                            width: 30,
-                            color: "white",
-                            marginTop: 5,
-                            marginBottom: 3,
-                          }}
-                        />
-                        <span style={{ fontSize: 14 }}>{item.name}</span>
+                        {item.name === "Home" && (
+                          <Home
+                            style={{
+                              width: 30,
+                              color: "#7BC676",
+                              marginTop: 5,
+                              marginBottom: 2,
+                            }}
+                          />
+                        )}
+                        {item.name === "Rancho" && (
+                          <Boxes
+                            style={{
+                              width: 30,
+                              color: "#7BC676",
+                              marginTop: 5,
+                              marginBottom: 2,
+                            }}
+                          />
+                        )}
+                        {item.name === "Receitas" && (
+                          <Recipes
+                            style={{
+                              width: 30,
+                              color: "#7BC676",
+                              marginTop: 5,
+                              marginBottom: 2,
+                            }}
+                          />
+                        )}
+                        {item.name === "Ajuda" && (
+                          <Help
+                            style={{
+                              width: 30,
+                              color: "#7BC676",
+                              marginTop: 5,
+                              marginBottom: 2,
+                            }}
+                          />
+                        )}
+                        <span style={{ fontSize: 14, color: "#7BC676" }}>
+                          {item.name}
+                        </span>
                       </div>
                     </NavLink>
                   </div>
@@ -186,3 +223,9 @@ export function Root() {
     </>
   );
 }
+
+// { name: "Home", path: "home" },
+// { name: "Rancho", path: "boxes" },
+// { name: "Carinho", path: "cart" },
+// { name: "Receitas", path: "recipes" },
+// { name: "Ajuda", path: "help" },

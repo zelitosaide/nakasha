@@ -1,4 +1,4 @@
-export const Receitas = (props) => (
+export const Recipes = (props) => (
   <svg
     width="24"
     height="24"
