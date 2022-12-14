@@ -2,10 +2,10 @@ import { useContext, useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Link } from "react-router-dom";
 
-import { CartContext } from "../provider";
+import { CartContext } from "../../provider";
 
 const style = {
-  height: 60,
+  height: 50,
   border: "1px solid green",
   marginRight: 12,
   marginBottom: 12,
@@ -14,7 +14,7 @@ const style = {
   display: "inline-block",
 };
 
-export function RecipeCategory() {
+export function BoxCategory() {
   const [loadedItemsState, setLoadedItemsState] = useState({
     hasNextPage: true,
     items: Array.from({ length: 20 }).fill(0),
@@ -27,10 +27,9 @@ export function RecipeCategory() {
   const [page, setPage] = useState(1);
   const LIMIT = 20;
   const { cart, add, remove } = useContext(CartContext);
-  const baseUrl = "http://localhost:5000/";
 
   useEffect(function () {
-    fetch(`${baseUrl}recipes?limit=${LIMIT}&page=${page}&category=breakfast`)
+    fetch(`http://localhost:5000/boxes?limit=${LIMIT}&page=${page}`)
       .then(function (response) {
         return response.json();
       })
@@ -49,9 +48,7 @@ export function RecipeCategory() {
   }, []);
 
   async function fetchMoreData() {
-    return fetch(
-      `${baseUrl}recipes?limit=${LIMIT}&page=${page}&category=breakfast`
-    )
+    return fetch(`http://localhost:5000/boxes?limit=${LIMIT}&page=${page}`)
       .then(function (response) {
         return response.json();
       })
@@ -77,7 +74,7 @@ export function RecipeCategory() {
         marginBottom: 100,
       }}
     >
-      <h4>Categoria da Receita: breakfast</h4>
+      <h4>Categoria das Caixas: hortalicas</h4>
       <InfiniteScroll
         dataLength={loadedItemsState.items.length}
         next={fetchMoreData}
@@ -85,7 +82,7 @@ export function RecipeCategory() {
         loader={<h4>Loading...</h4>}
       >
         {loadedItemsState.items.map((i, index) => {
-          const recipeFoundInCart = cart.items.find(function (item) {
+          const boxFoundInCart = cart.items.find(function (item) {
             return item._id === loadedItemsState.items[index]._id;
           });
 
@@ -95,29 +92,25 @@ export function RecipeCategory() {
               key={index}
             >
               {loadedItemsState.items[index].name}
-              <div>
-                {recipeFoundInCart ? (
-                  <button
-                    onClick={function () {
-                      remove(loadedItemsState.items[index]);
-                    }}
-                  >
-                    -
-                  </button>
-                ) : null}
-                <span>
-                  {recipeFoundInCart ? recipeFoundInCart.quantity : ""}
-                </span>
-                {!empty && (
-                  <button
-                    onClick={function () {
-                      add(loadedItemsState.items[index]);
-                    }}
-                  >
-                    +
-                  </button>
-                )}
-              </div>
+              {boxFoundInCart ? (
+                <button
+                  onClick={function () {
+                    remove(loadedItemsState.items[index]);
+                  }}
+                >
+                  -
+                </button>
+              ) : null}
+              <span>{boxFoundInCart ? boxFoundInCart.quantity : ""}</span>
+              {!empty && (
+                <button
+                  onClick={function () {
+                    add(loadedItemsState.items[index]);
+                  }}
+                >
+                  +
+                </button>
+              )}
               {!empty && (
                 <div>
                   <Link to={loadedItemsState.items[index]._id}>See more</Link>

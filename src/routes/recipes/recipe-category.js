@@ -2,10 +2,10 @@ import { useContext, useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Link } from "react-router-dom";
 
-import { CartContext } from "../provider";
+import { CartContext } from "../../provider";
 
 const style = {
-  height: 50,
+  height: 60,
   border: "1px solid green",
   marginRight: 12,
   marginBottom: 12,
@@ -14,7 +14,7 @@ const style = {
   display: "inline-block",
 };
 
-export function BoxCategory() {
+export function RecipeCategory() {
   const [loadedItemsState, setLoadedItemsState] = useState({
     hasNextPage: true,
     items: Array.from({ length: 20 }).fill(0),
@@ -27,9 +27,10 @@ export function BoxCategory() {
   const [page, setPage] = useState(1);
   const LIMIT = 20;
   const { cart, add, remove } = useContext(CartContext);
+  const baseUrl = "http://localhost:5000/";
 
   useEffect(function () {
-    fetch(`http://localhost:5000/boxes?limit=${LIMIT}&page=${page}`)
+    fetch(`${baseUrl}recipes?limit=${LIMIT}&page=${page}&category=breakfast`)
       .then(function (response) {
         return response.json();
       })
@@ -48,7 +49,9 @@ export function BoxCategory() {
   }, []);
 
   async function fetchMoreData() {
-    return fetch(`http://localhost:5000/boxes?limit=${LIMIT}&page=${page}`)
+    return fetch(
+      `${baseUrl}recipes?limit=${LIMIT}&page=${page}&category=breakfast`
+    )
       .then(function (response) {
         return response.json();
       })
@@ -74,7 +77,7 @@ export function BoxCategory() {
         marginBottom: 100,
       }}
     >
-      <h4>Categoria das Caixas: hortalicas</h4>
+      <h4>Categoria da Receita: breakfast</h4>
       <InfiniteScroll
         dataLength={loadedItemsState.items.length}
         next={fetchMoreData}
@@ -82,7 +85,7 @@ export function BoxCategory() {
         loader={<h4>Loading...</h4>}
       >
         {loadedItemsState.items.map((i, index) => {
-          const boxFoundInCart = cart.items.find(function (item) {
+          const recipeFoundInCart = cart.items.find(function (item) {
             return item._id === loadedItemsState.items[index]._id;
           });
 
@@ -92,25 +95,29 @@ export function BoxCategory() {
               key={index}
             >
               {loadedItemsState.items[index].name}
-              {boxFoundInCart ? (
-                <button
-                  onClick={function () {
-                    remove(loadedItemsState.items[index]);
-                  }}
-                >
-                  -
-                </button>
-              ) : null}
-              <span>{boxFoundInCart ? boxFoundInCart.quantity : ""}</span>
-              {!empty && (
-                <button
-                  onClick={function () {
-                    add(loadedItemsState.items[index]);
-                  }}
-                >
-                  +
-                </button>
-              )}
+              <div>
+                {recipeFoundInCart ? (
+                  <button
+                    onClick={function () {
+                      remove(loadedItemsState.items[index]);
+                    }}
+                  >
+                    -
+                  </button>
+                ) : null}
+                <span>
+                  {recipeFoundInCart ? recipeFoundInCart.quantity : ""}
+                </span>
+                {!empty && (
+                  <button
+                    onClick={function () {
+                      add(loadedItemsState.items[index]);
+                    }}
+                  >
+                    +
+                  </button>
+                )}
+              </div>
               {!empty && (
                 <div>
                   <Link to={loadedItemsState.items[index]._id}>See more</Link>

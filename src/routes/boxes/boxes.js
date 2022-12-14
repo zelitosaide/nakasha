@@ -1,27 +1,26 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-import vegetais from "../assets/images/vegetais.png";
-import frutas from "../assets/images/frutas.png";
-import mercearia from "../assets/images/mercearia.png";
+import vegetais from "../../assets/images/vegetais.png";
+import frutas from "../../assets/images/frutas.png";
+import mercearia from "../../assets/images/mercearia.png";
 
-import { ProdutoHorizontalLazyLoad } from "./products-horizontal-lazy-load";
+import { BoxesHorizontalLazyLoad } from "./boxes-horizontal-lazy-load";
 
-export function Home() {
+export function Boxes() {
   const [state, setState] = useState({
     hasNextPage: true,
     isNextPageLoading: false,
     items: [],
-    totalResults: 0,
   });
-  const LIMIT = 5;
   const [page, setPage] = useState(1);
 
-  const baseURL = "http://localhost:5000/";
+  const LIMIT = 5;
+  const baseUrl = "http://localhost:5000/";
 
   async function loadNextPage() {
     return fetch(
-      `${baseURL}products?limit=${LIMIT}&page=${page}&category=hortalica`
+      `${baseUrl}boxes?limit=${LIMIT}&page=${page}&category=hortalica`
     )
       .then(function (response) {
         setState(function (prevState) {
@@ -43,7 +42,6 @@ export function Home() {
             hasNextPage: prevState.items.length < totalResults,
             isNextPageLoading: false,
             items: [...prevState.items].concat(items),
-            totalResults: totalResults,
           };
         });
       });
@@ -126,13 +124,13 @@ export function Home() {
             flexDirection: "row",
           }}
         >
-          <h5 style={{ marginLeft: 20 }}>Cereais da epoca</h5>
+          <h5 style={{ marginLeft: 20 }}>Caixas da epoca</h5>
           <Link to="hortalica">
             <span style={{ paddingRight: 20 }}>Ver todos</span>
           </Link>
         </div>
         <div style={{ marginLeft: 20, marginRight: 20 }}>
-          <ProdutoHorizontalLazyLoad
+          <BoxesHorizontalLazyLoad
             hasNextPage={state.hasNextPage}
             isNextPageLoading={state.isNextPageLoading}
             items={state.items}

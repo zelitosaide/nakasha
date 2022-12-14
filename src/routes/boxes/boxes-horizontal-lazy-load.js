@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { FixedSizeList as List } from "react-window";
 import InfiniteLoader from "react-window-infinite-loader";
 
-import { CartContext } from "../provider";
+import { CartContext } from "../../provider";
 
-export function RecipesHorizontalLazyLoad({
+export function BoxesHorizontalLazyLoad({
   hasNextPage,
   isNextPageLoading,
   items,

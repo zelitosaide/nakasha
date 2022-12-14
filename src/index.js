@@ -5,18 +5,18 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { Root } from "./routes/root";
-import { Home } from "./routes/home";
-import { Boxes } from "./routes/boxes";
-import { Recipes } from "./routes/recipes";
-import { Help } from "./routes/help";
+import { Home } from "./routes/home/home";
+import { Boxes } from "./routes/boxes/boxes";
+import { Recipes } from "./routes/recipes/recipes";
+import { Help } from "./routes/help/help";
 import { Provider } from "./provider";
-import { ProductCategory } from "./routes/product-category";
-import { BoxCategory } from "./routes/box-category";
-import { loader as boxLoader, Box } from "./routes/box";
-import { loader as swapLoader, Swap } from "./routes/swap";
-import { Cart } from "./routes/cart";
-import { loader as recipeLoader, Recipe } from "./routes/recipe";
-import { RecipeCategory } from "./routes/recipe-category";
+import { ProductCategory } from "./routes/products/product-category";
+import { BoxCategory } from "./routes/boxes/box-category";
+import { loader as boxLoader, Box } from "./routes/boxes/box";
+import { loader as swapLoader, Swap } from "./routes/boxes/swap";
+import { Cart } from "./routes/cart/cart";
+import { loader as recipeLoader, Recipe } from "./routes/recipes/recipe";
+import { RecipeCategory } from "./routes/recipes/recipe-category";
 
 const router = createBrowserRouter([
   {

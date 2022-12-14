@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { FixedSizeList as List } from "react-window";
 import InfiniteLoader from "react-window-infinite-loader";
 
-import { CartContext } from "../provider";
+import { CartContext } from "../../provider";
 
 export function ProdutoHorizontalLazyLoad({
   hasNextPage,

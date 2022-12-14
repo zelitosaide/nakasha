@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-import { CartContext } from "../provider";
+import { CartContext } from "../../provider";
 
 const style = {
   height: 30,

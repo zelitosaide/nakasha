@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import vegetais from "../assets/images/vegetais.png";
-import frutas from "../assets/images/frutas.png";
-import mercearia from "../assets/images/mercearia.png";
+import vegetais from "../../assets/images/vegetais.png";
+import frutas from "../../assets/images/frutas.png";
+import mercearia from "../../assets/images/mercearia.png";
 import { RecipesHorizontalLazyLoad } from "./recipes-horizontal-lazy-load";
 
 export function Recipes() {
