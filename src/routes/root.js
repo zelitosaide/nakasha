@@ -99,18 +99,40 @@ export function Root() {
                           background: "#33A02B",
                         }}
                       >
-                        <NavLink
-                          to={item.path}
+                        <div
                           style={{
-                            background: "#33A02B",
-                            position: "absolute",
-                            transform: "translate(-50%, -50%)",
-                            left: "50%",
-                            top: "50%",
+                            position: "relative",
+                            width: "3.8rem",
+                            height: "3.8rem",
                           }}
                         >
-                          <Cart style={{ width: 30, color: "white" }} />
-                        </NavLink>
+                          <NavLink
+                            to={item.path}
+                            style={{
+                              background: "#33A02B",
+                              position: "absolute",
+                              transform: "translate(-50%, -50%)",
+                              left: "50%",
+                              top: "50%",
+                            }}
+                          >
+                            <Cart style={{ width: 30, color: "white" }} />
+                          </NavLink>
+                          <div
+                            style={{
+                              position: "absolute",
+                              fontSize: 12,
+                              // display: "block",
+                              padding: "1px 3px",
+                              borderRadius: "10px",
+                              background: "red",
+                              right: 8,
+                              top: "-1px",
+                            }}
+                          >
+                            {!!items.length && items.length}
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
