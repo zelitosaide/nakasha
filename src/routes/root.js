@@ -199,7 +199,7 @@ export function Root() {
                           <Help
                             style={{
                               width: 30,
-                              color: "hsla(0, 0%, 100%, 0.5)",
+                              color: "hsla(0, 0%, 100%, 0.6)",
                               marginTop: 5,
                               marginBottom: 2,
                             }}
@@ -208,7 +208,7 @@ export function Root() {
                         <span
                           style={{
                             fontSize: 14,
-                            color: "hsla(0, 0%, 100%, 0.5)",
+                            color: "hsla(0, 0%, 100%, 0.6)",
                           }}
                         >
                           {item.name}
