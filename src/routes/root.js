@@ -42,6 +42,8 @@ export function Root() {
           }}
         />
       </div>
+
+      {/* Bottom Navigation */}
       <nav
         style={{
           position: "fixed",
@@ -58,17 +60,24 @@ export function Root() {
             return (
               <li
                 key={index}
-                style={{ fontSize: 14, float: "left", padding: "5px 1px" }}
+                style={{
+                  fontSize: 14,
+                  float: "left",
+                  width: "20%",
+                }}
               >
                 <NavLink
                   to={item.path}
-                  style={{ padding: "5px 10px" }}
+                  style={{
+                    padding: "5px 10px",
+                    display: "block",
+                  }}
                   className={function ({ isActive, isPending }) {
                     return isActive ? "active" : isPending ? "pending" : "";
                   }}
                 >
                   {item.name}
-                  {!!items.length && item.name === "Carinho" ? (
+                  {/* {!!items.length && item.name === "Carinho" ? (
                     <span
                       style={{
                         background: "#243879",
@@ -83,7 +92,7 @@ export function Root() {
                     </span>
                   ) : (
                     ""
-                  )}
+                  )} */}
                 </NavLink>
               </li>
             );
