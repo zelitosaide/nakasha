@@ -65,51 +65,73 @@ export function Root() {
                   fontSize: 14,
                   float: "left",
                   width: "20%",
-                  position: item.name === "Carinho" ? "relative" : "",
                 }}
               >
-                {item.name === "Carinho" && (
+                {item.name === "Carinho" ? (
                   <div
                     style={{
-                      background: "white",
-                      position: "absolute",
-                      transform: "translateX(-50%)",
-                      left: "50%",
-                      width: "4.6rem",
-                      top: "-30px",
+                      position: "relative",
+                      width: "100%",
                       height: "4.6rem",
-                      borderRadius: "2.3rem",
                     }}
                   >
                     <div
                       style={{
-                        background: "#33A02B",
                         position: "absolute",
-                        transform: "translate(-50%, -50%)",
+                        transform: "translateX(-50%)",
                         left: "50%",
-                        top: "50%",
-                        width: "3.8rem",
-                        height: "3.8rem",
-                        borderRadius: "2.9rem",
+                        width: "4.6rem",
+                        top: "-30px",
+                        height: "4.6rem",
+                        borderRadius: "2.3rem",
+                        background: "white",
                       }}
                     >
-                      <NavLink
-                        to={item.path}
+                      <div
                         style={{
-                          background: "#33A02B",
                           position: "absolute",
                           transform: "translate(-50%, -50%)",
                           left: "50%",
                           top: "50%",
+                          width: "3.8rem",
+                          height: "3.8rem",
+                          borderRadius: "2.9rem",
+                          background: "#33A02B",
                         }}
                       >
-                        <Cart style={{ width: 30, color: "white" }} />
-                      </NavLink>
+                        <NavLink
+                          to={item.path}
+                          style={{
+                            background: "#33A02B",
+                            position: "absolute",
+                            transform: "translate(-50%, -50%)",
+                            left: "50%",
+                            top: "50%",
+                          }}
+                        >
+                          <Cart style={{ width: 30, color: "white" }} />
+                        </NavLink>
+                      </div>
                     </div>
+                  </div>
+                ) : (
+                  <div>
+                    <NavLink
+                      to={item.path}
+                      style={{
+                        padding: "5px 10px",
+                        display: "block",
+                      }}
+                      className={function ({ isActive, isPending }) {
+                        return isActive ? "active" : isPending ? "pending" : "";
+                      }}
+                    >
+                      {item.name}
+                    </NavLink>
                   </div>
                 )}
 
-                <NavLink
+                {/* <NavLink
                   to={item.path}
                   style={{
                     padding: "5px 10px",
@@ -120,7 +142,7 @@ export function Root() {
                   }}
                 >
                   {item.name}
-                  {/* {!!items.length && item.name === "Carinho" ? (
+                  {!!items.length && item.name === "Carinho" ? (
                     <span
                       style={{
                         background: "#243879",
@@ -135,8 +157,8 @@ export function Root() {
                     </span>
                   ) : (
                     ""
-                  )} */}
-                </NavLink>
+                  )}
+                </NavLink> */}
               </li>
             );
           })}
