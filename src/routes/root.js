@@ -169,7 +169,8 @@ export function Root() {
                           <Home
                             style={{
                               width: 30,
-                              color: "#7BC676",
+                              // color: "#7BC676",
+                              color: "hsla(0, 0%, 100%, 0.6)",
                               marginTop: 5,
                               marginBottom: 2,
                             }}
@@ -179,7 +180,7 @@ export function Root() {
                           <Boxes
                             style={{
                               width: 30,
-                              color: "#7BC676",
+                              color: "hsla(0, 0%, 100%, 0.6)",
                               marginTop: 5,
                               marginBottom: 2,
                             }}
@@ -189,7 +190,7 @@ export function Root() {
                           <Recipes
                             style={{
                               width: 30,
-                              color: "#7BC676",
+                              color: "hsla(0, 0%, 100%, 0.6)",
                               marginTop: 5,
                               marginBottom: 2,
                             }}
@@ -199,13 +200,18 @@ export function Root() {
                           <Help
                             style={{
                               width: 30,
-                              color: "#7BC676",
+                              color: "hsla(0, 0%, 100%, 0.6)",
                               marginTop: 5,
                               marginBottom: 2,
                             }}
                           />
                         )}
-                        <span style={{ fontSize: 14, color: "#7BC676" }}>
+                        <span
+                          style={{
+                            fontSize: 14,
+                            color: "hsla(0, 0%, 100%, 0.6)",
+                          }}
+                        >
                           {item.name}
                         </span>
                       </div>
