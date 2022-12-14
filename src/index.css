@@ -16,10 +16,6 @@ a {
   text-decoration: none;
 }
 
-/* .active {
-  background: purple;
-  color: white;
-} */
 .active svg,
 .active span {
   color: white !important;
