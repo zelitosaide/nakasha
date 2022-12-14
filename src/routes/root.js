@@ -75,10 +75,12 @@ export function Root() {
                       position: "absolute",
                       transform: "translateX(-50%)",
                       left: "50%",
+                      width: "4rem",
+                      top: "-10px",
+                      height: "4rem",
+                      borderRadius: "2rem",
                     }}
-                  >
-                    ola
-                  </div>
+                  ></div>
                 )}
                 <NavLink
                   to={item.path}
