@@ -125,12 +125,15 @@ export function Root() {
                               // display: "block",
                               padding: "1px 3px",
                               borderRadius: "10px",
-                              background: "red",
-                              right: 8,
-                              top: "-1px",
+                              background: "#ff9633",
+                              // background: "#ffa34d",
+                              minWidth: 12,
+                              textAlign: "center",
+                              right: 4,
+                              top: 0,
                             }}
                           >
-                            {!!items.length && items.length}
+                            {/* {!!items.length && items.length} */}10
                           </div>
                         </div>
                       </div>
