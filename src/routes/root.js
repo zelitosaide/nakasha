@@ -118,22 +118,24 @@ export function Root() {
                           >
                             <Cart style={{ width: 30, color: "white" }} />
                           </NavLink>
-                          <div
-                            style={{
-                              position: "absolute",
-                              fontSize: 12,
-                              padding: "2px 3px",
-                              borderRadius: "10px",
-                              background: "#ff9633",
-                              minWidth: 12,
-                              textAlign: "center",
-                              right: 4,
-                              top: 0,
-                              fontWeight: "bold",
-                            }}
-                          >
-                            {/* {!!items.length && items.length} */}10
-                          </div>
+                          {!!items.length && (
+                            <div
+                              style={{
+                                position: "absolute",
+                                fontSize: 12,
+                                padding: "2px 3px",
+                                borderRadius: "10px",
+                                background: "#ff9633",
+                                minWidth: 12,
+                                textAlign: "center",
+                                right: 4,
+                                top: 0,
+                                fontWeight: "bold",
+                              }}
+                            >
+                              {items.length}
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -154,35 +156,6 @@ export function Root() {
                     </NavLink>
                   </div>
                 )}
-
-                {/* <NavLink
-                  to={item.path}
-                  style={{
-                    padding: "5px 10px",
-                    display: "block",
-                  }}
-                  className={function ({ isActive, isPending }) {
-                    return isActive ? "active" : isPending ? "pending" : "";
-                  }}
-                >
-                  {item.name}
-                  {!!items.length && item.name === "Carinho" ? (
-                    <span
-                      style={{
-                        background: "#243879",
-                        display: "inline-block",
-                        padding: "2px 6px",
-                        borderRadius: "10px",
-                        color: "white",
-                        marginLeft: 5,
-                      }}
-                    >
-                      {items.length}
-                    </span>
-                  ) : (
-                    ""
-                  )}
-                </NavLink> */}
               </li>
             );
           })}
