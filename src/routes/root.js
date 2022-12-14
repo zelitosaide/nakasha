@@ -162,7 +162,14 @@ export function Root() {
                           alignItems: "center",
                         }}
                       >
-                        <Home style={{ width: 30, color: "white" }} />
+                        <Home
+                          style={{
+                            width: 30,
+                            color: "white",
+                            marginTop: 5,
+                            marginBottom: 3,
+                          }}
+                        />
                         <span style={{ fontSize: 14 }}>{item.name}</span>
                       </div>
                     </NavLink>
