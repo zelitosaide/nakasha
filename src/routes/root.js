@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import { Cart } from "../assets/icons/cart";
 
 import { CartContext } from "../provider";
 
@@ -91,7 +92,21 @@ export function Root() {
                         height: "3.8rem",
                         borderRadius: "2.9rem",
                       }}
-                    ></div>
+                    >
+                      <NavLink
+                        to={item.path}
+                        style={{
+                          // background: "pink",
+                          display: "block",
+                          position: "absolute",
+                          transform: "translate(-50%, -50%)",
+                          left: "50%",
+                          top: "50%",
+                        }}
+                      >
+                        <Cart style={{ width: 30, color: "white" }} />
+                      </NavLink>
+                    </div>
                   </div>
                 )}
 
