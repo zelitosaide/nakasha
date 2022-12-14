@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+a {
+  text-decoration: none;
+}
+
 .active {
   background: purple;
   color: white;
