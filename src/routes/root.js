@@ -169,7 +169,6 @@ export function Root() {
                           <Home
                             style={{
                               width: 30,
-                              // color: "#7BC676",
                               color: "hsla(0, 0%, 100%, 0.6)",
                               marginTop: 5,
                               marginBottom: 2,

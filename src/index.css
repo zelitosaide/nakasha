@@ -16,9 +16,13 @@ a {
   text-decoration: none;
 }
 
-.active {
+/* .active {
   background: purple;
   color: white;
+} */
+.active svg,
+.active span {
+  color: white !important;
 }
 
 .ListItemOdd {
