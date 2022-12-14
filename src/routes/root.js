@@ -122,11 +122,9 @@ export function Root() {
                             style={{
                               position: "absolute",
                               fontSize: 12,
-                              // display: "block",
-                              padding: "1px 3px",
+                              padding: "2px 3px",
                               borderRadius: "10px",
                               background: "#ff9633",
-                              // background: "#ffa34d",
                               minWidth: 12,
                               textAlign: "center",
                               right: 4,
