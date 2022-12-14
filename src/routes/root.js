@@ -129,6 +129,7 @@ export function Root() {
                               textAlign: "center",
                               right: 4,
                               top: 0,
+                              fontWeight: "bold",
                             }}
                           >
                             {/* {!!items.length && items.length} */}10
