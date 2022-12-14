@@ -83,7 +83,7 @@ export function Root() {
                   >
                     <div
                       style={{
-                        background: " #33A02B",
+                        background: "#33A02B",
                         position: "absolute",
                         transform: "translate(-50%, -50%)",
                         left: "50%",
@@ -96,8 +96,7 @@ export function Root() {
                       <NavLink
                         to={item.path}
                         style={{
-                          // background: "pink",
-                          display: "block",
+                          background: "#33A02B",
                           position: "absolute",
                           transform: "translate(-50%, -50%)",
                           left: "50%",
