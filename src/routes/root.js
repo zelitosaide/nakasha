@@ -106,7 +106,7 @@ export function Root() {
                             height: "3.8rem",
                           }}
                         >
-                          <NavLink
+                          <div
                             to={item.path}
                             style={{
                               background: "#33A02B",
@@ -117,7 +117,7 @@ export function Root() {
                             }}
                           >
                             <Cart style={{ width: 30, color: "white" }} />
-                          </NavLink>
+                          </div>
                           {!!items.length && (
                             <div
                               style={{
