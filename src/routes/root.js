@@ -138,7 +138,7 @@ export function Root() {
                                 fontWeight: "bold",
                               }}
                             >
-                              {items.length}
+                              {/* {items.length} */}54
                             </div>
                           )}
                         </div>
