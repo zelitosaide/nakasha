@@ -123,7 +123,7 @@ export function Root() {
                           >
                             <Cart style={{ width: 30, color: "white" }} />
                           </NavLink>
-                          {!!items.length && (
+                          {!items.length && (
                             <div
                               style={{
                                 position: "absolute",
