@@ -1,13 +1,21 @@
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { useState } from "react";
 
 import vegetais from "../../assets/images/vegetais.png";
 import frutas from "../../assets/images/frutas.png";
 import mercearia from "../../assets/images/mercearia.png";
 
-import { ProdutoHorizontalLazyLoad } from "../products/products-horizontal-lazy-load";
+import { ProdutoHorizontalLazyLoad } from "./products-horizontal-lazy-load";
 
-export function Home() {
+const baseURL = "http://localhost:5000/";
+
+export async function loader() {
+  const response = await fetch(baseURL + "productCategories");
+  const productCategories = await response.json();
+  return productCategories;
+}
+
+export function Products() {
   const [state, setState] = useState({
     hasNextPage: true,
     isNextPageLoading: false,
@@ -16,6 +24,9 @@ export function Home() {
   });
   const LIMIT = 5;
   const [page, setPage] = useState(1);
+  const productCategories = useLoaderData().items.map(function (item) {
+    return item.name;
+  });
 
   const baseURL = "http://localhost:5000/";
 

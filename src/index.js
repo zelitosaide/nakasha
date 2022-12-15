@@ -5,7 +5,10 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { Root } from "./routes/root";
-import { Home } from "./routes/home/home";
+import {
+  Products,
+  loader as productCategoryLoader,
+} from "./routes/products/products";
 import { Boxes } from "./routes/boxes/boxes";
 import { Recipes } from "./routes/recipes/recipes";
 import { Help } from "./routes/help/help";
@@ -25,11 +28,12 @@ const router = createBrowserRouter([
     errorElement: <p>Something went wrong!</p>,
     children: [
       {
-        path: "home",
+        path: "products",
         children: [
           {
             index: true,
-            element: <Home />,
+            loader: productCategoryLoader,
+            element: <Products />,
           },
           {
             path: ":productCategoryId",

@@ -11,7 +11,7 @@ import { CartContext } from "../provider";
 
 export function Root() {
   const navItems = [
-    { name: "Home", path: "home" },
+    { name: "Home", path: "products" },
     { name: "Rancho", path: "boxes" },
     { name: "Carinho", path: "cart" },
     { name: "Receitas", path: "recipes" },
@@ -228,9 +228,3 @@ export function Root() {
     </>
   );
 }
-
-// { name: "Home", path: "home" },
-// { name: "Rancho", path: "boxes" },
-// { name: "Carinho", path: "cart" },
-// { name: "Receitas", path: "recipes" },
-// { name: "Ajuda", path: "help" },
