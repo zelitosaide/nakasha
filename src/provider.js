@@ -105,3 +105,38 @@ export function Provider({ children }) {
     </CartContext.Provider>
   );
 }
+
+// loadNextPage: async function () {
+//   fetch(
+//     `${baseURL}products?limit=${LIMIT}&page=${page}&category=${item.name}`
+//   )
+//     .then(function (response) {
+//       // setState(function (prevState) {
+//       //   return [
+//       //     ...prevState,
+//       //     {
+//       //       hasNextPage: true,
+//       //       isNextPageLoading: true,
+//       //       items: [],
+//       //       totalResults: 0,
+//       //     },
+//       //   ];
+//       // });
+//       return response.json();
+//     })
+//     .then(function ({ items, pageInfo: { totalResults } }) {
+//       setPage(function (prevPage) {
+//         return prevPage + 1;
+//       });
+
+//       setState(function (prevState) {
+//         return {
+//           ...prevState,
+//           hasNextPage: prevState.items.length < totalResults,
+//           isNextPageLoading: false,
+//           items: [...prevState.items].concat(items),
+//           totalResults: totalResults,
+//         };
+//       });
+//     });
+// },

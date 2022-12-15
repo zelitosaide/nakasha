@@ -16,49 +16,74 @@ export async function loader() {
 }
 
 export function Products() {
-  const [state, setState] = useState({
-    hasNextPage: true,
-    isNextPageLoading: false,
-    items: [],
-    totalResults: 0,
-  });
   const LIMIT = 5;
-  const [page, setPage] = useState(1);
-  const productCategories = useLoaderData().items.map(function (item) {
-    return item.name;
+  const productRows = useLoaderData().items.map(function (item) {
+    return {
+      name: item.name,
+      loadNextPage: async function () {
+        const response = await fetch(
+          `${baseURL}products?limit=${LIMIT}&page=${page[item.name]}&category=${
+            item.name
+          }`
+        );
+
+        setState(function (prevState) {
+          return {
+            ...prevState,
+            [item.name]: {
+              ...prevState[item.name],
+              isNextPageLoading: true,
+            },
+          };
+        });
+
+        const {
+          items,
+          pageInfo: { totalResults },
+        } = await response.json();
+
+        setPage(function (prevPage) {
+          return {
+            ...prevPage,
+            [item.name]: prevPage[item.name] + 1,
+          };
+        });
+
+        setState(function (prevState) {
+          return {
+            ...prevState,
+            [item.name]: {
+              hasNextPage: prevState[item.name].items.length < totalResults,
+              isNextPageLoading: false,
+              items: [...prevState[item.name].items].concat(items),
+              totalResults: totalResults,
+            },
+          };
+        });
+      },
+    };
   });
 
-  const baseURL = "http://localhost:5000/";
+  const [state, setState] = useState(function () {
+    const init = {};
+    productRows.forEach(function (item) {
+      init[item.name] = {
+        hasNextPage: true,
+        isNextPageLoading: false,
+        items: [],
+        totalResults: 0,
+      };
+    });
+    return init;
+  });
 
-  async function loadNextPage() {
-    return fetch(
-      `${baseURL}products?limit=${LIMIT}&page=${page}&category=hortalica`
-    )
-      .then(function (response) {
-        setState(function (prevState) {
-          return {
-            ...prevState,
-            isNextPageLoading: true,
-          };
-        });
-        return response.json();
-      })
-      .then(function ({ items, pageInfo: { totalResults } }) {
-        setPage(function (prevPage) {
-          return prevPage + 1;
-        });
-
-        setState(function (prevState) {
-          return {
-            ...prevState,
-            hasNextPage: prevState.items.length < totalResults,
-            isNextPageLoading: false,
-            items: [...prevState.items].concat(items),
-            totalResults: totalResults,
-          };
-        });
-      });
-  }
+  const [page, setPage] = useState(function () {
+    const init = {};
+    productRows.forEach(function (item) {
+      init[item.name] = 1;
+    });
+    return init;
+  });
 
   return (
     <div>
@@ -128,28 +153,39 @@ export function Products() {
       </div>
 
       {/* Lazy load */}
-      <div id="lazy-load">
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            flexDirection: "row",
-          }}
-        >
-          <h5 style={{ marginLeft: 20 }}>Cereais da epoca</h5>
-          <Link to="hortalica">
-            <span style={{ paddingRight: 20 }}>Ver todos</span>
-          </Link>
-        </div>
-        <div style={{ marginLeft: 20, marginRight: 20 }}>
-          <ProdutoHorizontalLazyLoad
-            hasNextPage={state.hasNextPage}
-            isNextPageLoading={state.isNextPageLoading}
-            items={state.items}
-            loadNextPage={loadNextPage}
-          />
-        </div>
+      <div style={{ paddingBottom: 106 }}>
+        {productRows.map(function (item, index) {
+          return (
+            <div
+              id="lazy-load"
+              key={index}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  flexDirection: "row",
+                }}
+              >
+                <h5 style={{ marginLeft: 20 }}>
+                  Categiria: {item.name} ({state[item.name]?.totalResults})
+                </h5>
+                <Link to={item.name}>
+                  <span style={{ paddingRight: 20 }}>Ver todos</span>
+                </Link>
+              </div>
+              <div style={{ marginLeft: 20, marginRight: 20 }}>
+                <ProdutoHorizontalLazyLoad
+                  hasNextPage={state[item.name]?.hasNextPage}
+                  isNextPageLoading={state[item.name]?.isNextPageLoading}
+                  items={state[item.name]?.items || []}
+                  loadNextPage={item.loadNextPage}
+                />
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
