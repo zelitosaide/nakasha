@@ -1,4 +1,4 @@
-import { Form, useLoaderData, useNavigate } from "react-router-dom";
+import { Form, redirect, useLoaderData, useNavigate } from "react-router-dom";
 
 import { baseUrl } from "../../api";
 import { convertTobase64 } from "../../utils/file-to-base64";
@@ -21,7 +21,7 @@ export async function action({ request, params }) {
     },
   });
   const result = await response.json();
-  console.log(result);
+  return redirect("/products/list");
 }
 
 export async function loader({ params }) {
