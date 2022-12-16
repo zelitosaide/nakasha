@@ -99,7 +99,7 @@ export function UpdateProduct() {
             type="submit"
             style={{ marginRight: 10 }}
           >
-            Create
+            Save
           </button>
           <button
             type="button"
