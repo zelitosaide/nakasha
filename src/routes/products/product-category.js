@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 import { CartContext } from "../../provider";
+import { baseUrl } from "../../api";
 
 const style = {
   height: 30,
@@ -21,11 +22,10 @@ export function ProductCategory() {
   const [page, setPage] = useState(1);
   const { cart, add, remove } = useContext(CartContext);
 
-  const baseURL = "http://localhost:5000/";
   const LIMIT = 20;
 
   useEffect(function () {
-    fetch(`${baseURL}products?limit=${LIMIT}&page=${page}&category=hortalica`)
+    fetch(`${baseUrl}/products?limit=${LIMIT}&page=${page}&category=hortalica`)
       .then(function (response) {
         return response.json();
       })
@@ -44,7 +44,7 @@ export function ProductCategory() {
 
   async function fetchMoreData() {
     return fetch(
-      `${baseURL}products?limit=${LIMIT}&page=${page}&category=hortalica`
+      `${baseUrl}/products?limit=${LIMIT}&page=${page}&category=hortalica`
     )
       .then(function (response) {
         return response.json();
