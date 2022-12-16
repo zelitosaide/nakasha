@@ -90,8 +90,9 @@ export function Products() {
       {/*  */}
       <div
         style={{
-          marginTop: 70,
-          padding: "10px 20px",
+          // marginTop: 70,
+          padding: "10px 0",
+          background: "red",
         }}
       >
         <h5 style={{ color: "#333" }}>Categorias</h5>
@@ -138,8 +139,6 @@ export function Products() {
         <div
           style={{
             height: 180,
-            marginLeft: 20,
-            marginRight: 20,
             background: "#f8f8f0",
             flexGrow: 1,
             display: "flex",

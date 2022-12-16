@@ -222,7 +222,14 @@ export function Root() {
           })}
         </ul>
       </nav>
-      <div style={{ background: "#EBEBEB", paddingLeft: 20, paddingRight: 20 }}>
+      <div
+        style={{
+          background: "#EBEBEB",
+          paddingLeft: 20,
+          paddingRight: 20,
+          paddingTop: 100,
+        }}
+      >
         <Outlet />
       </div>
     </>
