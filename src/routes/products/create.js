@@ -1,4 +1,4 @@
-import { Form, useLoaderData, useNavigate } from "react-router-dom";
+import { Form, redirect, useLoaderData, useNavigate } from "react-router-dom";
 
 import { convertTobase64 } from "../../utils/file-to-base64";
 
@@ -7,9 +7,20 @@ export async function action({ request }) {
   const name = formData.get("name");
   const category = formData.get("category");
   const image = formData.get("image");
-  const price = formData.get("price");
   const imageUrl = await convertTobase64(image);
-  console.log({ name, category, imageUrl, price });
+  const price = !isNaN(formData.get("price"))
+    ? Number(formData.get("price"))
+    : 0;
+  const response = await fetch("http://localhost:5000/products", {
+    method: "POST",
+    body: JSON.stringify({ name, category, imageUrl, price }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  });
+
+  const data = await response.json();
+  return redirect(`/products/${category}/${data._id}`);
 }
 
 export function Create() {

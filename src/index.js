@@ -24,6 +24,7 @@ import {
   Create,
   action as createProductAction,
 } from "./routes/products/create";
+import { Product, loader as productLoader } from "./routes/products/product";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,11 @@ const router = createBrowserRouter([
           {
             path: ":productCategoryId",
             element: <ProductCategory />,
+          },
+          {
+            path: ":productCategoryId/:productId",
+            loader: productLoader,
+            element: <Product />,
           },
           {
             path: "create",
