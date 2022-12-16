@@ -18,6 +18,10 @@ export function ProdutoHorizontalLazyLoad({
 
   const { cart, add, remove } = useContext(CartContext);
 
+  const GUTTER_SIZE = 5;
+  const COLUMN_WIDTH = 100;
+  const ROW_HEIGHT = 35;
+
   function Item({ index, style }) {
     let content;
 
@@ -58,7 +62,13 @@ export function ProdutoHorizontalLazyLoad({
     return (
       <div
         className={index % 2 ? "ListItemOdd" : "ListItemEven"}
-        style={style}
+        style={{
+          ...style,
+          // left: style.left + GUTTER_SIZE,
+          // top: style.top + GUTTER_SIZE,
+          // width: style.width - GUTTER_SIZE,
+          // height: style.height - GUTTER_SIZE,
+        }}
       >
         {content}
       </div>

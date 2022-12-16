@@ -169,7 +169,7 @@ export function Products() {
                 }}
               >
                 <h5 style={{ marginLeft: 20 }}>
-                  Categiria: {item.name} ({state[item.name]?.totalResults})
+                  Categiria: {item.name} ({state[item.name].totalResults})
                 </h5>
                 <Link to={item.name}>
                   <span style={{ paddingRight: 20 }}>Ver todos</span>
@@ -177,9 +177,9 @@ export function Products() {
               </div>
               <div style={{ marginLeft: 20, marginRight: 20 }}>
                 <ProdutoHorizontalLazyLoad
-                  hasNextPage={state[item.name]?.hasNextPage}
-                  isNextPageLoading={state[item.name]?.isNextPageLoading}
-                  items={state[item.name]?.items || []}
+                  hasNextPage={state[item.name].hasNextPage}
+                  isNextPageLoading={state[item.name].isNextPageLoading}
+                  items={state[item.name].items}
                   loadNextPage={item.loadNextPage}
                 />
               </div>
