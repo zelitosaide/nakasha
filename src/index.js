@@ -22,7 +22,7 @@ import { loader as recipeLoader, Recipe } from "./routes/recipes/recipe";
 import { RecipeCategory } from "./routes/recipes/recipe-category";
 import {
   Create,
-  action as createProductActioo,
+  action as createProductAction,
 } from "./routes/products/create";
 
 const router = createBrowserRouter([
