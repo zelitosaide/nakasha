@@ -167,12 +167,15 @@ export function Products() {
                   alignItems: "center",
                   flexDirection: "row",
                 }}
+                className="horizontal-lazy-load-header"
               >
                 <p style={{ marginLeft: 20, fontSize: 13 }}>
                   Categiria: {item.name} ({state[item.name].totalResults})
                 </p>
                 <Link to={item.name}>
-                  <span style={{ paddingRight: 20, fontSize: 13 }}>
+                  <span
+                    style={{ paddingRight: 20, fontSize: 13, color: "#33A02B" }}
+                  >
                     Ver todos
                   </span>
                 </Link>

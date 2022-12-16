@@ -16,6 +16,21 @@ a {
   text-decoration: none;
 }
 
+.horizontal-lazy-load-header {
+  position: relative;
+  margin-bottom: 14px;
+}
+
+.horizontal-lazy-load-header::after {
+  content: "";
+  width: 10px;
+  height: 1px;
+  background: #c4c4c4;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+/* 
 .active svg,
 .active span {
   color: white !important;
@@ -32,7 +47,7 @@ a {
 .pending {
   color: red;
 }
-/* 
+
 .active svg,
 .active div {
   color: #7bc676 !important;
