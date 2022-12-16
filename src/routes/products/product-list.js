@@ -24,7 +24,7 @@ export function ProductList() {
                 {product.name}
                 <Link
                   style={{ marginLeft: 10 }}
-                  to={"/products/" + product.category + "/" + product._id}
+                  to={`/products/${product.category}/${product._id}/edit`}
                 >
                   Edit
                 </Link>

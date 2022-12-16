@@ -21,14 +21,15 @@ import { Cart } from "./routes/cart/cart";
 import { loader as recipeLoader, Recipe } from "./routes/recipes/recipe";
 import { RecipeCategory } from "./routes/recipes/recipe-category";
 import {
-  Create,
   action as createProductAction,
+  CreateProduct,
 } from "./routes/products/create";
 import { Product, loader as productLoader } from "./routes/products/product";
 import {
   ProductList,
   loader as productListLoader,
 } from "./routes/products/product-list";
+import { UpdateProduct } from "./routes/products/update";
 
 const router = createBrowserRouter([
   {
@@ -54,10 +55,15 @@ const router = createBrowserRouter([
             element: <Product />,
           },
           {
+            path: ":productCategoryId/:productId/edit",
+            loader: productLoader,
+            element: <UpdateProduct />,
+          },
+          {
             path: "create",
             action: createProductAction,
             loader: productCategoriesLoader,
-            element: <Create />,
+            element: <CreateProduct />,
           },
           {
             path: "list",

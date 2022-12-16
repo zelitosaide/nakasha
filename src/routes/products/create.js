@@ -24,7 +24,7 @@ export async function action({ request }) {
   return redirect(`/products/${category}/${product._id}`);
 }
 
-export function Create() {
+export function CreateProduct() {
   const { items: categories } = useLoaderData();
   const navigate = useNavigate();
 
