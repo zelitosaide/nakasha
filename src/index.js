@@ -20,7 +20,10 @@ import { loader as swapLoader, Swap } from "./routes/boxes/swap";
 import { Cart } from "./routes/cart/cart";
 import { loader as recipeLoader, Recipe } from "./routes/recipes/recipe";
 import { RecipeCategory } from "./routes/recipes/recipe-category";
-import { Create } from "./routes/products/create";
+import {
+  Create,
+  action as createProductActioo,
+} from "./routes/products/create";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +45,7 @@ const router = createBrowserRouter([
           },
           {
             path: "create",
+            action: "",
             loader: productCategoriesLoader,
             element: <Create />,
           },
