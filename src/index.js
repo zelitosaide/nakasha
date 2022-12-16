@@ -25,6 +25,10 @@ import {
   action as createProductAction,
 } from "./routes/products/create";
 import { Product, loader as productLoader } from "./routes/products/product";
+import {
+  ProductList,
+  loader as productListLoader,
+} from "./routes/products/product-list";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +58,11 @@ const router = createBrowserRouter([
             action: createProductAction,
             loader: productCategoriesLoader,
             element: <Create />,
+          },
+          {
+            path: "list",
+            loader: productListLoader,
+            element: <ProductList />,
           },
         ],
       },
