@@ -1,6 +1,7 @@
 import { Form, redirect, useLoaderData, useNavigate } from "react-router-dom";
 
 import { convertTobase64 } from "../../utils/file-to-base64";
+import { baseUrl } from "../../api";
 
 export async function action({ request }) {
   const formData = await request.formData();
@@ -11,7 +12,7 @@ export async function action({ request }) {
   const price = !isNaN(formData.get("price"))
     ? Number(formData.get("price"))
     : 0;
-  const response = await fetch("http://localhost:5000/products", {
+  const response = await fetch(baseUrl + "/products", {
     method: "POST",
     body: JSON.stringify({ name, category, imageUrl, price }),
     headers: {
