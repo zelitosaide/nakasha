@@ -1,8 +1,26 @@
 import { Form, useLoaderData, useNavigate } from "react-router-dom";
 
 import { baseUrl } from "../../api";
+import { convertTobase64 } from "../../utils/file-to-base64";
 
-export async function action() {}
+export async function action({ request, params }) {
+  const formData = await request.formData();
+  const name = formData.get("name");
+  const category = formData.get("category");
+  const image = formData.get("image");
+  const imageUrl = await convertTobase64(image);
+  const price = !isNaN(formData.get("price"))
+    ? Number(formData.get("price"))
+    : 0;
+
+  return await fetch(baseUrl + "/products/" + params.productId, {
+    method: "PATCH",
+    body: JSON.stringify({ name, category, imageUrl, price }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  });
+}
 
 export async function loader({ params }) {
   const productId = params.productId;
@@ -21,7 +39,6 @@ export function UpdateProduct() {
     productCategories: { items },
   } = useLoaderData();
   const navigate = useNavigate();
-  console.log(items);
 
   return (
     <div style={{ padding: "100px 0" }}>
@@ -47,6 +64,7 @@ export function UpdateProduct() {
             id="product-category"
             aria-label="Product Category"
             name="category"
+            defaultValue={product.category}
           >
             {!!items.length &&
               items.map(function (category) {
