@@ -7,12 +7,21 @@ export async function action() {}
 export async function loader({ params }) {
   const productId = params.productId;
   const response = await fetch(baseUrl + "/products/" + productId);
-  return await response.json();
+  const product = await response.json();
+
+  const responseProductCategories = await fetch(baseUrl + "/productCategories");
+  const productCategories = await responseProductCategories.json();
+
+  return { product, productCategories };
 }
 
 export function UpdateProduct() {
-  const product = useLoaderData();
+  const {
+    product,
+    productCategories: { items },
+  } = useLoaderData();
   const navigate = useNavigate();
+  console.log(items);
 
   return (
     <div style={{ padding: "100px 0" }}>
@@ -32,19 +41,19 @@ export function UpdateProduct() {
           />
         </p>
 
-        {/* <p>
+        <p>
           <label htmlFor="product-category">Product Category: </label>
           <select
             id="product-category"
             aria-label="Product Category"
             name="category"
           >
-            {!!categories.length &&
-              categories.map(function (category) {
+            {!!items.length &&
+              items.map(function (category) {
                 return <option key={category._id}>{category.name}</option>;
               })}
           </select>
-        </p> */}
+        </p>
 
         <p>
           <label htmlFor="product-image">Product Image: </label>
