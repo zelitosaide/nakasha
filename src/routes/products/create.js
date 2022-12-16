@@ -20,8 +20,8 @@ export async function action({ request }) {
     },
   });
 
-  const data = await response.json();
-  return redirect(`/products/${category}/${data._id}`);
+  const product = await response.json();
+  return redirect(`/products/${category}/${product._id}`);
 }
 
 export function Create() {
