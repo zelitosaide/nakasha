@@ -222,7 +222,7 @@ export function Root() {
           })}
         </ul>
       </nav>
-      <div>
+      <div style={{ background: "#EBEBEB" }}>
         <Outlet />
       </div>
     </>

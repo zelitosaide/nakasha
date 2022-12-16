@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { FixedSizeList as List } from "react-window";
 import InfiniteLoader from "react-window-infinite-loader";
-import Skeleton from "react-loading-skeleton";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 import { CartContext } from "../../provider";
@@ -29,10 +29,16 @@ export function ProdutoHorizontalLazyLoad({
     if (!isItemLoaded(index)) {
       content = (
         <div>
-          <Skeleton
-            height={style.width - GUTTER_SIZE}
-            width={style.width - GUTTER_SIZE}
-          />
+          <SkeletonTheme
+            baseColor="#ccc"
+            highlightColor="#bbb"
+          >
+            <Skeleton
+              height={style.width - GUTTER_SIZE}
+              width={style.width - GUTTER_SIZE}
+              style={{ borderRadius: 6 }}
+            />
+          </SkeletonTheme>
         </div>
       );
     } else {
@@ -43,7 +49,7 @@ export function ProdutoHorizontalLazyLoad({
       content = (
         <div
           style={{
-            background: "pink",
+            background: "#ccc",
             width: style.width - GUTTER_SIZE,
             height: style.width - GUTTER_SIZE,
             borderRadius: 6,
