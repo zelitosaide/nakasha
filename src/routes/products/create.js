@@ -1,6 +1,16 @@
 import { Form, useLoaderData, useNavigate } from "react-router-dom";
 
-export async function action() {}
+import { convertTobase64 } from "../../utils/file-to-base64";
+
+export async function action({ request }) {
+  const formData = await request.formData();
+  const name = formData.get("name");
+  const category = formData.get("category");
+  const image = formData.get("image");
+  const price = formData.get("price");
+  const imageUrl = await convertTobase64(image);
+  console.log({ name, category, imageUrl, price });
+}
 
 export function Create() {
   const { items: categories } = useLoaderData();
@@ -9,7 +19,10 @@ export function Create() {
   return (
     <div style={{ padding: "100px 0" }}>
       <h4>Create Product</h4>
-      <Form method="post">
+      <Form
+        method="post"
+        encType="multipart/form-data"
+      >
         <p>
           <label htmlFor="product-name">Product Name: </label>
           <input
@@ -45,6 +58,16 @@ export function Create() {
         </p>
 
         <p>
+          <label htmlFor="product-price">Product Price: </label>
+          <input
+            id="product-price"
+            aria-label="Product Price"
+            name="price"
+            type="text"
+          />
+        </p>
+
+        <p>
           <button
             type="submit"
             style={{ marginRight: 10 }}
@@ -64,6 +87,3 @@ export function Create() {
     </div>
   );
 }
-
-// imageUrl: String,
-// price: Number,
