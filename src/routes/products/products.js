@@ -5,12 +5,12 @@ import vegetais from "../../assets/images/vegetais.png";
 import frutas from "../../assets/images/frutas.png";
 import mercearia from "../../assets/images/mercearia.png";
 
+import { baseUrl } from "../../api";
+
 import { ProdutoHorizontalLazyLoad } from "./products-horizontal-lazy-load";
 
-const baseURL = "http://localhost:5000/";
-
 export async function loader() {
-  const response = await fetch(baseURL + "productCategories");
+  const response = await fetch(baseUrl + "/productCategories");
   const productCategories = await response.json();
   return productCategories;
 }
@@ -22,9 +22,9 @@ export function Products() {
       name: item.name,
       loadNextPage: async function () {
         const response = await fetch(
-          `${baseURL}products?limit=${LIMIT}&page=${page[item.name]}&category=${
-            item.name
-          }`
+          `${baseUrl}/products?limit=${LIMIT}&page=${
+            page[item.name]
+          }&category=${item.name}`
         );
 
         setState(function (prevState) {
