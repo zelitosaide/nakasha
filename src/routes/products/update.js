@@ -1,6 +1,14 @@
 import { Form, useLoaderData, useNavigate } from "react-router-dom";
 
+import { baseUrl } from "../../api";
+
 export async function action() {}
+
+export async function loader({ params }) {
+  const productId = params.productId;
+  const response = await fetch(baseUrl + "/products/" + productId);
+  return await response.json();
+}
 
 export function UpdateProduct() {
   const product = useLoaderData();

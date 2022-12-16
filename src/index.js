@@ -32,6 +32,7 @@ import {
 import {
   UpdateProduct,
   action as updateProductAction,
+  loader as updateProductLoader,
 } from "./routes/products/update";
 
 const router = createBrowserRouter([
@@ -60,7 +61,7 @@ const router = createBrowserRouter([
           {
             path: ":productCategoryId/:productId/edit",
             action: updateProductAction,
-            loader: productLoader,
+            loader: updateProductLoader,
             element: <UpdateProduct />,
           },
           {
