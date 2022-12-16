@@ -14,6 +14,22 @@ export function Product() {
   return (
     <div style={{ padding: "100px 0" }}>
       <h4>Product</h4>
+      <p>
+        <strong>Name:</strong> {product.name}
+      </p>
+      <p>
+        <strong>Category:</strong> {product.category}
+      </p>
+      <p>
+        <strong>Image:</strong>{" "}
+        <img
+          src={product.imageUrl}
+          alt={product.name}
+        />
+      </p>
+      <p>
+        <strong>Price:</strong> {product.price}
+      </p>
     </div>
   );
 }
