@@ -13,13 +13,15 @@ export async function action({ request, params }) {
     ? Number(formData.get("price"))
     : 0;
 
-  return await fetch(baseUrl + "/products/" + params.productId, {
+  const response = await fetch(baseUrl + "/products/" + params.productId, {
     method: "PATCH",
     body: JSON.stringify({ name, category, imageUrl, price }),
     headers: {
       "Content-type": "application/json; charset=UTF-8",
     },
   });
+  const result = await response.json();
+  console.log(result);
 }
 
 export async function loader({ params }) {
