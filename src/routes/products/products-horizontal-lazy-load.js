@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { FixedSizeList as List } from "react-window";
 import InfiniteLoader from "react-window-infinite-loader";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 import { CartContext } from "../../provider";
 
@@ -18,22 +20,25 @@ export function ProdutoHorizontalLazyLoad({
 
   const { cart, add, remove } = useContext(CartContext);
 
-  const GUTTER_SIZE = 5;
-  const COLUMN_WIDTH = 100;
-  const ROW_HEIGHT = 35;
+  const GUTTER_SIZE = 12;
+  const WIDTH = 120;
 
   function Item({ index, style }) {
     let content;
 
     if (!isItemLoaded(index)) {
-      content = "Loading...";
+      content = (
+        <div>
+          <Skeleton height={80} />
+        </div>
+      );
     } else {
       const productFoundInCart = cart.items.find(function (item) {
         return item._id === items[index]._id;
       });
 
       content = (
-        <p>
+        <div>
           {items[index].name.indexOf("caixa") > -1
             ? items[index].name
             : items[index].name.split(" ")[0]}
@@ -55,19 +60,17 @@ export function ProdutoHorizontalLazyLoad({
           >
             +
           </button>
-        </p>
+        </div>
       );
     }
 
     return (
       <div
-        className={index % 2 ? "ListItemOdd" : "ListItemEven"}
+        // className={index % 2 ? "ListItemOdd" : "ListItemEven"}
         style={{
           ...style,
-          // left: style.left + GUTTER_SIZE,
-          // top: style.top + GUTTER_SIZE,
-          // width: style.width - GUTTER_SIZE,
-          // height: style.height - GUTTER_SIZE,
+          width: style.width - GUTTER_SIZE,
+          height: 80,
         }}
       >
         {content}
@@ -86,7 +89,8 @@ export function ProdutoHorizontalLazyLoad({
           className="List"
           height={95}
           itemCount={itemCount}
-          itemSize={120}
+          // itemSize={WIDTH + GUTTER_SIZE}
+          itemSize={WIDTH}
           onItemsRendered={onItemsRendered}
           ref={ref}
           width={300}
