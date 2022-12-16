@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 import { baseUrl } from "../../api";
 
@@ -19,7 +19,17 @@ export function ProductList() {
       {!!products.length && (
         <ul>
           {products.map(function (product) {
-            return <li key={product._id}>{product.name}</li>;
+            return (
+              <li key={product._id}>
+                {product.name}
+                <Link
+                  style={{ marginLeft: 10 }}
+                  to={"/products/" + product.category + "/" + product._id}
+                >
+                  Edit
+                </Link>
+              </li>
+            );
           })}
         </ul>
       )}
