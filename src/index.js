@@ -29,7 +29,10 @@ import {
   ProductList,
   loader as productListLoader,
 } from "./routes/products/product-list";
-import { UpdateProduct } from "./routes/products/update";
+import {
+  UpdateProduct,
+  action as updateProductAction,
+} from "./routes/products/update";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +59,7 @@ const router = createBrowserRouter([
           },
           {
             path: ":productCategoryId/:productId/edit",
+            action: updateProductAction,
             loader: productLoader,
             element: <UpdateProduct />,
           },
