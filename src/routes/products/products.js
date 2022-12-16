@@ -153,7 +153,7 @@ export function Products() {
       </div>
 
       {/* Lazy load */}
-      <div style={{ paddingBottom: 106 }}>
+      <div style={{ paddingBottom: 96 }}>
         {productRows.map(function (item, index) {
           return (
             <div
@@ -168,11 +168,13 @@ export function Products() {
                   flexDirection: "row",
                 }}
               >
-                <h5 style={{ marginLeft: 20 }}>
+                <p style={{ marginLeft: 20, fontSize: 13 }}>
                   Categiria: {item.name} ({state[item.name].totalResults})
-                </h5>
+                </p>
                 <Link to={item.name}>
-                  <span style={{ paddingRight: 20 }}>Ver todos</span>
+                  <span style={{ paddingRight: 20, fontSize: 13 }}>
+                    Ver todos
+                  </span>
                 </Link>
               </div>
               <div style={{ marginLeft: 20, marginRight: 20 }}>
