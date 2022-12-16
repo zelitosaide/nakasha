@@ -153,7 +153,7 @@ export function Products() {
       </div>
 
       {/* Lazy load */}
-      <div style={{ paddingBottom: 96 }}>
+      <div style={{ paddingBottom: 76 }}>
         {productRows.map(function (item, index) {
           return (
             <div

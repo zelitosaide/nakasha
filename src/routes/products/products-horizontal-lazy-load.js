@@ -46,6 +46,8 @@ export function ProdutoHorizontalLazyLoad({
             background: "pink",
             width: style.width - GUTTER_SIZE,
             height: style.width - GUTTER_SIZE,
+            borderRadius: 6,
+            overflow: "hidden",
           }}
         >
           <img
