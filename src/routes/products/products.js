@@ -17,73 +17,73 @@ export async function loader() {
 
 export function Products() {
   const LIMIT = 5;
-  // const productRows = useLoaderData().items.map(function (item) {
-  //   return {
-  //     name: item.name,
-  //     loadNextPage: async function () {
-  //       const response = await fetch(
-  //         `${baseURL}products?limit=${LIMIT}&page=${page[item.name]}&category=${
-  //           item.name
-  //         }`
-  //       );
+  const productRows = useLoaderData().items.map(function (item) {
+    return {
+      name: item.name,
+      loadNextPage: async function () {
+        const response = await fetch(
+          `${baseURL}products?limit=${LIMIT}&page=${page[item.name]}&category=${
+            item.name
+          }`
+        );
 
-  //       setState(function (prevState) {
-  //         return {
-  //           ...prevState,
-  //           [item.name]: {
-  //             ...prevState[item.name],
-  //             isNextPageLoading: true,
-  //           },
-  //         };
-  //       });
+        setState(function (prevState) {
+          return {
+            ...prevState,
+            [item.name]: {
+              ...prevState[item.name],
+              isNextPageLoading: true,
+            },
+          };
+        });
 
-  //       const {
-  //         items,
-  //         pageInfo: { totalResults },
-  //       } = await response.json();
+        const {
+          items,
+          pageInfo: { totalResults },
+        } = await response.json();
 
-  //       setPage(function (prevPage) {
-  //         return {
-  //           ...prevPage,
-  //           [item.name]: prevPage[item.name] + 1,
-  //         };
-  //       });
+        setPage(function (prevPage) {
+          return {
+            ...prevPage,
+            [item.name]: prevPage[item.name] + 1,
+          };
+        });
 
-  //       setState(function (prevState) {
-  //         return {
-  //           ...prevState,
-  //           [item.name]: {
-  //             hasNextPage: prevState[item.name].items.length < totalResults,
-  //             isNextPageLoading: false,
-  //             items: [...prevState[item.name].items].concat(items),
-  //             totalResults: totalResults,
-  //           },
-  //         };
-  //       });
-  //     },
-  //   };
-  // });
+        setState(function (prevState) {
+          return {
+            ...prevState,
+            [item.name]: {
+              hasNextPage: prevState[item.name].items.length < totalResults,
+              isNextPageLoading: false,
+              items: [...prevState[item.name].items].concat(items),
+              totalResults: totalResults,
+            },
+          };
+        });
+      },
+    };
+  });
 
-  // const [state, setState] = useState(function () {
-  //   const init = {};
-  //   productRows.forEach(function (item) {
-  //     init[item.name] = {
-  //       hasNextPage: true,
-  //       isNextPageLoading: false,
-  //       items: [],
-  //       totalResults: 0,
-  //     };
-  //   });
-  //   return init;
-  // });
+  const [state, setState] = useState(function () {
+    const init = {};
+    productRows.forEach(function (item) {
+      init[item.name] = {
+        hasNextPage: true,
+        isNextPageLoading: false,
+        items: [],
+        totalResults: 0,
+      };
+    });
+    return init;
+  });
 
-  // const [page, setPage] = useState(function () {
-  //   const init = {};
-  //   productRows.forEach(function (item) {
-  //     init[item.name] = 1;
-  //   });
-  //   return init;
-  // });
+  const [page, setPage] = useState(function () {
+    const init = {};
+    productRows.forEach(function (item) {
+      init[item.name] = 1;
+    });
+    return init;
+  });
 
   return (
     <div>
@@ -153,7 +153,7 @@ export function Products() {
       </div>
 
       {/* Lazy load */}
-      {/* <div style={{ paddingBottom: 106 }}>
+      <div style={{ paddingBottom: 106 }}>
         {productRows.map(function (item, index) {
           return (
             <div
@@ -186,7 +186,7 @@ export function Products() {
             </div>
           );
         })}
-      </div> */}
+      </div>
     </div>
   );
 }

@@ -21,7 +21,7 @@ export function ProdutoHorizontalLazyLoad({
   const { cart, add, remove } = useContext(CartContext);
 
   const GUTTER_SIZE = 12;
-  const WIDTH = 120;
+  const WIDTH = 112;
 
   function Item({ index, style }) {
     let content;
@@ -29,7 +29,10 @@ export function ProdutoHorizontalLazyLoad({
     if (!isItemLoaded(index)) {
       content = (
         <div>
-          <Skeleton height={80} />
+          <Skeleton
+            height={style.width - GUTTER_SIZE}
+            width={style.width - GUTTER_SIZE}
+          />
         </div>
       );
     } else {
@@ -38,7 +41,13 @@ export function ProdutoHorizontalLazyLoad({
       });
 
       content = (
-        <div>
+        <div
+          style={{
+            background: "pink",
+            width: style.width - GUTTER_SIZE,
+            height: style.width - GUTTER_SIZE,
+          }}
+        >
           {items[index].name.indexOf("caixa") > -1
             ? items[index].name
             : items[index].name.split(" ")[0]}
@@ -66,11 +75,10 @@ export function ProdutoHorizontalLazyLoad({
 
     return (
       <div
-        // className={index % 2 ? "ListItemOdd" : "ListItemEven"}
         style={{
           ...style,
           width: style.width - GUTTER_SIZE,
-          height: 80,
+          height: style.width - GUTTER_SIZE,
         }}
       >
         {content}
@@ -87,9 +95,8 @@ export function ProdutoHorizontalLazyLoad({
       {({ onItemsRendered, ref }) => (
         <List
           className="List"
-          height={95}
+          height={WIDTH + GUTTER_SIZE}
           itemCount={itemCount}
-          // itemSize={WIDTH + GUTTER_SIZE}
           itemSize={WIDTH}
           onItemsRendered={onItemsRendered}
           ref={ref}
