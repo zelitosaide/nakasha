@@ -48,7 +48,15 @@ export function ProdutoHorizontalLazyLoad({
             height: style.width - GUTTER_SIZE,
           }}
         >
-          {items[index].name.indexOf("caixa") > -1
+          <img
+            style={{
+              width: style.width - GUTTER_SIZE,
+              height: style.width - GUTTER_SIZE,
+            }}
+            src={items[index].imageUrl}
+            alt={items[index].name}
+          />
+          {/* {items[index].name.indexOf("caixa") > -1
             ? items[index].name
             : items[index].name.split(" ")[0]}
           <br />
@@ -68,7 +76,7 @@ export function ProdutoHorizontalLazyLoad({
             }}
           >
             +
-          </button>
+          </button> */}
         </div>
       );
     }

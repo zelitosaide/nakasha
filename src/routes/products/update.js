@@ -106,7 +106,7 @@ export function UpdateProduct() {
           <button
             type="button"
             onClick={function () {
-              navigate(-2);
+              navigate("/products/list");
             }}
           >
             Cancel
