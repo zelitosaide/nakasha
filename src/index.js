@@ -7,7 +7,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Root } from "./routes/root";
 import {
   Products,
-  loader as productCategoryLoader,
+  loader as productCategoriesLoader,
 } from "./routes/products/products";
 import { Boxes } from "./routes/boxes/boxes";
 import { Recipes } from "./routes/recipes/recipes";
@@ -32,12 +32,16 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            loader: productCategoryLoader,
+            loader: productCategoriesLoader,
             element: <Products />,
           },
           {
             path: ":productCategoryId",
             element: <ProductCategory />,
+          },
+          {
+            path: "create",
+            element: <h2>Create</h2>,
           },
         ],
       },
