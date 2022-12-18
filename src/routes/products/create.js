@@ -20,8 +20,10 @@ export async function action({ request }) {
     },
   });
 
-  const product = await response.json();
-  return redirect(`/products/${category}/${product._id}`);
+  // const product = await response.json();
+  await response.json();
+  // return redirect(`/products/${category}/${product._id}`);
+  return redirect(`/dashboard/products`);
 }
 
 export function CreateProduct() {
@@ -29,7 +31,7 @@ export function CreateProduct() {
   const navigate = useNavigate();
 
   return (
-    <div style={{ padding: "100px 0" }}>
+    <div>
       <h4>Create Product</h4>
       <Form
         method="post"

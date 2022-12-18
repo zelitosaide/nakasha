@@ -7,5 +7,5 @@ export async function action({ params }) {
   await fetch(`${baseUrl}/products/${productId}`, {
     method: "DELETE",
   });
-  return redirect("/products/list");
+  return redirect("/dashboard/products");
 }
