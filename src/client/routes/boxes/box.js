@@ -1,7 +1,7 @@
 import { useEffect, useContext } from "react";
 import { Link, Outlet, useLoaderData, useParams } from "react-router-dom";
 
-import { CartContext } from "../../provider";
+import { CartContext } from "../../../provider";
 
 const baseURL = "http://localhost:5000/";
 
