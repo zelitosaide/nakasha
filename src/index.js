@@ -68,27 +68,6 @@ const router = createBrowserRouter([
             element: <Product />,
           },
           {
-            path: ":productCategoryId/:productId/edit",
-            action: updateProductAction,
-            loader: updateProductLoader,
-            element: <UpdateProduct />,
-          },
-          {
-            path: "create",
-            action: createProductAction,
-            loader: productCategoriesLoader,
-            element: <CreateProduct />,
-          },
-          {
-            path: "list",
-            loader: productListLoader,
-            element: <ProductList />,
-          },
-          {
-            path: "list/:productId/delete",
-            action: deleteProductAction,
-          },
-          {
             path: "categories",
             loader: categoryListLoader,
             element: <CategoryList />,
@@ -160,6 +139,29 @@ const router = createBrowserRouter([
     children: [
       {
         path: "products",
+        children: [
+          {
+            index: true,
+            loader: productListLoader,
+            element: <ProductList />,
+          },
+          {
+            path: "create",
+            action: createProductAction,
+            loader: productCategoriesLoader,
+            element: <CreateProduct />,
+          },
+          {
+            path: ":productId/delete",
+            action: deleteProductAction,
+          },
+          {
+            path: ":productId/edit",
+            action: updateProductAction,
+            loader: updateProductLoader,
+            element: <UpdateProduct />,
+          },
+        ],
       },
       {
         path: "boxes",
