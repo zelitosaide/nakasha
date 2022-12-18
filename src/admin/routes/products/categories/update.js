@@ -30,13 +30,25 @@ export function UpdateProductCategory() {
             defaultValue={category.name}
           />
         </p>
+        <p>
+          <label htmlFor="category-description">Category Description: </label>
+          <textarea
+            id="category-description"
+            aria-label="Category Description"
+            name="description"
+            defaultValue={category.description}
+          />
+        </p>
+        <p>
+          <label htmlFor="category-image">Category Image: </label>
+          <input
+            id="category-image"
+            aria-label="Category Image"
+            name="image"
+            type="file"
+          />
+        </p>
       </Form>
     </div>
   );
 }
-
-// description: "Some content..."
-// ​
-// imageUrl: ""
-// ​
-// name: "hortalica"
