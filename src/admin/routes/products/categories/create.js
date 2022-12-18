@@ -4,6 +4,7 @@ export async function action() {}
 
 export function CreateProductCategory() {
   const navigate = useNavigate();
+
   return (
     <div>
       <h4>Create Product Category</h4>
