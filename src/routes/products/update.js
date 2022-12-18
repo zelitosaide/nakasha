@@ -22,7 +22,7 @@ export async function action({ request, params }) {
   });
   // const result = await response.json();
   await response.json();
-  return redirect("/products/list");
+  return redirect("/dashboard/products");
 }
 
 export async function loader({ params }) {
@@ -107,7 +107,7 @@ export function UpdateProduct() {
           <button
             type="button"
             onClick={function () {
-              navigate("/products/list");
+              navigate("/dashboard/products");
             }}
           >
             Cancel
