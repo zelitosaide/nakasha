@@ -1,8 +1,17 @@
-import { Form } from "react-router-dom";
+import { Form, useLoaderData } from "react-router-dom";
 
-export async function loader() {}
+import { baseUrl } from "../../../api";
+
+export async function loader({ params }) {
+  const categoryId = params.categoryId;
+  const response = await fetch(baseUrl + "/productCategories/" + categoryId);
+  return await response.json();
+}
 
 export function UpdateProductCategory() {
+  const category = useLoaderData();
+  // console.log(category);
+
   return (
     <div>
       <h4>Edit Product Category</h4>
