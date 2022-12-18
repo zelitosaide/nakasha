@@ -153,6 +153,16 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "dashboard",
+    element: <h1>dashboard</h1>,
+    errorElement: <p>Something went wrong with dashboard</p>,
+    children: [
+      {
+        path: "products",
+      },
+    ],
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
