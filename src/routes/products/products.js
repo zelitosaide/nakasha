@@ -90,12 +90,11 @@ export function Products() {
       {/*  */}
       <div
         style={{
-          // marginTop: 70,
-          padding: "10px 0",
-          background: "red",
+          // padding: 20,
+          background: "white",
         }}
       >
-        <h5 style={{ color: "#333" }}>Categorias</h5>
+        <p style={{ color: "#333" }}>Categorias</p>
         <div
           className="cat"
           style={{ display: "flex", gap: 10 }}
