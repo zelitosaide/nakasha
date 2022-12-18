@@ -89,7 +89,11 @@ export function Products() {
     <div style={{}}>
       {/* Categorias de Produtos */}
       <div
-        style={{ background: "white", padding: "10px 20px", borderRadius: 30 }}
+        style={{
+          background: "white",
+          padding: "10px 20px",
+          borderRadius: 26,
+        }}
       >
         <div className="horizontal-lazy-load-header">
           <p
