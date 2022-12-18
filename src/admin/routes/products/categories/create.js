@@ -1,6 +1,23 @@
-import { Form, useNavigate } from "react-router-dom";
+import { Form, redirect, useNavigate } from "react-router-dom";
 
-export async function action() {}
+import { baseUrl } from "../../../../api";
+import { convertTobase64 } from "../../../../utils/file-to-base64";
+
+export async function action({ request }) {
+  const formData = await request.formData();
+  const name = formData.get("name");
+  const description = formData.get("description");
+  const image = formData.get("image");
+  const imageUrl = await convertTobase64(image);
+  await fetch(baseUrl + "/productCategories", {
+    method: "POST",
+    body: JSON.stringify({ name, description, imageUrl }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  });
+  return redirect("/dashboard/products/categories");
+}
 
 export function CreateProductCategory() {
   const navigate = useNavigate();
