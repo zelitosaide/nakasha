@@ -1,10 +1,6 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { useState } from "react";
 
-import vegetais from "../../../assets/images/vegetais.png";
-import frutas from "../../../assets/images/frutas.png";
-import mercearia from "../../../assets/images/mercearia.png";
-
 import { baseUrl } from "../../../api";
 
 import { ProdutoHorizontalLazyLoad } from "./products-horizontal-lazy-load";
@@ -17,7 +13,8 @@ export async function loader() {
 
 export function Products() {
   const LIMIT = 5;
-  const productRows = useLoaderData().items.map(function (item) {
+  const productCategories = useLoaderData();
+  const productRows = productCategories.items.map(function (item) {
     return {
       name: item.name,
       loadNextPage: async function () {
@@ -106,37 +103,23 @@ export function Products() {
             Categorias de Produtos
           </p>
         </div>
-        <div
-          className="cat"
-          style={{ display: "flex", gap: 10 }}
-        >
-          <div style={{ border: "1px solid #d9dddd", padding: 5 }}>
-            <img
-              src={vegetais}
-              alt="vegetais"
-              style={{ width: 90 }}
-            />
-            <div style={{ textAlign: "center" }}>Vegetais</div>
-          </div>
-          <div style={{ border: "1px solid #d9dddd", padding: 5 }}>
-            <img
-              src={frutas}
-              alt="frutas"
-              style={{ width: 80 }}
-            />
-            <div style={{ textAlign: "center" }}>Frutas</div>
-          </div>
-          <div style={{ border: "1px solid #d9dddd", padding: 5 }}>
-            <img
-              src={mercearia}
-              alt="mercearia"
-              style={{ width: 80 }}
-            />
-            <div style={{ textAlign: "center", paddingBottom: 10 }}>
-              Mercearia
-            </div>
-          </div>
-        </div>
+        {!!productCategories.items.length && (
+          <ul>
+            {productCategories.items
+              .slice(0, 3)
+              .map(function (productCategory) {
+                return (
+                  <li key={productCategory._id}>
+                    <img
+                      src={productCategory.imageUrl}
+                      alt={productCategory.name}
+                    />
+                    {productCategory.name}
+                  </li>
+                );
+              })}
+          </ul>
+        )}
       </div>
 
       <div style={{ paddingLeft: 20, paddingRight: 20 }}>
