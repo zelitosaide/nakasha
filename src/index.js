@@ -39,6 +39,7 @@ import {
   CategoryList,
   loader as categoryListLoader,
 } from "./routes/products/categories/category-list";
+import { UpdateProductCategory } from "./routes/products/categories/update";
 
 const router = createBrowserRouter([
   {
@@ -88,6 +89,11 @@ const router = createBrowserRouter([
             path: "categories",
             loader: categoryListLoader,
             element: <CategoryList />,
+          },
+          {
+            path: "categories/:categoryId/edit",
+            loader: categoryListLoader,
+            element: <UpdateProductCategory />,
           },
         ],
       },

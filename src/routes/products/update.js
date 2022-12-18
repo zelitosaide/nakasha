@@ -20,7 +20,8 @@ export async function action({ request, params }) {
       "Content-type": "application/json; charset=UTF-8",
     },
   });
-  const result = await response.json();
+  // const result = await response.json();
+  await response.json();
   return redirect("/products/list");
 }
 
@@ -43,7 +44,7 @@ export function UpdateProduct() {
   const navigate = useNavigate();
 
   return (
-    <div style={{ padding: "100px 0" }}>
+    <div>
       <h4>Edit Product</h4>
       <Form
         method="post"
