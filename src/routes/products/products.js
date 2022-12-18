@@ -87,10 +87,22 @@ export function Products() {
 
   return (
     <div style={{}}>
-      {/*  */}
-      <div style={{ background: "white", paddingLeft: 20, paddingRight: 20 }}>
-        <p style={{ fontSize: 13, fontWeight: 600 }}>Categorias de Produtos</p>
-        <div
+      {/* Categorias de Produtos */}
+      <div
+        style={{ background: "white", padding: "10px 20px", borderRadius: 30 }}
+      >
+        <div className="horizontal-lazy-load-header">
+          <p
+            style={{
+              fontSize: 13,
+              fontWeight: 600,
+              paddingBottom: 12,
+            }}
+          >
+            Categorias de Produtos
+          </p>
+        </div>
+        {/* <div
           className="cat"
           style={{ display: "flex", gap: 10 }}
         >
@@ -120,7 +132,7 @@ export function Products() {
               Mercearia
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <div style={{ paddingLeft: 20, paddingRight: 20 }}>
