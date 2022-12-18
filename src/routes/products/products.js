@@ -86,10 +86,10 @@ export function Products() {
   });
 
   return (
-    <>
+    <div style={{}}>
       {/*  */}
-      <div style={{ background: "white" }}>
-        <p style={{ color: "#333" }}>Categorias</p>
+      <div style={{ background: "white", paddingLeft: 20, paddingRight: 20 }}>
+        <p style={{ fontSize: 13, fontWeight: 600 }}>Categorias de Produtos</p>
         <div
           className="cat"
           style={{ display: "flex", gap: 10 }}
@@ -123,7 +123,7 @@ export function Products() {
         </div>
       </div>
 
-      <div style={{ paddingLeft: 20, paddingRight: 20, paddingTop: 100 }}>
+      <div style={{ paddingLeft: 20, paddingRight: 20 }}>
         {/* banner */}
         <div
           style={{
@@ -185,6 +185,6 @@ export function Products() {
           })}
         </div>
       </div>
-    </>
+    </div>
   );
 }

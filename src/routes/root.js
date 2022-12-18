@@ -228,6 +228,7 @@ export function Root() {
           // paddingLeft: 20,
           // paddingRight: 20,
           // paddingTop: 100,
+          paddingTop: 100,
         }}
       >
         <Outlet />
