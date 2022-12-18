@@ -18,7 +18,25 @@ export function UpdateProductCategory() {
       <Form
         method="post"
         encType="multipart/form-data"
-      ></Form>
+      >
+        <p>
+          <label htmlFor="category-name">Category Name: </label>
+          <input
+            id="category-name"
+            aria-label="Category Name"
+            name="name"
+            type="text"
+            disabled
+            defaultValue={category.name}
+          />
+        </p>
+      </Form>
     </div>
   );
 }
+
+// description: "Some content..."
+// ​
+// imageUrl: ""
+// ​
+// name: "hortalica"
