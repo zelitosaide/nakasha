@@ -86,7 +86,7 @@ export function Products() {
   });
 
   return (
-    <div>
+    <>
       {/*  */}
       <div style={{ background: "white" }}>
         <p style={{ color: "#333" }}>Categorias</p>
@@ -123,66 +123,68 @@ export function Products() {
         </div>
       </div>
 
-      {/* banner */}
-      <div
-        style={{
-          height: 180,
-          marginTop: 10,
-        }}
-      >
+      <div style={{ paddingLeft: 20, paddingRight: 20, paddingTop: 100 }}>
+        {/* banner */}
         <div
           style={{
             height: 180,
-            background: "#f8f8f0",
-            flexGrow: 1,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            border: "1px solid #d9dddd",
+            marginTop: 10,
           }}
         >
-          <h5>Banner</h5>
+          <div
+            style={{
+              height: 180,
+              background: "#f8f8f0",
+              flexGrow: 1,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              border: "1px solid #d9dddd",
+            }}
+          >
+            <h5>Banner</h5>
+          </div>
+        </div>
+
+        {/* Lazy load */}
+        <div style={{ paddingBottom: 76 }}>
+          {productRows.map(function (item, index) {
+            return (
+              <div
+                id="lazy-load"
+                key={index}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    flexDirection: "row",
+                  }}
+                  className="horizontal-lazy-load-header"
+                >
+                  <p style={{ fontSize: 13 }}>
+                    Categiria: {item.name} ({state[item.name].totalResults})
+                  </p>
+                  <Link to={item.name}>
+                    <span style={{ fontSize: 13, color: "#33A02B" }}>
+                      Ver todos
+                    </span>
+                  </Link>
+                </div>
+                <div>
+                  <ProdutoHorizontalLazyLoad
+                    hasNextPage={state[item.name].hasNextPage}
+                    isNextPageLoading={state[item.name].isNextPageLoading}
+                    items={state[item.name].items}
+                    loadNextPage={item.loadNextPage}
+                  />
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
-
-      {/* Lazy load */}
-      <div style={{ paddingBottom: 76 }}>
-        {productRows.map(function (item, index) {
-          return (
-            <div
-              id="lazy-load"
-              key={index}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  flexDirection: "row",
-                }}
-                className="horizontal-lazy-load-header"
-              >
-                <p style={{ fontSize: 13 }}>
-                  Categiria: {item.name} ({state[item.name].totalResults})
-                </p>
-                <Link to={item.name}>
-                  <span style={{ fontSize: 13, color: "#33A02B" }}>
-                    Ver todos
-                  </span>
-                </Link>
-              </div>
-              <div>
-                <ProdutoHorizontalLazyLoad
-                  hasNextPage={state[item.name].hasNextPage}
-                  isNextPageLoading={state[item.name].isNextPageLoading}
-                  items={state[item.name].items}
-                  loadNextPage={item.loadNextPage}
-                />
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </div>
+    </>
   );
 }
