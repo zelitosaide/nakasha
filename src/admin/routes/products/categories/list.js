@@ -10,7 +10,6 @@ export async function loader() {
 
 export function CategoryList() {
   const categories = useLoaderData();
-  console.log(categories);
 
   return (
     <div>

@@ -74,16 +74,6 @@ const router = createBrowserRouter([
             loader: productLoader,
             element: <Product />,
           },
-          {
-            path: "categories",
-            loader: categoryListLoader,
-            element: <CategoryList />,
-          },
-          {
-            path: "categories/:categoryId/edit",
-            loader: updateProductCategoryLoader,
-            element: <UpdateProductCategory />,
-          },
         ],
       },
       {
@@ -167,6 +157,16 @@ const router = createBrowserRouter([
             action: updateProductAction,
             loader: updateProductLoader,
             element: <UpdateProduct />,
+          },
+          {
+            path: "categories",
+            loader: categoryListLoader,
+            element: <CategoryList />,
+          },
+          {
+            path: "categories/:categoryId/edit",
+            loader: updateProductCategoryLoader,
+            element: <UpdateProductCategory />,
           },
         ],
       },

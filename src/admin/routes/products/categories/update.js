@@ -10,7 +10,7 @@ export async function loader({ params }) {
 
 export function UpdateProductCategory() {
   const category = useLoaderData();
-  // console.log(category);
+  console.log(category);
 
   return (
     <div>
