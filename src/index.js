@@ -43,6 +43,7 @@ import {
   UpdateProductCategory,
   loader as updateProductCategoryLoader,
 } from "./routes/products/categories/update";
+import { Dashboard } from "./routes/dashboard/dashboard";
 
 const router = createBrowserRouter([
   {
@@ -134,7 +135,7 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <h1>dashboard</h1>,
+    element: <Dashboard />,
     errorElement: <p>Something went wrong with dashboard</p>,
     children: [
       {
