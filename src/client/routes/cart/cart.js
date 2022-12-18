@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { CartContext } from "../../provider";
+import { CartContext } from "../../../provider";
 
 export function Cart() {
   const {
