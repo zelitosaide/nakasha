@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 
-import { Boxes } from "../../assets/icons/boxes";
-import { Cart } from "../../assets/icons/cart";
-import { Help } from "../../assets/icons/help";
-import { Home } from "../../assets/icons/home";
-import { Recipes } from "../../assets/icons/recipes";
+import { Boxes } from "../assets/icons/boxes";
+import { Cart } from "../assets/icons/cart";
+import { Help } from "../assets/icons/help";
+import { Home } from "../assets/icons/home";
+import { Recipes } from "../assets/icons/recipes";
 
-import { CartContext } from "../../provider";
+import { CartContext } from "../provider";
 
 export function Root() {
   const navItems = [
