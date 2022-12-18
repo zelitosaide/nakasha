@@ -35,7 +35,7 @@ import {
 import {
   ProductList,
   loader as productListLoader,
-} from "./admin/routes/products/product-list";
+} from "./admin/routes/products/list";
 import {
   UpdateProduct,
   action as updateProductAction,
