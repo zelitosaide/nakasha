@@ -45,7 +45,7 @@ import { action as deleteProductAction } from "./admin/routes/products/delete";
 import {
   CategoryList,
   loader as categoryListLoader,
-} from "./admin/routes/products/categories/category-list";
+} from "./admin/routes/products/categories/list";
 import {
   UpdateProductCategory,
   loader as updateProductCategoryLoader,
