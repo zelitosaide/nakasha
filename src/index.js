@@ -161,6 +161,18 @@ const router = createBrowserRouter([
       {
         path: "products",
       },
+      {
+        path: "boxes",
+      },
+      {
+        path: "cart",
+      },
+      {
+        path: "recipes",
+      },
+      {
+        path: "help",
+      },
     ],
   },
 ]);
