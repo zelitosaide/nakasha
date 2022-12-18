@@ -55,6 +55,7 @@ import {
   action as createProductCategoryAction,
   CreateProductCategory,
 } from "./admin/routes/products/categories/create";
+import { action as deleteProductCategoryAction } from "./admin/routes/products/categories/delete";
 
 const router = createBrowserRouter([
   {
@@ -178,6 +179,10 @@ const router = createBrowserRouter([
             action: updateProductCategoryAction,
             loader: updateProductCategoryLoader,
             element: <UpdateProductCategory />,
+          },
+          {
+            path: "categories/:categoryId/delete",
+            action: deleteProductCategoryAction,
           },
         ],
       },
