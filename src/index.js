@@ -4,46 +4,52 @@ import "./index.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { Root } from "./routes/root";
+// Client
+import { Root } from "./client/root";
 import {
   Products,
   loader as productCategoriesLoader,
-} from "./routes/products/products";
-import { Boxes } from "./routes/boxes/boxes";
-import { Recipes } from "./routes/recipes/recipes";
-import { Help } from "./routes/help/help";
+} from "./client/routes/products/products";
+import { Boxes } from "./client/routes/boxes/boxes";
+import { Recipes } from "./client/routes/recipes/recipes";
+import { Help } from "./client/routes/help/help";
 import { Provider } from "./provider";
-import { ProductCategory } from "./routes/products/product-category";
-import { BoxCategory } from "./routes/boxes/box-category";
-import { loader as boxLoader, Box } from "./routes/boxes/box";
-import { loader as swapLoader, Swap } from "./routes/boxes/swap";
-import { Cart } from "./routes/cart/cart";
-import { loader as recipeLoader, Recipe } from "./routes/recipes/recipe";
-import { RecipeCategory } from "./routes/recipes/recipe-category";
+import { ProductCategory } from "./client/routes/products/product-category";
+import { BoxCategory } from "./client/routes/boxes/box-category";
+import { loader as boxLoader, Box } from "./client/routes/boxes/box";
+import { loader as swapLoader, Swap } from "./client/routes/boxes/swap";
+import { Cart } from "./client/routes/cart/cart";
+import { loader as recipeLoader, Recipe } from "./client/routes/recipes/recipe";
+import { RecipeCategory } from "./client/routes/recipes/recipe-category";
+import {
+  Product,
+  loader as productLoader,
+} from "./client/routes/products/product";
+
+// Admin
+import { Root as RootAdmin } from "./admin/root";
 import {
   action as createProductAction,
   CreateProduct,
-} from "./routes/products/create";
-import { Product, loader as productLoader } from "./routes/products/product";
+} from "./admin/routes/products/create";
 import {
   ProductList,
   loader as productListLoader,
-} from "./routes/products/product-list";
+} from "./admin/routes/products/product-list";
 import {
   UpdateProduct,
   action as updateProductAction,
   loader as updateProductLoader,
-} from "./routes/products/update";
-import { action as deleteProductAction } from "./routes/products/delete";
+} from "./admin/routes/products/update";
+import { action as deleteProductAction } from "./admin/routes/products/delete";
 import {
   CategoryList,
   loader as categoryListLoader,
-} from "./routes/products/categories/category-list";
+} from "./admin/routes/products/categories/category-list";
 import {
   UpdateProductCategory,
   loader as updateProductCategoryLoader,
-} from "./routes/products/categories/update";
-import { Dashboard } from "./routes/dashboard/dashboard";
+} from "./admin/routes/products/categories/update";
 
 const router = createBrowserRouter([
   {
@@ -135,7 +141,7 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard />,
+    element: <RootAdmin />,
     errorElement: <p>Something went wrong with dashboard</p>,
     children: [
       {
