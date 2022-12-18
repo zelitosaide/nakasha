@@ -88,12 +88,7 @@ export function Products() {
   return (
     <div>
       {/*  */}
-      <div
-        style={{
-          // padding: 20,
-          background: "white",
-        }}
-      >
+      <div style={{ background: "white" }}>
         <p style={{ color: "#333" }}>Categorias</p>
         <div
           className="cat"
