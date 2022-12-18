@@ -1,4 +1,4 @@
-import { Form, useLoaderData } from "react-router-dom";
+import { Form, useLoaderData, useNavigate } from "react-router-dom";
 
 import { baseUrl } from "../../../../api";
 
@@ -10,7 +10,7 @@ export async function loader({ params }) {
 
 export function UpdateProductCategory() {
   const category = useLoaderData();
-  console.log(category);
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -47,6 +47,22 @@ export function UpdateProductCategory() {
             name="image"
             type="file"
           />
+        </p>
+        <p>
+          <button
+            type="submit"
+            style={{ marginRight: 10 }}
+          >
+            Save
+          </button>
+          <button
+            type="button"
+            onClick={function () {
+              navigate("/dashboard/products/categories");
+            }}
+          >
+            Cancel
+          </button>
         </p>
       </Form>
     </div>
