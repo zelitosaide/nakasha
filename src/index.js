@@ -35,6 +35,10 @@ import {
   loader as updateProductLoader,
 } from "./routes/products/update";
 import { action as deleteProductAction } from "./routes/products/delete";
+import {
+  CategoryList,
+  loader as categoryListLoader,
+} from "./routes/products/categories/category-list";
 
 const router = createBrowserRouter([
   {
@@ -79,6 +83,11 @@ const router = createBrowserRouter([
           {
             path: "list/:productId/delete",
             action: deleteProductAction,
+          },
+          {
+            path: "categories",
+            loader: categoryListLoader,
+            element: <CategoryList />,
           },
         ],
       },
