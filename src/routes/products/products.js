@@ -106,7 +106,7 @@ export function Products() {
             Categorias de Produtos
           </p>
         </div>
-        {/* <div
+        <div
           className="cat"
           style={{ display: "flex", gap: 10 }}
         >
@@ -136,7 +136,7 @@ export function Products() {
               Mercearia
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
 
       <div style={{ paddingLeft: 20, paddingRight: 20 }}>
