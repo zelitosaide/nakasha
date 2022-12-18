@@ -14,7 +14,10 @@ import { Boxes } from "./client/routes/boxes/boxes";
 import { Recipes } from "./client/routes/recipes/recipes";
 import { Help } from "./client/routes/help/help";
 import { Provider } from "./provider";
-import { ProductCategory } from "./client/routes/products/product-category";
+import {
+  ProductCategory,
+  loader as productCategoryLoader,
+} from "./client/routes/products/product-category";
 import { BoxCategory } from "./client/routes/boxes/box-category";
 import { loader as boxLoader, Box } from "./client/routes/boxes/box";
 import { loader as swapLoader, Swap } from "./client/routes/boxes/swap";
@@ -73,6 +76,7 @@ const router = createBrowserRouter([
           },
           {
             path: ":productCategoryId",
+            loader: productCategoryLoader,
             element: <ProductCategory />,
           },
           {

@@ -118,36 +118,39 @@ export function Products() {
               .map(function (productCategory) {
                 return (
                   <li key={productCategory._id}>
-                    <div
-                      style={{
-                        background: "#33A02B",
-                        width: 100,
-                        height: 96,
-                        borderRadius: 6,
-                        overflow: "hidden",
-                        position: "relative",
-                      }}
-                    >
-                      <img
-                        src={productCategory.imageUrl}
-                        alt={productCategory.name}
+                    <Link to={productCategory.name}>
+                      <div
                         style={{
-                          width: 86,
-                          position: "absolute",
-                          top: "50%",
-                          left: "50%",
-                          transform: "translate(-50%, -50%)",
+                          background: "#33A02B",
+                          width: 100,
+                          height: 96,
+                          borderRadius: 6,
+                          overflow: "hidden",
+                          position: "relative",
                         }}
-                      />
-                    </div>
-                    <p
-                      style={{
-                        fontSize: 13,
-                        textAlign: "center",
-                      }}
-                    >
-                      {productCategory.name}
-                    </p>
+                      >
+                        <img
+                          src={productCategory.imageUrl}
+                          alt={productCategory.name}
+                          style={{
+                            width: 86,
+                            position: "absolute",
+                            top: "50%",
+                            left: "50%",
+                            transform: "translate(-50%, -50%)",
+                          }}
+                        />
+                      </div>
+                      <p
+                        style={{
+                          fontSize: 13,
+                          textAlign: "center",
+                          color: "black",
+                        }}
+                      >
+                        {productCategory.name}
+                      </p>
+                    </Link>
                   </li>
                 );
               })}
