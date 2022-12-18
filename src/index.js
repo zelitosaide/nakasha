@@ -48,6 +48,7 @@ import {
 } from "./admin/routes/products/categories/list";
 import {
   UpdateProductCategory,
+  action as updateProductCategoryAction,
   loader as updateProductCategoryLoader,
 } from "./admin/routes/products/categories/update";
 
@@ -165,6 +166,7 @@ const router = createBrowserRouter([
           },
           {
             path: "categories/:categoryId/edit",
+            action: updateProductCategoryAction,
             loader: updateProductCategoryLoader,
             element: <UpdateProductCategory />,
           },

@@ -13,7 +13,8 @@ export async function action({ request, params }) {
     ? Number(formData.get("price"))
     : 0;
 
-  const response = await fetch(baseUrl + "/products/" + params.productId, {
+  // const response = await fetch(baseUrl + "/products/" + params.productId, {
+  await fetch(baseUrl + "/products/" + params.productId, {
     method: "PATCH",
     body: JSON.stringify({ name, category, imageUrl, price }),
     headers: {
@@ -21,7 +22,7 @@ export async function action({ request, params }) {
     },
   });
   // const result = await response.json();
-  await response.json();
+  // await response.json();
   return redirect("/dashboard/products");
 }
 

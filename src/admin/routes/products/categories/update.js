@@ -1,6 +1,23 @@
-import { Form, useLoaderData, useNavigate } from "react-router-dom";
+import { Form, redirect, useLoaderData, useNavigate } from "react-router-dom";
 
 import { baseUrl } from "../../../../api";
+import { convertTobase64 } from "../../../../utils/file-to-base64";
+
+export async function action({ request, params }) {
+  const formData = await request.formData();
+  const name = formData.get("name");
+  const description = formData.get("description");
+  const image = formData.get("image");
+  const imageUrl = await convertTobase64(image);
+  await fetch(baseUrl + "/productCategories/" + params.categoryId, {
+    method: "PATCH",
+    body: JSON.stringify({ name, description, imageUrl }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  });
+  return redirect("/dashboard/products/categories");
+}
 
 export async function loader({ params }) {
   const categoryId = params.categoryId;
@@ -26,7 +43,7 @@ export function UpdateProductCategory() {
             aria-label="Category Name"
             name="name"
             type="text"
-            disabled
+            readOnly
             defaultValue={category.name}
           />
         </p>
