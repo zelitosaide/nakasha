@@ -1,6 +1,6 @@
 import { Form, Link, useLoaderData } from "react-router-dom";
 
-import { baseUrl } from "../../../api";
+import { baseUrl } from "../../../../api";
 
 export async function loader() {
   const response = await fetch(baseUrl + "/productCategories");

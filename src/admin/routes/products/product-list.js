@@ -1,6 +1,6 @@
 import { Link, useLoaderData, Form } from "react-router-dom";
 
-import { baseUrl } from "../../api";
+import { baseUrl } from "../../../api";
 
 export async function loader() {
   const response = await fetch(baseUrl + "/products?limit=100");

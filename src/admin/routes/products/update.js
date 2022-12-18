@@ -1,9 +1,9 @@
 import { Form, redirect, useLoaderData, useNavigate } from "react-router-dom";
 
-import { convertTobase64 } from "../../utils/file-to-base64";
-import { baseUrl } from "../../api";
+import { baseUrl } from "../../../api";
+import { convertTobase64 } from "../../../utils/file-to-base64";
 
-export async function action({ request }) {
+export async function action({ request, params }) {
   const formData = await request.formData();
   const name = formData.get("name");
   const category = formData.get("category");
@@ -12,27 +12,40 @@ export async function action({ request }) {
   const price = !isNaN(formData.get("price"))
     ? Number(formData.get("price"))
     : 0;
-  const response = await fetch(baseUrl + "/products", {
-    method: "POST",
+
+  const response = await fetch(baseUrl + "/products/" + params.productId, {
+    method: "PATCH",
     body: JSON.stringify({ name, category, imageUrl, price }),
     headers: {
       "Content-type": "application/json; charset=UTF-8",
     },
   });
-
-  // const product = await response.json();
+  // const result = await response.json();
   await response.json();
-  // return redirect(`/products/${category}/${product._id}`);
-  return redirect(`/dashboard/products`);
+  return redirect("/dashboard/products");
 }
 
-export function CreateProduct() {
-  const { items: categories } = useLoaderData();
+export async function loader({ params }) {
+  const productId = params.productId;
+  const response = await fetch(baseUrl + "/products/" + productId);
+  const product = await response.json();
+
+  const responseProductCategories = await fetch(baseUrl + "/productCategories");
+  const productCategories = await responseProductCategories.json();
+
+  return { product, productCategories };
+}
+
+export function UpdateProduct() {
+  const {
+    product,
+    productCategories: { items },
+  } = useLoaderData();
   const navigate = useNavigate();
 
   return (
     <div>
-      <h4>Create Product</h4>
+      <h4>Edit Product</h4>
       <Form
         method="post"
         encType="multipart/form-data"
@@ -44,6 +57,7 @@ export function CreateProduct() {
             aria-label="Product Name"
             name="name"
             type="text"
+            defaultValue={product.name}
           />
         </p>
 
@@ -53,9 +67,10 @@ export function CreateProduct() {
             id="product-category"
             aria-label="Product Category"
             name="category"
+            defaultValue={product.category}
           >
-            {!!categories.length &&
-              categories.map(function (category) {
+            {!!items.length &&
+              items.map(function (category) {
                 return <option key={category._id}>{category.name}</option>;
               })}
           </select>
@@ -78,6 +93,7 @@ export function CreateProduct() {
             aria-label="Product Price"
             name="price"
             type="text"
+            defaultValue={product.price}
           />
         </p>
 
@@ -86,12 +102,12 @@ export function CreateProduct() {
             type="submit"
             style={{ marginRight: 10 }}
           >
-            Create
+            Save
           </button>
           <button
             type="button"
             onClick={function () {
-              navigate("/products");
+              navigate("/dashboard/products");
             }}
           >
             Cancel

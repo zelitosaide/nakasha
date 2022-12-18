@@ -5,7 +5,7 @@ import vegetais from "../../assets/images/vegetais.png";
 import frutas from "../../assets/images/frutas.png";
 import mercearia from "../../assets/images/mercearia.png";
 
-import { baseUrl } from "../../api";
+import { baseUrl } from "../../../api";
 
 import { ProdutoHorizontalLazyLoad } from "./products-horizontal-lazy-load";
 

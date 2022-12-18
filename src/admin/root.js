@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
 
-export function Dashboard() {
+export function Root() {
   return (
     <div>
-      <h4>Dashboard</h4>
+      <h4>Root Admin</h4>
       <Outlet />
     </div>
   );

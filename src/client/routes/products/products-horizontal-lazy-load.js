@@ -4,7 +4,7 @@ import InfiniteLoader from "react-window-infinite-loader";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
-import { CartContext } from "../../provider";
+import { CartContext } from "../../../provider";
 
 export function ProdutoHorizontalLazyLoad({
   hasNextPage,

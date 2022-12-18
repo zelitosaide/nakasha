@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 
-import { baseUrl } from "../../api";
+import { baseUrl } from "../../../api";
 
 export async function loader({ params }) {
   const productId = params.productId;

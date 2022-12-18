@@ -1,6 +1,6 @@
 import { Form, useLoaderData } from "react-router-dom";
 
-import { baseUrl } from "../../../api";
+import { baseUrl } from "../../../../api";
 
 export async function loader({ params }) {
   const categoryId = params.categoryId;
