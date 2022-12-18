@@ -104,17 +104,42 @@ export function Products() {
           </p>
         </div>
         {!!productCategories.items.length && (
-          <ul>
+          <ul
+            style={{
+              listStyle: "none",
+              margin: 0,
+              padding: 0,
+              display: "flex",
+              gap: 9,
+            }}
+          >
             {productCategories.items
               .slice(0, 3)
               .map(function (productCategory) {
                 return (
-                  <li key={productCategory._id}>
+                  <li
+                    key={productCategory._id}
+                    style={{
+                      background: "#33A02B",
+                      width: 100,
+                      height: 96,
+                      borderRadius: 6,
+                      overflow: "hidden",
+                      position: "relative",
+                    }}
+                  >
                     <img
                       src={productCategory.imageUrl}
                       alt={productCategory.name}
+                      style={{
+                        width: 86,
+                        position: "absolute",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
+                      }}
                     />
-                    {productCategory.name}
+                    {/* <p>{productCategory.name}</p> */}
                   </li>
                 );
               })}
