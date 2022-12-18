@@ -225,9 +225,6 @@ export function Root() {
       <div
         style={{
           background: "#EBEBEB",
-          // paddingLeft: 20,
-          // paddingRight: 20,
-          // paddingTop: 100,
           paddingBottom: 76,
           paddingTop: 100,
         }}
