@@ -51,6 +51,10 @@ import {
   action as updateProductCategoryAction,
   loader as updateProductCategoryLoader,
 } from "./admin/routes/products/categories/update";
+import {
+  action as createProductCategoryAction,
+  CreateProductCategory,
+} from "./admin/routes/products/categories/create";
 
 const router = createBrowserRouter([
   {
@@ -163,6 +167,11 @@ const router = createBrowserRouter([
             path: "categories",
             loader: categoryListLoader,
             element: <CategoryList />,
+          },
+          {
+            path: "categories/create",
+            action: createProductCategoryAction,
+            element: <CreateProductCategory />,
           },
           {
             path: "categories/:categoryId/edit",
