@@ -12,7 +12,7 @@ export function ProductList() {
   const products = useLoaderData();
 
   return (
-    <div style={{ padding: "100px 0" }}>
+    <div>
       <h4>Product List</h4>
       {!!products.length && (
         <ul>
