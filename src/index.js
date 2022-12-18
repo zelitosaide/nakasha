@@ -66,10 +66,6 @@ const router = createBrowserRouter([
             element: <UpdateProduct />,
           },
           {
-            path: ":productCategoryId/:productId/delete",
-            action: deleteProductAction,
-          },
-          {
             path: "create",
             action: createProductAction,
             loader: productCategoriesLoader,
@@ -79,6 +75,10 @@ const router = createBrowserRouter([
             path: "list",
             loader: productListLoader,
             element: <ProductList />,
+          },
+          {
+            path: "list/:productId/delete",
+            action: deleteProductAction,
           },
         ],
       },

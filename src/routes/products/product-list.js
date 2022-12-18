@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, Form } from "react-router-dom";
 
 import { baseUrl } from "../../api";
 
@@ -26,7 +26,12 @@ export function ProductList() {
                 >
                   Edit
                 </Link>
-                <button>Delete</button>
+                <Form
+                  method="post"
+                  action={`${product._id}/delete`}
+                >
+                  <button type="submit">Delete</button>
+                </Form>
               </li>
             );
           })}
