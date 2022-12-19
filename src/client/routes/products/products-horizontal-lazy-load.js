@@ -54,6 +54,7 @@ export function ProdutoHorizontalLazyLoad({
             width: style.width - GUTTER_SIZE,
             height: style.width - GUTTER_SIZE,
             borderRadius: 6,
+            position: "relative",
             overflow: "hidden",
           }}
         >
@@ -65,11 +66,47 @@ export function ProdutoHorizontalLazyLoad({
             src={items[index].imageUrl}
             alt={items[index].name}
           />
-          {/* {items[index].name.indexOf("caixa") > -1
-            ? items[index].name
-            : items[index].name.split(" ")[0]}
-          <br />
-          {productFoundInCart ? (
+          <div
+            style={{
+              position: "absolute",
+              zIndex: 10,
+              right: 0,
+              bottom: 0,
+              width: 24,
+            }}
+          >
+            {productFoundInCart && (
+              <>
+                <button
+                  style={{ width: 24 }}
+                  onClick={function () {
+                    remove(items[index]);
+                  }}
+                >
+                  -
+                </button>
+                <span
+                  style={{
+                    background: "#33a02b",
+                    width: 24,
+                    display: "inline-block",
+                    textAlign: "center",
+                  }}
+                >
+                  {productFoundInCart.quantity}
+                </span>
+              </>
+            )}
+            <button
+              style={{ width: 24 }}
+              onClick={function () {
+                add(items[index]);
+              }}
+            >
+              +
+            </button>
+          </div>
+          {/* {productFoundInCart ? (
             <button
               onClick={function () {
                 remove(items[index]);
