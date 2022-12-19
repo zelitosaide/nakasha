@@ -100,30 +100,14 @@ export function ProdutoHorizontalLazyLoad({
             )}
             <button
               style={{ width: 24 }}
-              onClick={function () {
+              onClick={function (event) {
+                event.stopPropagation();
                 add(items[index]);
               }}
             >
               +
             </button>
           </div>
-          {/* {productFoundInCart ? (
-            <button
-              onClick={function () {
-                remove(items[index]);
-              }}
-            >
-              -
-            </button>
-          ) : null}
-          <span>{productFoundInCart ? productFoundInCart.quantity : ""}</span>
-          <button
-            onClick={function () {
-              add(items[index]);
-            }}
-          >
-            +
-          </button> */}
         </Link>
       );
     }
