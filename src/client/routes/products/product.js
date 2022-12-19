@@ -10,12 +10,12 @@ export async function loader({ params }) {
 
 export function Product() {
   const product = useLoaderData();
+  console.log(product);
 
   return (
-    <div style={{ padding: "100px 0" }}>
-      <h4>Product</h4>
+    <div>
       <p>
-        <strong>Name:</strong> {product.name}
+        <strong>Nome do Produto:</strong> {product.name}
       </p>
       <p>
         <strong>Category:</strong> {product.category}
@@ -30,6 +30,12 @@ export function Product() {
       <p>
         <strong>Price:</strong> {product.price}
       </p>
+      <p>
+        <b>Adicionar ao carinho</b>
+      </p>
+      <button>-</button>
+      <span>10</span>
+      <button>+</button>
     </div>
   );
 }
