@@ -48,8 +48,7 @@ export function ProdutoHorizontalLazyLoad({
       });
 
       content = (
-        <Link
-          to={`${items[index].category}/${items[index]._id}`}
+        <div
           style={{
             background: "#ccc",
             width: style.width - GUTTER_SIZE,
@@ -59,14 +58,16 @@ export function ProdutoHorizontalLazyLoad({
             overflow: "hidden",
           }}
         >
-          <img
-            style={{
-              width: style.width - GUTTER_SIZE,
-              height: style.width - GUTTER_SIZE,
-            }}
-            src={items[index].imageUrl}
-            alt={items[index].name}
-          />
+          <Link to={`${items[index].category}/${items[index]._id}`}>
+            <img
+              style={{
+                width: style.width - GUTTER_SIZE,
+                height: style.width - GUTTER_SIZE,
+              }}
+              src={items[index].imageUrl}
+              alt={items[index].name}
+            />
+          </Link>
           <div
             style={{
               position: "absolute",
@@ -108,7 +109,7 @@ export function ProdutoHorizontalLazyLoad({
               +
             </button>
           </div>
-        </Link>
+        </div>
       );
     }
 
