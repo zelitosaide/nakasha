@@ -48,7 +48,8 @@ export function ProdutoHorizontalLazyLoad({
       });
 
       content = (
-        <div
+        <Link
+          to={`${items[index].category}/${items[index]._id}`}
           style={{
             background: "#ccc",
             width: style.width - GUTTER_SIZE,
@@ -123,7 +124,7 @@ export function ProdutoHorizontalLazyLoad({
           >
             +
           </button> */}
-        </div>
+        </Link>
       );
     }
 
