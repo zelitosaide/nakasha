@@ -9,7 +9,6 @@ export async function action({ request }) {
   const description = formData.get("description");
   const image = formData.get("image");
   const imageUrl = await convertTobase64(image);
-  console.log({ name, description, imageUrl });
   await fetch(baseUrl + "/boxCategories", {
     method: "POST",
     body: JSON.stringify({ name, description, imageUrl }),
