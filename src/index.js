@@ -70,6 +70,10 @@ import {
   CreateBoxCategory,
   action as createBoxCategoryAction,
 } from "./admin/routes/boxes/categories/create";
+import {
+  BoxCategoryList,
+  loader as boxCategoryListLoader,
+} from "./admin/routes/boxes/categories/list";
 
 const router = createBrowserRouter([
   {
@@ -227,8 +231,8 @@ const router = createBrowserRouter([
           },
           {
             path: "categories", //
-            // loader: productCategoryListLoader,
-            // element: <CategoryList />,
+            loader: boxCategoryListLoader,
+            element: <BoxCategoryList />,
           },
           {
             path: "categories/create",
