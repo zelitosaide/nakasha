@@ -46,7 +46,29 @@ export function UpdateBox() {
             defaultValue={box.name}
           />
         </p>
+        <p>
+          <label htmlFor="box-category">Box Category: </label>
+          <select
+            id="box-category"
+            aria-label="Box Category"
+            name="category"
+            defaultValue={box.category}
+          >
+            {!!items.length &&
+              items.map(function (category) {
+                return <option key={category._id}>{category.name}</option>;
+              })}
+          </select>
+        </p>
       </Form>
     </div>
   );
 }
+
+// imageUrl: String,
+// price: Number,
+// boxItemsId: String,
+// description: {
+//   type: String,
+//   default: "Some content...",
+// },
