@@ -14,7 +14,7 @@ export async function action({ request }) {
   const price = !isNaN(formData.get("price"))
     ? Number(formData.get("price"))
     : 0;
-  console.log({ name, description, category, imageUrl, price });
+  // console.log({ name, description, category, imageUrl, price });
   // const response = await fetch(baseUrl + "/products", {
   //   method: "POST",
   //   body: JSON.stringify({ name, category, imageUrl, price }),
@@ -35,7 +35,7 @@ export async function loader() {
 export function CreateBox() {
   const {
     boxCategories: { items: categories },
-    products,
+    products: { items: products },
   } = useLoaderData();
   const navigate = useNavigate();
 
@@ -94,6 +94,22 @@ export function CreateBox() {
               })}
           </select>
         </p>
+
+        <h4>Box Products: </h4>
+        {!!products.length &&
+          products.map(function (product) {
+            return (
+              <p key={product._id}>
+                <label htmlFor={product._id}>{product.name} </label>
+                <input
+                  id={product._id}
+                  aria-label={product.name}
+                  name="products"
+                  type="checkbox"
+                />
+              </p>
+            );
+          })}
 
         <p>
           <button

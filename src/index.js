@@ -221,7 +221,7 @@ const router = createBrowserRouter([
           },
           {
             path: "create",
-            action: createProductAction,
+            action: createBoxAction,
             loader: boxCategoriesAndProductListLoader,
             element: <CreateBox />,
           },
