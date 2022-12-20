@@ -12,7 +12,8 @@ export async function action({ request }) {
   const price = !isNaN(formData.get("price"))
     ? Number(formData.get("price"))
     : 0;
-  const response = await fetch(baseUrl + "/products", {
+  // const response = await fetch(baseUrl + "/products", {
+  await fetch(baseUrl + "/products", {
     method: "POST",
     body: JSON.stringify({ name, category, imageUrl, price }),
     headers: {
@@ -21,7 +22,7 @@ export async function action({ request }) {
   });
 
   // const product = await response.json();
-  await response.json();
+  // await response.json();
   // return redirect(`/products/${category}/${product._id}`);
   return redirect(`/dashboard/products`);
 }

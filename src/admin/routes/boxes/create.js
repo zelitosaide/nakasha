@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { Form, useLoaderData, useNavigate } from "react-router-dom";
+import { Form, redirect, useLoaderData, useNavigate } from "react-router-dom";
 
 import { baseUrl } from "../../../api";
 import { convertTobase64 } from "../../../utils/file-to-base64";
 
 export async function action({ request }) {
-  // boxItemsId: ""
   const formData = await request.formData();
   const name = formData.get("name");
   const description = formData.get("description");
@@ -17,14 +16,30 @@ export async function action({ request }) {
     : 0;
   const products = JSON.parse(formData.get("products"));
 
-  console.log({ name, description, category, imageUrl, price, products });
-  // const response = await fetch(baseUrl + "/products", {
-  //   method: "POST",
-  //   body: JSON.stringify({ name, category, imageUrl, price }),
-  //   headers: {
-  //     "Content-type": "application/json; charset=UTF-8",
-  //   },
-  // });
+  const boxItemsResponse = await fetch(baseUrl + "/boxItems", {
+    method: "POST",
+    body: JSON.stringify({ products }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  });
+  const { _id: boxItemsId } = await boxItemsResponse.json();
+
+  await fetch(baseUrl + "/boxes", {
+    method: "POST",
+    body: JSON.stringify({
+      name,
+      description,
+      category,
+      imageUrl,
+      price,
+      boxItemsId,
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  });
+  return redirect(`/dashboard/boxes`);
 }
 
 export async function loader() {
