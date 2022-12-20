@@ -79,14 +79,18 @@ export function UpdateBox() {
             defaultValue={box.price}
           />
         </p>
+        <p>
+          <label htmlFor="box-description">Box Description: </label>
+          <textarea
+            id="box-description"
+            aria-label="Box Description"
+            name="description"
+            defaultValue={box.description}
+          />
+        </p>
       </Form>
     </div>
   );
 }
 
-// price: Number,
 // boxItemsId: String,
-// description: {
-//   type: String,
-//   default: "Some content...",
-// },
