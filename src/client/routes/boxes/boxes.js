@@ -6,6 +6,7 @@ import frutas from "../../../assets/images/frutas.png";
 import mercearia from "../../../assets/images/mercearia.png";
 
 import { BoxesHorizontalLazyLoad } from "./boxes-horizontal-lazy-load";
+import { baseUrl } from "../../../api";
 
 export function Boxes() {
   const [state, setState] = useState({
@@ -16,11 +17,10 @@ export function Boxes() {
   const [page, setPage] = useState(1);
 
   const LIMIT = 5;
-  const baseUrl = "http://localhost:5000/";
 
   async function loadNextPage() {
     return fetch(
-      `${baseUrl}boxes?limit=${LIMIT}&page=${page}&category=hortalica`
+      `${baseUrl}/boxes?limit=${LIMIT}&page=${page}&category=breakfast`
     )
       .then(function (response) {
         setState(function (prevState) {
@@ -50,12 +50,7 @@ export function Boxes() {
   return (
     <div>
       {/*  */}
-      <div
-        style={{
-          marginTop: 70,
-          padding: "10px 20px",
-        }}
-      >
+      <div>
         <h5 style={{ color: "#333" }}>Categorias</h5>
         <div
           className="cat"
