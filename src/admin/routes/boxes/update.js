@@ -12,10 +12,16 @@ export async function loader({ params }) {
   const responseBoxCategories = await fetch(baseUrl + "/boxCategories");
   const boxCategories = await responseBoxCategories.json();
 
-  const boxItemsResponse = await fetch(baseUrl + "/boxItems/" + box.boxItemsId);
-  const boxItems = await boxItemsResponse.json();
+  if (box.boxItemsId) {
+    const boxItemsResponse = await fetch(
+      baseUrl + "/boxItems/" + box.boxItemsId
+    );
+    const boxItems = await boxItemsResponse.json();
 
-  return { box, boxCategories, boxItems };
+    return { box, boxCategories, boxItems };
+  }
+
+  return { box, boxCategories };
 
   // const response = await fetch(baseUrl + "/boxCategories");
   // const boxCategories = await response.json();
@@ -28,7 +34,7 @@ export function UpdateBox() {
   const {
     box,
     boxCategories: { items },
-    boxItems,
+    boxItems = {},
   } = useLoaderData();
 
   console.log({ box, items, boxItems });
