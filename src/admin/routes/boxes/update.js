@@ -34,7 +34,7 @@ export function UpdateBox() {
   const {
     box,
     boxCategories: { items },
-    boxItems = {},
+    boxItems,
   } = useLoaderData();
 
   console.log({ box, items, boxItems });
@@ -98,6 +98,14 @@ export function UpdateBox() {
             defaultValue={box.description}
           />
         </p>
+        {boxItems &&
+          boxItems.products.map(function (product) {
+            return (
+              <div key={product._id}>
+                {product.name} <button>Delete</button> <button>Change</button>
+              </div>
+            );
+          })}
       </Form>
     </div>
   );
