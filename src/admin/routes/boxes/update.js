@@ -60,12 +60,20 @@ export function UpdateBox() {
               })}
           </select>
         </p>
+        <p>
+          <label htmlFor="box-image">Box Image: </label>
+          <input
+            id="box-image"
+            aria-label="Box Image"
+            name="image"
+            type="file"
+          />
+        </p>
       </Form>
     </div>
   );
 }
 
-// imageUrl: String,
 // price: Number,
 // boxItemsId: String,
 // description: {
