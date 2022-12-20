@@ -59,6 +59,7 @@ import {
   CreateProductCategory,
 } from "./admin/routes/products/categories/create";
 import { action as deleteProductCategoryAction } from "./admin/routes/products/categories/delete";
+import { BoxList, loader as boxListLoader } from "./admin/routes/boxes/list";
 
 const router = createBrowserRouter([
   {
@@ -192,6 +193,49 @@ const router = createBrowserRouter([
       },
       {
         path: "boxes",
+        children: [
+          {
+            index: true,
+            loader: boxListLoader,
+            element: <BoxList />,
+          },
+          {
+            path: "create",
+            action: createProductAction,
+            loader: productCategoriesLoader,
+            element: <CreateProduct />,
+          },
+          {
+            path: ":productId/delete",
+            action: deleteProductAction,
+          },
+          {
+            path: ":productId/edit",
+            action: updateProductAction,
+            loader: updateProductLoader,
+            element: <UpdateProduct />,
+          },
+          {
+            path: "categories",
+            loader: categoryListLoader,
+            element: <CategoryList />,
+          },
+          {
+            path: "categories/create",
+            action: createProductCategoryAction,
+            element: <CreateProductCategory />,
+          },
+          {
+            path: "categories/:categoryId/edit",
+            action: updateProductCategoryAction,
+            loader: updateProductCategoryLoader,
+            element: <UpdateProductCategory />,
+          },
+          {
+            path: "categories/:categoryId/delete",
+            action: deleteProductCategoryAction,
+          },
+        ],
       },
       {
         path: "cart",
