@@ -226,7 +226,7 @@ const router = createBrowserRouter([
             element: <CreateBox />,
           },
           {
-            path: ":boxId/delete", //
+            path: ":boxId/delete",
             action: deleteBoxAction,
           },
           {
