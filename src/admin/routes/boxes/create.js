@@ -114,7 +114,7 @@ export function CreateBox() {
           </select>
         </p>
 
-        <h4>Box Products: </h4>
+        <h4>Add Box Products: </h4>
         <input
           name="products"
           readOnly

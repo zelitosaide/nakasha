@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Form, useLoaderData } from "react-router-dom";
 
 import { baseUrl } from "../../../api";
@@ -12,22 +13,19 @@ export async function loader({ params }) {
   const responseBoxCategories = await fetch(baseUrl + "/boxCategories");
   const boxCategories = await responseBoxCategories.json();
 
+  const productsResponse = await fetch(baseUrl + "/products?limit=100");
+  const products = await productsResponse.json();
+
   if (box.boxItemsId) {
     const boxItemsResponse = await fetch(
       baseUrl + "/boxItems/" + box.boxItemsId
     );
     const boxItems = await boxItemsResponse.json();
 
-    return { box, boxCategories, boxItems };
+    return { box, boxCategories, products, boxItems };
   }
 
-  return { box, boxCategories };
-
-  // const response = await fetch(baseUrl + "/boxCategories");
-  // const boxCategories = await response.json();
-  // const productsResponse = await fetch(baseUrl + "/products?limit=100");
-  // const products = await productsResponse.json();
-  // return { boxCategories, products };
+  return { box, boxCategories, products };
 }
 
 export function UpdateBox() {
@@ -35,9 +33,9 @@ export function UpdateBox() {
     box,
     boxCategories: { items },
     boxItems,
+    products: { items: products },
   } = useLoaderData();
-
-  console.log({ box, items, boxItems });
+  const [boxItemsState, setBoxItemsState] = useState([]);
 
   return (
     <div>
@@ -106,9 +104,45 @@ export function UpdateBox() {
               </div>
             );
           })}
+
+        <h4>Add Box Products: </h4>
+        <input
+          name="products"
+          readOnly
+          value={JSON.stringify(boxItemsState)}
+        />
+        {!!products.length &&
+          products.map(function (product) {
+            return (
+              <p key={product._id}>
+                <label htmlFor={product._id}>{product.name} </label>
+                <input
+                  id={product._id}
+                  aria-label={product.name}
+                  type="checkbox"
+                  onChange={function () {
+                    const productExist = boxItemsState.find(function (item) {
+                      return item._id === product._id;
+                    });
+                    if (!productExist) {
+                      setBoxItemsState(function (boxItemsState) {
+                        return [...boxItemsState, product];
+                      });
+                    }
+                    if (productExist) {
+                      const filteredBoxItems = boxItemsState.filter(function (
+                        item
+                      ) {
+                        return item._id !== product._id;
+                      });
+                      setBoxItemsState(filteredBoxItems);
+                    }
+                  }}
+                />
+              </p>
+            );
+          })}
       </Form>
     </div>
   );
 }
-
-// boxItemsId: String,
