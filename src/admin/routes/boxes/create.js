@@ -9,12 +9,16 @@ export async function action() {
 export async function loader() {
   const response = await fetch(baseUrl + "/boxCategories");
   const boxCategories = await response.json();
-  return boxCategories;
+  const productsResponse = await fetch(baseUrl + "/products?limit=100");
+  const products = await productsResponse.json();
+  return { boxCategories, products };
 }
 
 export function CreateBox() {
-  const { items: categories } = useLoaderData();
-  console.log(categories);
+  const {
+    boxCategories: { items: categories },
+    products,
+  } = useLoaderData();
 
   return (
     <div>
