@@ -75,6 +75,11 @@ import {
   loader as boxCategoryListLoader,
 } from "./admin/routes/boxes/categories/list";
 import { action as deleteBoxCategoryAction } from "./admin/routes/boxes/categories/delete";
+import {
+  action as updateBoxCategoryAction,
+  UpdateBoxCategory,
+  loader as updateBoxCategoryLoader,
+} from "./admin/routes/boxes/categories/update";
 
 const router = createBrowserRouter([
   {
@@ -231,7 +236,7 @@ const router = createBrowserRouter([
             element: <UpdateProduct />,
           },
           {
-            path: "categories", //
+            path: "categories",
             loader: boxCategoryListLoader,
             element: <BoxCategoryList />,
           },
@@ -241,10 +246,10 @@ const router = createBrowserRouter([
             element: <CreateBoxCategory />,
           },
           {
-            path: "categories/:categoryId/edit", //
-            action: updateProductCategoryAction,
-            loader: updateProductCategoryLoader,
-            element: <UpdateProductCategory />,
+            path: "categories/:categoryId/edit",
+            action: updateBoxCategoryAction,
+            loader: updateBoxCategoryLoader,
+            element: <UpdateBoxCategory />,
           },
           {
             path: "categories/:categoryId/delete",
