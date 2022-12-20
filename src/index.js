@@ -74,6 +74,7 @@ import {
   BoxCategoryList,
   loader as boxCategoryListLoader,
 } from "./admin/routes/boxes/categories/list";
+import { action as deleteBoxCategoryAction } from "./admin/routes/boxes/categories/delete";
 
 const router = createBrowserRouter([
   {
@@ -246,8 +247,8 @@ const router = createBrowserRouter([
             element: <UpdateProductCategory />,
           },
           {
-            path: "categories/:categoryId/delete", //
-            action: deleteProductCategoryAction,
+            path: "categories/:categoryId/delete",
+            action: deleteBoxCategoryAction,
           },
         ],
       },
