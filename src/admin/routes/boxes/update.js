@@ -1,9 +1,66 @@
 import { useState } from "react";
-import { Form, useLoaderData, useNavigate } from "react-router-dom";
+import { Form, redirect, useLoaderData, useNavigate } from "react-router-dom";
 
 import { baseUrl } from "../../../api";
+import { convertTobase64 } from "../../../utils/file-to-base64";
 
-export async function action() {}
+export async function action({ request, params }) {
+  const boxId = params.boxId;
+  const formData = await request.formData();
+  const name = formData.get("name");
+  const category = formData.get("category");
+  const image = formData.get("image");
+  const imageUrl = await convertTobase64(image);
+  const price = !isNaN(formData.get("price"))
+    ? Number(formData.get("price"))
+    : 0;
+  const description = formData.get("description");
+  const products = JSON.parse(formData.get("products"));
+
+  const response = await fetch(baseUrl + "/boxes/" + boxId);
+  const box = await response.json();
+
+  if (!box.boxItemsId) {
+    const boxItemsResponse = await fetch(baseUrl + "/boxItems", {
+      method: "POST",
+      body: JSON.stringify({ products }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    });
+    const { _id: boxItemsId } = await boxItemsResponse.json();
+    await fetch(baseUrl + "/boxes/" + boxId, {
+      method: "PATCH",
+      body: JSON.stringify({
+        name,
+        description,
+        category,
+        imageUrl,
+        price,
+        boxItemsId,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    });
+  } else {
+    await fetch(baseUrl + "/boxes/" + boxId, {
+      method: "PATCH",
+      body: JSON.stringify({
+        name,
+        description,
+        category,
+        imageUrl,
+        price,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    });
+  }
+
+  return redirect("/dashboard/boxes");
+}
 
 export async function loader({ params }) {
   const boxId = params.boxId;
