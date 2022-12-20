@@ -180,7 +180,7 @@ const router = createBrowserRouter([
           },
           {
             path: "create",
-            action: createBoxAction,
+            action: createProductAction,
             loader: productCategoriesLoader,
             element: <CreateProduct />,
           },

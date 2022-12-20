@@ -10,7 +10,6 @@ export async function loader() {
 
 export function BoxList() {
   const boxes = useLoaderData();
-  console.log(boxes);
 
   return (
     <div>
