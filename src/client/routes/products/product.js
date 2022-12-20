@@ -10,7 +10,6 @@ export async function loader({ params }) {
 
 export function Product() {
   const product = useLoaderData();
-  console.log(product);
 
   return (
     <div>
