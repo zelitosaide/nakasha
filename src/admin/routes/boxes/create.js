@@ -160,7 +160,7 @@ export function CreateBox() {
           <button
             type="button"
             onClick={function () {
-              navigate("/boxes");
+              navigate(-1);
             }}
           >
             Cancel

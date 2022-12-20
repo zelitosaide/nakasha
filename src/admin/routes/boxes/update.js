@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form, useLoaderData } from "react-router-dom";
+import { Form, useLoaderData, useNavigate } from "react-router-dom";
 
 import { baseUrl } from "../../../api";
 
@@ -36,6 +36,7 @@ export function UpdateBox() {
     products: { items: products },
   } = useLoaderData();
   const [boxItemsState, setBoxItemsState] = useState([]);
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -142,6 +143,23 @@ export function UpdateBox() {
               </p>
             );
           })}
+
+        <p>
+          <button
+            type="submit"
+            style={{ marginRight: 10 }}
+          >
+            Create
+          </button>
+          <button
+            type="button"
+            onClick={function () {
+              navigate(-1);
+            }}
+          >
+            Cancel
+          </button>
+        </p>
       </Form>
     </div>
   );
