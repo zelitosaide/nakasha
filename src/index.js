@@ -46,8 +46,8 @@ import {
 } from "./admin/routes/products/update";
 import { action as deleteProductAction } from "./admin/routes/products/delete";
 import {
-  CategoryList,
-  loader as categoryListLoader,
+  loader as productCategoryListLoader,
+  ProductCategoryList,
 } from "./admin/routes/products/categories/list";
 import {
   UpdateProductCategory,
@@ -181,8 +181,8 @@ const router = createBrowserRouter([
           },
           {
             path: "categories",
-            loader: categoryListLoader,
-            element: <CategoryList />,
+            loader: productCategoryListLoader,
+            element: <ProductCategoryList />,
           },
           {
             path: "categories/create",
@@ -227,8 +227,8 @@ const router = createBrowserRouter([
           },
           {
             path: "categories", //
-            loader: categoryListLoader,
-            element: <CategoryList />,
+            // loader: productCategoryListLoader,
+            // element: <CategoryList />,
           },
           {
             path: "categories/create",

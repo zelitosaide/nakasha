@@ -8,7 +8,7 @@ export async function loader() {
   return categories.items;
 }
 
-export function CategoryList() {
+export function ProductCategoryList() {
   const categories = useLoaderData();
 
   return (
