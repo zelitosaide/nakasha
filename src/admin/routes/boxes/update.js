@@ -69,6 +69,16 @@ export function UpdateBox() {
             type="file"
           />
         </p>
+        <p>
+          <label htmlFor="box-price">Box Price: </label>
+          <input
+            id="box-price"
+            aria-label="Box Price"
+            name="price"
+            type="text"
+            defaultValue={box.price}
+          />
+        </p>
       </Form>
     </div>
   );
