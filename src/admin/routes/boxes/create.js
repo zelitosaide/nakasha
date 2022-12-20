@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Form, useLoaderData, useNavigate } from "react-router-dom";
 
 import { baseUrl } from "../../../api";
@@ -14,7 +15,9 @@ export async function action({ request }) {
   const price = !isNaN(formData.get("price"))
     ? Number(formData.get("price"))
     : 0;
-  // console.log({ name, description, category, imageUrl, price });
+  const products = JSON.parse(formData.get("products"));
+
+  console.log({ name, description, category, imageUrl, price, products });
   // const response = await fetch(baseUrl + "/products", {
   //   method: "POST",
   //   body: JSON.stringify({ name, category, imageUrl, price }),
@@ -38,6 +41,7 @@ export function CreateBox() {
     products: { items: products },
   } = useLoaderData();
   const navigate = useNavigate();
+  const [boxItems, setBoxItems] = useState([]);
 
   return (
     <div>
@@ -96,6 +100,11 @@ export function CreateBox() {
         </p>
 
         <h4>Box Products: </h4>
+        <input
+          name="products"
+          readOnly
+          value={JSON.stringify(boxItems)}
+        />
         {!!products.length &&
           products.map(function (product) {
             return (
@@ -104,8 +113,23 @@ export function CreateBox() {
                 <input
                   id={product._id}
                   aria-label={product.name}
-                  name="products"
                   type="checkbox"
+                  onChange={function () {
+                    const productExist = boxItems.find(function (item) {
+                      return item._id === product._id;
+                    });
+                    if (!productExist) {
+                      setBoxItems(function (boxItems) {
+                        return [...boxItems, product];
+                      });
+                    }
+                    if (productExist) {
+                      const filteredBoxItems = boxItems.filter(function (item) {
+                        return item._id !== product._id;
+                      });
+                      setBoxItems(filteredBoxItems);
+                    }
+                  }}
                 />
               </p>
             );
