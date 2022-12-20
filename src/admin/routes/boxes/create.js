@@ -1,9 +1,27 @@
-import { Form, useLoaderData } from "react-router-dom";
+import { Form, useLoaderData, useNavigate } from "react-router-dom";
 
 import { baseUrl } from "../../../api";
+import { convertTobase64 } from "../../../utils/file-to-base64";
 
-export async function action() {
+export async function action({ request }) {
   // boxItemsId: ""
+  const formData = await request.formData();
+  const name = formData.get("name");
+  const description = formData.get("description");
+  const category = formData.get("category");
+  const image = formData.get("image");
+  const imageUrl = await convertTobase64(image);
+  const price = !isNaN(formData.get("price"))
+    ? Number(formData.get("price"))
+    : 0;
+  console.log({ name, description, category, imageUrl, price });
+  // const response = await fetch(baseUrl + "/products", {
+  //   method: "POST",
+  //   body: JSON.stringify({ name, category, imageUrl, price }),
+  //   headers: {
+  //     "Content-type": "application/json; charset=UTF-8",
+  //   },
+  // });
 }
 
 export async function loader() {
@@ -19,6 +37,7 @@ export function CreateBox() {
     boxCategories: { items: categories },
     products,
   } = useLoaderData();
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -74,6 +93,23 @@ export function CreateBox() {
                 return <option key={category._id}>{category.name}</option>;
               })}
           </select>
+        </p>
+
+        <p>
+          <button
+            type="submit"
+            style={{ marginRight: 10 }}
+          >
+            Create
+          </button>
+          <button
+            type="button"
+            onClick={function () {
+              navigate("/boxes");
+            }}
+          >
+            Cancel
+          </button>
         </p>
       </Form>
     </div>
