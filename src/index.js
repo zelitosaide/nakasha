@@ -162,7 +162,7 @@ const router = createBrowserRouter([
           {
             path: "create",
             action: createBoxAction,
-            loader: boxCategoriesAndProductListLoader,
+            loader: productCategoriesLoader,
             element: <CreateProduct />,
           },
           {
@@ -208,7 +208,7 @@ const router = createBrowserRouter([
           {
             path: "create",
             action: createProductAction,
-            loader: productCategoriesLoader,
+            loader: boxCategoriesAndProductListLoader,
             element: <CreateBox />,
           },
           {

@@ -1,12 +1,21 @@
-import { Form } from "react-router-dom";
+import { Form, useLoaderData } from "react-router-dom";
+
+import { baseUrl } from "../../../api";
 
 export async function action() {
   // boxItemsId: ""
 }
 
-export async function loader() {}
+export async function loader() {
+  const response = await fetch(baseUrl + "/boxCategories");
+  const boxCategories = await response.json();
+  return boxCategories;
+}
 
 export function CreateBox() {
+  const { items: categories } = useLoaderData();
+  console.log(categories);
+
   return (
     <div>
       <h4>Create Box</h4>
@@ -49,9 +58,20 @@ export function CreateBox() {
             type="file"
           />
         </p>
+        <p>
+          <label htmlFor="box-category">Box Category: </label>
+          <select
+            id="box-category"
+            aria-label="Box Category"
+            name="category"
+          >
+            {!!categories.length &&
+              categories.map(function (category) {
+                return <option key={category._id}>{category.name}</option>;
+              })}
+          </select>
+        </p>
       </Form>
     </div>
   );
 }
-
-// category: "hortalica"
