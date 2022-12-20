@@ -61,6 +61,11 @@ import {
 import { action as deleteProductCategoryAction } from "./admin/routes/products/categories/delete";
 import { BoxList, loader as boxListLoader } from "./admin/routes/boxes/list";
 import { action as deleteBoxAction } from "./admin/routes/boxes/delete";
+import {
+  action as createBoxAction,
+  CreateBox,
+  loader as boxCategoriesAndProductListLoader,
+} from "./admin/routes/boxes/create";
 
 const router = createBrowserRouter([
   {
@@ -156,8 +161,8 @@ const router = createBrowserRouter([
           },
           {
             path: "create",
-            action: createProductAction,
-            loader: productCategoriesLoader,
+            action: createBoxAction,
+            loader: boxCategoriesAndProductListLoader,
             element: <CreateProduct />,
           },
           {
@@ -204,7 +209,7 @@ const router = createBrowserRouter([
             path: "create",
             action: createProductAction,
             loader: productCategoriesLoader,
-            element: <CreateProduct />,
+            element: <CreateBox />,
           },
           {
             path: ":boxId/delete",
