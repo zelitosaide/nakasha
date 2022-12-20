@@ -80,6 +80,11 @@ import {
   UpdateBoxCategory,
   loader as updateBoxCategoryLoader,
 } from "./admin/routes/boxes/categories/update";
+import {
+  action as updateBoxAction,
+  UpdateBox,
+  loader as updateBooxLoader,
+} from "./admin/routes/boxes/update";
 
 const router = createBrowserRouter([
   {
@@ -230,10 +235,10 @@ const router = createBrowserRouter([
             action: deleteBoxAction,
           },
           {
-            path: ":boxId/edit", //
-            action: updateProductAction,
-            loader: updateProductLoader,
-            element: <UpdateProduct />,
+            path: ":boxId/edit",
+            action: updateBoxAction,
+            loader: updateBooxLoader,
+            element: <UpdateBox />,
           },
           {
             path: "categories",
