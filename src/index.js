@@ -60,6 +60,7 @@ import {
 } from "./admin/routes/products/categories/create";
 import { action as deleteProductCategoryAction } from "./admin/routes/products/categories/delete";
 import { BoxList, loader as boxListLoader } from "./admin/routes/boxes/list";
+import { action as deleteBoxAction } from "./admin/routes/boxes/delete";
 
 const router = createBrowserRouter([
   {
@@ -206,11 +207,11 @@ const router = createBrowserRouter([
             element: <CreateProduct />,
           },
           {
-            path: ":productId/delete",
-            action: deleteProductAction,
+            path: ":boxId/delete",
+            action: deleteBoxAction,
           },
           {
-            path: ":productId/edit",
+            path: ":boxId/edit",
             action: updateProductAction,
             loader: updateProductLoader,
             element: <UpdateProduct />,
