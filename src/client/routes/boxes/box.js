@@ -53,7 +53,11 @@ export function Box() {
             <h3 style={{ color: "#333" }}>{boxFoundInCart.name}</h3>
 
             <p>
-              <b>Imagem da Caixa</b>: {boxFoundInCart.imageUrl}
+              <b>Imagem da Caixa</b>:
+              <img
+                src={boxFoundInCart.imageUrl}
+                alt={boxFoundInCart.name}
+              />
             </p>
 
             <p>
