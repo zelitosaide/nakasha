@@ -83,7 +83,7 @@ export function Products() {
   });
 
   return (
-    <div style={{}}>
+    <div>
       {/* Categorias de Produtos */}
       <div
         style={{
