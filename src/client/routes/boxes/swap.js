@@ -2,13 +2,12 @@ import { useContext } from "react";
 import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 
 import { CartContext } from "../../../provider";
-
-const baseURL = "http://localhost:5000/";
+import { baseUrl } from "../../../api";
 
 export async function loader({ params }) {
   const boxCategoryId = params.boxCategoryId;
   const response = await fetch(
-    baseURL + "products?category=" + boxCategoryId + "&limit=100"
+    baseUrl + "/products?category=" + boxCategoryId + "&limit=100"
   );
   const products = await response.json();
   return products;
