@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FixedSizeList as List } from "react-window";
 import InfiniteLoader from "react-window-infinite-loader";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 import { CartContext } from "../../../provider";
 
@@ -20,13 +22,21 @@ export function BoxesHorizontalLazyLoad({
   const { cart, add, remove } = useContext(CartContext);
 
   const GUTTER_SIZE = 12;
-  const WIDTH = 118;
+  const WIDTH = 120;
 
   function Item({ index, style }) {
     let content;
 
     if (!isItemLoaded(index)) {
-      content = "Loading...";
+      content = (
+        <div
+          style={{
+            background: "#ccc",
+            width: style.width - GUTTER_SIZE,
+            height: 220 - GUTTER_SIZE,
+          }}
+        ></div>
+      );
     } else {
       const boxFoundInCart = cart.items.find(function (item) {
         return item._id === items[index]._id;
@@ -35,12 +45,74 @@ export function BoxesHorizontalLazyLoad({
       content = (
         <div
           style={{
-            background: "#ccc",
+            background: "white",
             width: style.width - GUTTER_SIZE,
-            height: 200 - GUTTER_SIZE,
+            height: 220 - GUTTER_SIZE,
+            borderRadius: 6,
+            overflow: "hidden",
+            border: "1px solid #ccc",
           }}
         >
-          <p style={{ marginBottom: 0 }}>
+          <div
+            style={{
+              width: style.width - GUTTER_SIZE,
+              height: style.width - GUTTER_SIZE,
+              // background: "pink",
+              position: "relative",
+            }}
+          >
+            <img
+              style={{
+                width: style.width - GUTTER_SIZE - 10,
+                height: style.width - GUTTER_SIZE - 10,
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+              }}
+              src={items[index].imageUrl}
+              alt={items[index].name}
+            />
+          </div>
+          <div style={{ background: "white", paddingLeft: 10 }}>
+            <p
+              style={{
+                margin: 0,
+                fontSize: 13,
+              }}
+            >
+              {items[index].name}
+            </p>
+            <p style={{ margin: 0, fontSize: 10, paddingTop: 2 }}>
+              {items[index].description}
+            </p>
+            <p
+              style={{
+                margin: 0,
+                color: "#33A02B",
+                fontWeight: 700,
+                fontSize: 15,
+                paddingTop: 4,
+                paddingBottom: 2,
+              }}
+            >
+              {items[index].price} MT
+            </p>
+            <button
+              style={{
+                fontSize: 11,
+                background: "#EF7200",
+                color: "white",
+                border: "none",
+                outline: "none",
+                padding: "4px 8px",
+                borderRadius: 10,
+              }}
+            >
+              Compre agora!
+            </button>
+          </div>
+          {/* <p style={{ marginBottom: 0 }}>
             {items[index].name}
             <br />
             {boxFoundInCart && (
@@ -65,13 +137,18 @@ export function BoxesHorizontalLazyLoad({
             <Link to={`${items[index].category}/${items[index]._id}`}>
               See Details
             </Link>
-          </div>
+          </div> */}
         </div>
       );
     }
 
     return (
-      <div style={{ ...style, background: index % 2 ? "pink" : "green" }}>
+      <div
+        style={{
+          ...style,
+          // background: index % 2 ? "pink" : "green"
+        }}
+      >
         {content}
       </div>
     );
@@ -86,7 +163,7 @@ export function BoxesHorizontalLazyLoad({
       {({ onItemsRendered, ref }) => (
         <List
           className="List"
-          height={200 + GUTTER_SIZE}
+          height={220}
           itemSize={WIDTH}
           itemCount={itemCount}
           onItemsRendered={onItemsRendered}
