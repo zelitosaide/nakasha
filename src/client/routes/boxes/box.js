@@ -42,83 +42,76 @@ export function Box() {
 
   return (
     <div>
-      <div
-        style={{
-          marginTop: 70,
-          padding: "10px 20px",
-        }}
-      >
-        {boxFoundInCart && (
-          <>
-            <h3 style={{ color: "#333" }}>{boxFoundInCart.name}</h3>
+      {boxFoundInCart && (
+        <>
+          <h3 style={{ color: "#333" }}>{boxFoundInCart.name}</h3>
 
-            <p>
-              <b>Imagem da Caixa</b>:
-              <img
-                src={boxFoundInCart.imageUrl}
-                alt={boxFoundInCart.name}
-              />
-            </p>
+          <p>
+            <b>Imagem da Caixa</b>:
+            <img
+              src={boxFoundInCart.imageUrl}
+              alt={boxFoundInCart.name}
+            />
+          </p>
 
-            <p>
-              <b>Descricao:</b> {boxFoundInCart.description}
-            </p>
+          <p>
+            <b>Descricao:</b> {boxFoundInCart.description}
+          </p>
 
-            {boxFoundInCart.products && (
-              <>
-                <p>
-                  <b>Lista dos Produtos:</b>
-                </p>
-                <ul>
-                  {boxFoundInCart.products.map(function (product) {
-                    return (
-                      <li key={product._id}>
-                        {product.name}{" "}
-                        {items.find(function (item) {
-                          return item._id === box._id;
-                        }) && (
-                          <Link
-                            to="swap"
-                            state={{ boxId, productId: product._id }}
-                          >
-                            swap
-                          </Link>
-                        )}
-                      </li>
-                    );
-                  })}
-                </ul>
-              </>
-            )}
+          {boxFoundInCart.products && (
+            <>
+              <p>
+                <b>Lista dos Produtos:</b>
+              </p>
+              <ul>
+                {boxFoundInCart.products.map(function (product) {
+                  return (
+                    <li key={product._id}>
+                      {product.name}{" "}
+                      {items.find(function (item) {
+                        return item._id === box._id;
+                      }) && (
+                        <Link
+                          to="swap"
+                          state={{ boxId, productId: product._id }}
+                        >
+                          swap
+                        </Link>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            </>
+          )}
 
-            <div>
-              <Outlet />
-            </div>
+          <div>
+            <Outlet />
+          </div>
 
-            <p>
-              <b>Adicionar ao carinho</b>
-            </p>
-            {!!boxFoundInCart.quantity && (
-              <button
-                onClick={function () {
-                  remove(box);
-                }}
-              >
-                -
-              </button>
-            )}
-
-            <span>{!!boxFoundInCart.quantity && boxFoundInCart.quantity}</span>
+          <p>
+            <b>Adicionar ao carinho</b>
+          </p>
+          {!!boxFoundInCart.quantity && (
             <button
               onClick={function () {
-                add({ ...box, products });
+                remove(box);
               }}
             >
-              +
+              -
             </button>
-          </>
-        )}
-      </div>
+          )}
+
+          <span>{!!boxFoundInCart.quantity && boxFoundInCart.quantity}</span>
+          <button
+            onClick={function () {
+              add({ ...box, products });
+            }}
+          >
+            +
+          </button>
+        </>
+      )}
     </div>
   );
 }

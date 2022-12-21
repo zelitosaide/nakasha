@@ -1,10 +1,6 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { useState } from "react";
 
-import vegetais from "../../../assets/images/vegetais.png";
-import frutas from "../../../assets/images/frutas.png";
-import mercearia from "../../../assets/images/mercearia.png";
-
 import { BoxesHorizontalLazyLoad } from "./boxes-horizontal-lazy-load";
 import { baseUrl } from "../../../api";
 
