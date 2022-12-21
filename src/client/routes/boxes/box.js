@@ -2,17 +2,16 @@ import { useEffect, useContext } from "react";
 import { Link, Outlet, useLoaderData, useParams } from "react-router-dom";
 
 import { CartContext } from "../../../provider";
-
-const baseURL = "http://localhost:5000/";
+import { baseUrl } from "../../../api";
 
 export async function loader({ params }) {
   const boxId = params.boxId;
-  const boxResponse = await fetch(baseURL + "boxes/" + boxId);
+  const boxResponse = await fetch(baseUrl + "/boxes/" + boxId);
   const box = await boxResponse.json();
 
   if (box.boxItemsId) {
     const boxItemsResponse = await fetch(
-      baseURL + "boxItems/" + box.boxItemsId
+      baseUrl + "/boxItems/" + box.boxItemsId
     );
     const { products } = await boxItemsResponse.json();
     return { ...box, products };

@@ -3,6 +3,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { Link } from "react-router-dom";
 
 import { CartContext } from "../../../provider";
+import { baseUrl } from "../../../api";
 
 const style = {
   height: 50,
@@ -29,7 +30,7 @@ export function BoxCategory() {
   const { cart, add, remove } = useContext(CartContext);
 
   useEffect(function () {
-    fetch(`http://localhost:5000/boxes?limit=${LIMIT}&page=${page}`)
+    fetch(`${baseUrl}/boxes?limit=${LIMIT}&page=${page}`)
       .then(function (response) {
         return response.json();
       })
@@ -48,7 +49,7 @@ export function BoxCategory() {
   }, []);
 
   async function fetchMoreData() {
-    return fetch(`http://localhost:5000/boxes?limit=${LIMIT}&page=${page}`)
+    return fetch(`${baseUrl}/boxes?limit=${LIMIT}&page=${page}`)
       .then(function (response) {
         return response.json();
       })
