@@ -62,10 +62,7 @@ export function BoxesHorizontalLazyLoad({
     }
 
     return (
-      <div
-        className={index % 2 ? "ListItemOdd" : "ListItemEven"}
-        style={style}
-      >
+      <div style={{ ...style, background: index % 2 ? "pink" : "green" }}>
         {content}
       </div>
     );
