@@ -10,7 +10,10 @@ import {
   Products,
   loader as productCategoriesLoader,
 } from "./client/routes/products/products";
-import { Boxes } from "./client/routes/boxes/boxes";
+import {
+  Boxes,
+  loader as boxCategoriesLoader,
+} from "./client/routes/boxes/boxes";
 import { Recipes } from "./client/routes/recipes/recipes";
 import { Help } from "./client/routes/help/help";
 import { Provider } from "./provider";
@@ -117,6 +120,7 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
+            loader: boxCategoriesLoader,
             element: <Boxes />,
           },
           {

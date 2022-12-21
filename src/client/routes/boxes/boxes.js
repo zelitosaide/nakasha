@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { useState } from "react";
 
 import vegetais from "../../../assets/images/vegetais.png";
@@ -8,6 +8,12 @@ import mercearia from "../../../assets/images/mercearia.png";
 import { BoxesHorizontalLazyLoad } from "./boxes-horizontal-lazy-load";
 import { baseUrl } from "../../../api";
 
+export async function loader() {
+  const response = await fetch(baseUrl + "/boxCategories");
+  const boxCategories = await response.json();
+  return boxCategories;
+}
+
 export function Boxes() {
   const [state, setState] = useState({
     hasNextPage: true,
@@ -15,6 +21,7 @@ export function Boxes() {
     items: [],
   });
   const [page, setPage] = useState(1);
+  const boxCategories = useLoaderData();
 
   const LIMIT = 5;
 
@@ -49,40 +56,76 @@ export function Boxes() {
 
   return (
     <div>
-      {/*  */}
-      <div>
-        <h5 style={{ color: "#333" }}>Categorias</h5>
-        <div
-          className="cat"
-          style={{ display: "flex", gap: 10 }}
-        >
-          <div style={{ border: "1px solid #d9dddd", padding: 5 }}>
-            <img
-              src={vegetais}
-              alt="vegetais"
-              style={{ width: 90 }}
-            />
-            <div style={{ textAlign: "center" }}>Vegetais</div>
-          </div>
-          <div style={{ border: "1px solid #d9dddd", padding: 5 }}>
-            <img
-              src={frutas}
-              alt="frutas"
-              style={{ width: 80 }}
-            />
-            <div style={{ textAlign: "center" }}>Frutas</div>
-          </div>
-          <div style={{ border: "1px solid #d9dddd", padding: 5 }}>
-            <img
-              src={mercearia}
-              alt="mercearia"
-              style={{ width: 80 }}
-            />
-            <div style={{ textAlign: "center", paddingBottom: 10 }}>
-              Mercearia
-            </div>
-          </div>
+      {/* Categorias de Caixas */}
+      <div
+        style={{
+          background: "white",
+          padding: "10px 20px",
+          borderRadius: 26,
+        }}
+      >
+        <div className="horizontal-lazy-load-header">
+          <p
+            style={{
+              fontSize: 13,
+              fontWeight: 600,
+              paddingBottom: 12,
+            }}
+          >
+            Categorias de Caixas
+          </p>
         </div>
+        {!!boxCategories.items.length && (
+          <ul
+            style={{
+              listStyle: "none",
+              margin: 0,
+              padding: 0,
+              display: "flex",
+              gap: 9,
+            }}
+          >
+            {boxCategories.items.slice(0, 3).map(function (boxCategory) {
+              return (
+                <li key={boxCategory._id}>
+                  <Link to={boxCategory.name}>
+                    <div
+                      style={{
+                        background: "#33A02B",
+                        width: 100,
+                        height: 96,
+                        borderRadius: 6,
+                        overflow: "hidden",
+                        position: "relative",
+                      }}
+                    >
+                      <img
+                        src={boxCategory.imageUrl}
+                        alt={boxCategory.name}
+                        style={{
+                          width: 86,
+                          position: "absolute",
+                          top: "50%",
+                          left: "50%",
+                          transform: "translate(-50%, -50%)",
+                        }}
+                      />
+                    </div>
+                    <p
+                      style={{
+                        fontSize: 13,
+                        textAlign: "center",
+                        color: "black",
+                      }}
+                    >
+                      {boxCategory.name}
+                    </p>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        )}
       </div>
 
       {/* banner */}
