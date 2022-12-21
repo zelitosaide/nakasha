@@ -15,44 +15,75 @@ export async function loader() {
 }
 
 export function Boxes() {
-  const [state, setState] = useState({
-    hasNextPage: true,
-    isNextPageLoading: false,
-    items: [],
-  });
-  const [page, setPage] = useState(1);
-  const boxCategories = useLoaderData();
-
   const LIMIT = 5;
+  const boxCategories = useLoaderData();
+  const boxRows = boxCategories.items.map(function (item) {
+    return {
+      name: item.name,
+      loadNextPage: async function () {
+        const response = await fetch(
+          `${baseUrl}/boxes?limit=${LIMIT}&page=${page[item.name]}&category=${
+            item.name
+          }`
+        );
 
-  async function loadNextPage() {
-    return fetch(
-      `${baseUrl}/boxes?limit=${LIMIT}&page=${page}&category=breakfast`
-    )
-      .then(function (response) {
         setState(function (prevState) {
           return {
             ...prevState,
-            isNextPageLoading: true,
+            [item.name]: {
+              ...prevState[item.name],
+              isNextPageLoading: true,
+            },
           };
         });
-        return response.json();
-      })
-      .then(function ({ items, pageInfo: { totalResults } }) {
+
+        const {
+          items,
+          pageInfo: { totalResults },
+        } = await response.json();
+
         setPage(function (prevPage) {
-          return prevPage + 1;
+          return {
+            ...prevPage,
+            [item.name]: prevPage[item.name] + 1,
+          };
         });
 
         setState(function (prevState) {
           return {
             ...prevState,
-            hasNextPage: prevState.items.length < totalResults,
-            isNextPageLoading: false,
-            items: [...prevState.items].concat(items),
+            [item.name]: {
+              hasNextPage: prevState[item.name].items.length < totalResults,
+              isNextPageLoading: false,
+              items: [...prevState[item.name].items].concat(items),
+              totalResults: totalResults,
+            },
           };
         });
-      });
-  }
+      },
+    };
+  });
+
+  const [state, setState] = useState(function () {
+    const init = {};
+    boxRows.forEach(function (item) {
+      init[item.name] = {
+        hasNextPage: true,
+        isNextPageLoading: false,
+        items: [],
+        totalResults: 0,
+      };
+    });
+    return init;
+  });
+
+  const [page, setPage] = useState(function () {
+    const init = {};
+    boxRows.forEach(function (item) {
+      init[item.name] = 1;
+    });
+    return init;
+  });
 
   return (
     <div>
@@ -128,52 +159,66 @@ export function Boxes() {
         )}
       </div>
 
-      {/* banner */}
-      <div
-        style={{
-          height: 180,
-          marginTop: 10,
-        }}
-      >
+      <div style={{ paddingLeft: 20, paddingRight: 20 }}>
+        {/* banner */}
         <div
           style={{
             height: 180,
-            marginLeft: 20,
-            marginRight: 20,
-            background: "#f8f8f0",
-            flexGrow: 1,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            border: "1px solid #d9dddd",
+            marginTop: 10,
           }}
         >
-          <h5>Banner</h5>
+          <div
+            style={{
+              height: 180,
+              background: "#f8f8f0",
+              flexGrow: 1,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              border: "1px solid #d9dddd",
+            }}
+          >
+            <h5>Banner</h5>
+          </div>
         </div>
-      </div>
 
-      {/* Lazy load */}
-      <div id="lazy-load">
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            flexDirection: "row",
-          }}
-        >
-          <h5 style={{ marginLeft: 20 }}>Caixas da epoca</h5>
-          <Link to="hortalica">
-            <span style={{ paddingRight: 20 }}>Ver todos</span>
-          </Link>
-        </div>
-        <div style={{ marginLeft: 20, marginRight: 20 }}>
-          <BoxesHorizontalLazyLoad
-            hasNextPage={state.hasNextPage}
-            isNextPageLoading={state.isNextPageLoading}
-            items={state.items}
-            loadNextPage={loadNextPage}
-          />
+        {/* Lazy load */}
+        <div>
+          {boxRows.map(function (item, index) {
+            return (
+              <div
+                id="lazy-load"
+                key={index}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    flexDirection: "row",
+                  }}
+                  className="horizontal-lazy-load-header"
+                >
+                  <p style={{ fontSize: 13 }}>
+                    Categiria: {item.name} ({state[item.name].totalResults})
+                  </p>
+                  <Link to={item.name}>
+                    <span style={{ fontSize: 13, color: "#33A02B" }}>
+                      Ver todos
+                    </span>
+                  </Link>
+                </div>
+                <div>
+                  <BoxesHorizontalLazyLoad
+                    hasNextPage={state[item.name].hasNextPage}
+                    isNextPageLoading={state[item.name].isNextPageLoading}
+                    items={state[item.name].items}
+                    loadNextPage={item.loadNextPage}
+                  />
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
