@@ -19,6 +19,9 @@ export function BoxesHorizontalLazyLoad({
 
   const { cart, add, remove } = useContext(CartContext);
 
+  const GUTTER_SIZE = 12;
+  const WIDTH = 118;
+
   function Item({ index, style }) {
     let content;
 
@@ -30,7 +33,13 @@ export function BoxesHorizontalLazyLoad({
       });
 
       content = (
-        <>
+        <div
+          style={{
+            background: "#ccc",
+            width: style.width - GUTTER_SIZE,
+            height: 200 - GUTTER_SIZE,
+          }}
+        >
           <p style={{ marginBottom: 0 }}>
             {items[index].name}
             <br />
@@ -57,7 +66,7 @@ export function BoxesHorizontalLazyLoad({
               See Details
             </Link>
           </div>
-        </>
+        </div>
       );
     }
 
@@ -77,9 +86,9 @@ export function BoxesHorizontalLazyLoad({
       {({ onItemsRendered, ref }) => (
         <List
           className="List"
-          height={95}
+          height={200 + GUTTER_SIZE}
+          itemSize={WIDTH}
           itemCount={itemCount}
-          itemSize={120}
           onItemsRendered={onItemsRendered}
           ref={ref}
           width={300}
