@@ -67,13 +67,7 @@ export function BoxCategory() {
   }
 
   return (
-    <div
-      style={{
-        marginTop: 70,
-        padding: "10px 20px",
-        marginBottom: 100,
-      }}
-    >
+    <div>
       <h4>Categoria das Caixas: hortalicas</h4>
       <InfiniteScroll
         dataLength={loadedItemsState.items.length}
