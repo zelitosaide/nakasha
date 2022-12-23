@@ -65,6 +65,8 @@ export function BoxesHorizontalLazyLoad({
               style={{
                 width: style.width - GUTTER_SIZE - 10,
                 height: style.width - GUTTER_SIZE - 10,
+                // width: style.width - GUTTER_SIZE,
+                // height: style.width - GUTTER_SIZE,
                 position: "absolute",
                 top: "50%",
                 left: "50%",
@@ -98,19 +100,24 @@ export function BoxesHorizontalLazyLoad({
             >
               {items[index].price} MT
             </p>
-            <button
-              style={{
-                fontSize: 11,
-                background: "#EF7200",
-                color: "white",
-                border: "none",
-                outline: "none",
-                padding: "4px 8px",
-                borderRadius: 10,
-              }}
-            >
-              Compre agora!
-            </button>
+            {boxFoundInCart.quantity === 0 && (
+              <button
+                style={{
+                  fontSize: 11,
+                  background: "#EF7200",
+                  color: "white",
+                  border: "none",
+                  outline: "none",
+                  padding: "4px 8px",
+                  borderRadius: 10,
+                }}
+                onClick={function () {
+                  add(items[index]);
+                }}
+              >
+                Compre agora!
+              </button>
+            )}
           </div>
           {/* <p style={{ marginBottom: 0 }}>
             {items[index].name}
