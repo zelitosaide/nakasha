@@ -100,7 +100,7 @@ export function BoxesHorizontalLazyLoad({
             >
               {items[index].price} MT
             </p>
-            {boxFoundInCart.quantity === 0 && (
+            {!boxFoundInCart?.quantity ? (
               <button
                 style={{
                   fontSize: 11,
@@ -117,6 +117,21 @@ export function BoxesHorizontalLazyLoad({
               >
                 Compre agora!
               </button>
+            ) : (
+              <Link
+                to="/"
+                style={{
+                  fontSize: 11,
+                  background: "#33A02B",
+                  border: "1px solid #33A02B",
+                  padding: "4px 8px",
+                  borderRadius: 10,
+                  // color: "#33A02B",
+                  color: "white",
+                }}
+              >
+                Ver no carinho
+              </Link>
             )}
           </div>
           {/* <p style={{ marginBottom: 0 }}>
