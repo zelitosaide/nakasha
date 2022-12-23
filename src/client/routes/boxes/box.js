@@ -43,7 +43,7 @@ export function Box() {
     <div>
       {boxFoundInCart && (
         <>
-          <h3 style={{ color: "#333" }}>{boxFoundInCart.name}</h3>
+          {/* <h3 style={{ color: "#333" }}>{boxFoundInCart.name}</h3> */}
 
           <p>
             <b>Imagem da Caixa</b>:

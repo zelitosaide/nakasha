@@ -13,9 +13,9 @@ export function Product() {
 
   return (
     <div>
-      <p>
+      {/* <p>
         <strong>Nome do Produto:</strong> {product.name}
-      </p>
+      </p> */}
       <p>
         <strong>Category:</strong> {product.category}
       </p>
@@ -24,6 +24,7 @@ export function Product() {
         <img
           src={product.imageUrl}
           alt={product.name}
+          style={{ width: "200px" }}
         />
       </p>
       <p>
