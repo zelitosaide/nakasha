@@ -29,13 +29,18 @@ export function BoxesHorizontalLazyLoad({
 
     if (!isItemLoaded(index)) {
       content = (
-        <div
-          style={{
-            background: "#ccc",
-            width: style.width - GUTTER_SIZE,
-            height: 220 - GUTTER_SIZE,
-          }}
-        ></div>
+        <div>
+          <SkeletonTheme
+            baseColor="#ccc"
+            highlightColor="#bbb"
+          >
+            <Skeleton
+              height={220 - GUTTER_SIZE}
+              width={style.width - GUTTER_SIZE}
+              style={{ borderRadius: 6 }}
+            />
+          </SkeletonTheme>
+        </div>
       );
     } else {
       const boxFoundInCart = cart.items.find(function (item) {
@@ -119,14 +124,13 @@ export function BoxesHorizontalLazyLoad({
               </button>
             ) : (
               <Link
-                to="/"
+                to={`${items[index].category}/${items[index]._id}`}
                 style={{
                   fontSize: 11,
                   background: "#33A02B",
                   border: "1px solid #33A02B",
-                  padding: "4px 8px",
+                  padding: "3px 8px",
                   borderRadius: 10,
-                  // color: "#33A02B",
                   color: "white",
                 }}
               >
