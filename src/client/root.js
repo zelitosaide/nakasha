@@ -44,7 +44,7 @@ export function Root() {
             display: "block",
             height: "40px",
             boxSizing: "border-box",
-            padding: "0 20px",
+            padding: "0 15px",
             border: "none",
             outline: "none",
             borderRadius: 20,
