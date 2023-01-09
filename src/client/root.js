@@ -44,7 +44,10 @@ export function Root() {
             display: "block",
             height: "40px",
             boxSizing: "border-box",
-            padding: "0 10px",
+            padding: "0 20px",
+            border: "none",
+            outline: "none",
+            borderRadius: 20,
           }}
         />
       </div>
