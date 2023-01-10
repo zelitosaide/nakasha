@@ -89,7 +89,11 @@ export function ProdutoHorizontalLazyLoad({
                 color: "#777",
               }}
             >
-              {items[index].name.slice(0, 16)}...
+              {items[index].name.length < 16 ? (
+                items[index].name
+              ) : (
+                <>{items[index].name.slice(0, 16)}...</>
+              )}
             </span>
 
             <div>
