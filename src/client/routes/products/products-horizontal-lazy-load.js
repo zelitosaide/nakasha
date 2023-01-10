@@ -121,53 +121,14 @@ export function ProdutoHorizontalLazyLoad({
                   fontSize: 12,
                   borderRadius: 4,
                 }}
+                onClick={function () {
+                  add(items[index]);
+                }}
               >
                 +
               </button>
             </div>
           </div>
-
-          {/* <div
-            style={{
-              position: "absolute",
-              zIndex: 10,
-              right: 0,
-              bottom: 0,
-              width: 24,
-            }}
-          >
-            {productFoundInCart && (
-              <>
-                <button
-                  style={{ width: 24 }}
-                  onClick={function () {
-                    remove(items[index]);
-                  }}
-                >
-                  -
-                </button>
-                <span
-                  style={{
-                    background: "#33a02b",
-                    width: 24,
-                    display: "inline-block",
-                    textAlign: "center",
-                  }}
-                >
-                  {productFoundInCart.quantity}
-                </span>
-              </>
-            )}
-            <button
-              style={{ width: 24 }}
-              onClick={function (event) {
-                event.stopPropagation();
-                add(items[index]);
-              }}
-            >
-              +
-            </button>
-          </div> */}
         </div>
       );
     }
