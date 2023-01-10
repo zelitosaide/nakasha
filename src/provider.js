@@ -8,12 +8,11 @@ export function Provider({ children }) {
     boxes: [],
     products: [],
     recipes: [],
+    items: [],
   });
 
-  console.log(cart);
-
-  function add(item) {
-    const itemExist = cart.items.find(function (i) {
+  function add(item, type) {
+    const itemExist = cart[type].find(function (i) {
       return i._id === item._id;
     });
 
@@ -21,7 +20,7 @@ export function Provider({ children }) {
       setCart(function (prevCart) {
         return {
           ...prevCart,
-          items: [...prevCart.items, { ...item, quantity: 1 }],
+          [type]: [...prevCart[type], { ...item, quantity: 1 }],
         };
       });
     }
