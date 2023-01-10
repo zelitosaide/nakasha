@@ -3,7 +3,12 @@ import { createContext, useState } from "react";
 export const CartContext = createContext(null);
 
 export function Provider({ children }) {
-  const [cart, setCart] = useState({ userId: null, items: [] });
+  const [cart, setCart] = useState({
+    userId: null,
+    boxes: [],
+    products: [],
+    recipes: [],
+  });
 
   console.log(cart);
 
