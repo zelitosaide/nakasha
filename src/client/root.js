@@ -149,7 +149,7 @@ export function Root() {
                     </div>
                   </div>
                 ) : (
-                  <div>
+                  <div style={{}}>
                     <NavLink
                       to={item.path}
                       style={{
@@ -166,12 +166,13 @@ export function Root() {
                           flexDirection: "column",
                           justifyContent: "center",
                           alignItems: "center",
+                          height: 40,
                         }}
                       >
                         {item.name === "Home" && (
                           <Home
                             style={{
-                              width: 30,
+                              width: 20,
                               color: "hsla(0, 0%, 100%, 0.6)",
                               marginTop: 5,
                               marginBottom: 2,
@@ -181,7 +182,7 @@ export function Root() {
                         {item.name === "Rancho" && (
                           <Boxes
                             style={{
-                              width: 30,
+                              width: 18,
                               color: "hsla(0, 0%, 100%, 0.6)",
                               marginTop: 5,
                               marginBottom: 2,
@@ -191,7 +192,7 @@ export function Root() {
                         {item.name === "Receitas" && (
                           <Recipes
                             style={{
-                              width: 30,
+                              width: 20,
                               color: "hsla(0, 0%, 100%, 0.6)",
                               marginTop: 5,
                               marginBottom: 2,
@@ -201,7 +202,7 @@ export function Root() {
                         {item.name === "Ajuda" && (
                           <Help
                             style={{
-                              width: 30,
+                              width: 18,
                               color: "hsla(0, 0%, 100%, 0.6)",
                               marginTop: 5,
                               marginBottom: 2,
@@ -210,7 +211,7 @@ export function Root() {
                         )}
                         <span
                           style={{
-                            fontSize: 14,
+                            fontSize: 11,
                             color: "hsla(0, 0%, 100%, 0.6)",
                           }}
                         >
