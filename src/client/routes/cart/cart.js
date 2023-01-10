@@ -25,20 +25,34 @@ export function Cart() {
       {products.length && (
         <div style={{ padding: "0 20px" }}>
           <h2 style={{ fontSize: 12, color: "#444" }}>Productos</h2>
-          <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
+          <ul
+            style={{
+              margin: 0,
+              padding: 0,
+              listStyle: "none",
+              display: "flex",
+              flexDirection: "column",
+              gap: 16,
+            }}
+          >
             {products.map(function (product) {
               return (
-                <li key={product._id}>
+                <li
+                  key={product._id}
+                  style={{
+                    display: "flex",
+                    boxShadow: "0px 4px 16px rgba(0, 0, 0, 0.11)",
+                    borderRadius: 10,
+                  }}
+                >
+                  <img
+                    src={product.imageUrl}
+                    alt={product.name}
+                  />
                   <div>
-                    <img
-                      src={product.imageUrl}
-                      alt={product.name}
-                    />
-                    <div>
-                      <span>{product.name}</span>
-                      <span>{product.name}</span>
-                      <span>{product.price} MT</span>
-                    </div>
+                    <span>{product.name}</span>
+                    <span>{product.name}</span>
+                    <span>{product.price} MT</span>
                   </div>
                 </li>
               );
