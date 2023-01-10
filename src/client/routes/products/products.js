@@ -167,6 +167,7 @@ export function Products() {
           style={{
             height: 180,
             marginTop: 20,
+            marginBottom: 10,
           }}
         >
           <div
