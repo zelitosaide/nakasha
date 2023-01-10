@@ -127,7 +127,7 @@ export function ProdutoHorizontalLazyLoad({
   }
 
   return (
-    <div style={{ marginTop: -5, marginBottom: 10 }}>
+    <div style={{ marginTop: -5, marginBottom: 6 }}>
       <InfiniteLoader
         isItemLoaded={isItemLoaded}
         itemCount={itemCount}
