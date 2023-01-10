@@ -52,7 +52,8 @@ export function ProdutoHorizontalLazyLoad({
       content = (
         <div
           style={{
-            background: "#ccc",
+            // background: "#ccc",
+            background: "white",
             width: style.width - GUTTER_SIZE,
             // height: style.width - GUTTER_SIZE,
             height: 120,
@@ -70,7 +71,19 @@ export function ProdutoHorizontalLazyLoad({
               />
             </Link>
           </div>
-          <div
+          <div style={{ padding: 6 }}>
+            <span
+              style={{
+                fontSize: 10,
+                fontWeight: 700,
+                display: "block",
+              }}
+            >
+              {items[index].name} 2kg
+            </span>
+          </div>
+
+          {/* <div
             style={{
               position: "absolute",
               zIndex: 10,
@@ -110,7 +123,7 @@ export function ProdutoHorizontalLazyLoad({
             >
               +
             </button>
-          </div>
+          </div> */}
         </div>
       );
     }
