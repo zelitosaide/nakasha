@@ -111,7 +111,7 @@ export function Products() {
               margin: 0,
               padding: 0,
               display: "flex",
-              gap: 12,
+              justifyContent: "space-between",
             }}
           >
             {productCategories.items
