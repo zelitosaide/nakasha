@@ -79,7 +79,17 @@ export function ProdutoHorizontalLazyLoad({
                 display: "block",
               }}
             >
-              {items[index].name} 2kg
+              {items[index].name.split("-")[0]} 2kg
+            </span>
+
+            <span
+              style={{
+                fontSize: 8,
+                fontWeight: 400,
+                display: "block",
+              }}
+            >
+              {items[index].name}
             </span>
           </div>
 
