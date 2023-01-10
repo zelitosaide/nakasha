@@ -6,6 +6,7 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 import { CartContext } from "../../../provider";
+import { Cart } from "../../../assets/icons/cart";
 
 export function ProdutoHorizontalLazyLoad({
   hasNextPage,
@@ -108,25 +109,41 @@ export function ProdutoHorizontalLazyLoad({
               >
                 {items[index].price} MT
               </span>
-              <button
-                style={{
-                  border: "none",
-                  outline: "none",
-                  background: "#33A02B",
-                  color: "white",
-                  width: 20,
-                  height: 18,
-                  marginTop: -3,
-                  fontWeight: 700,
-                  fontSize: 12,
-                  borderRadius: 4,
-                }}
-                onClick={function () {
-                  add(items[index]);
-                }}
-              >
-                +
-              </button>
+              {!productFoundInCart ? (
+                <button
+                  style={{
+                    border: "none",
+                    outline: "none",
+                    background: "#33A02B",
+                    color: "white",
+                    width: 20,
+                    height: 18,
+                    marginTop: -3,
+                    fontWeight: 700,
+                    fontSize: 12,
+                    borderRadius: 4,
+                  }}
+                  onClick={function () {
+                    add(items[index]);
+                  }}
+                >
+                  +
+                </button>
+              ) : (
+                <Link
+                  style={{
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    alignItems: "center",
+                    marginTop: -3,
+                    height: 18,
+                    width: 20,
+                  }}
+                  to={`${items[index].category}/${items[index]._id}`}
+                >
+                  <Cart style={{ width: 17, color: "#33A02B" }} />
+                </Link>
+              )}
             </div>
           </div>
         </div>
