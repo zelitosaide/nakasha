@@ -11,7 +11,18 @@ export function Cart() {
 
   return (
     <div>
-      <h4>Meu carinho</h4>
+      {}
+      <p
+        style={{
+          fontSize: 12,
+          fontWeight: 700,
+          // paddingBottom: 12,
+          color: "#444",
+          padding: "0 20px",
+        }}
+      >
+        Carinho
+      </p>
     </div>
   );
 }
