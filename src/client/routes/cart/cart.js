@@ -4,31 +4,14 @@ import { CartContext } from "../../../provider";
 
 export function Cart() {
   const {
-    cart: { items },
+    cart: { boxes, products, recipes },
   } = useContext(CartContext);
 
+  console.log(boxes, products, recipes);
+
   return (
-    <div
-      style={{
-        marginTop: 70,
-        padding: "10px 20px",
-        marginBottom: 100,
-      }}
-    >
+    <div>
       <h4>Meu carinho</h4>
-      {!!items.length && (
-        <ul>
-          {items.map(function (item) {
-            return (
-              <li key={item._id}>
-                {item.name}
-                <b style={{ marginLeft: 10 }}>Preco: </b>
-                {item.price} MZN
-              </li>
-            );
-          })}
-        </ul>
-      )}
     </div>
   );
 }
