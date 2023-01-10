@@ -12,7 +12,7 @@ export async function loader({ params }) {
 
 export function Product() {
   const product = useLoaderData();
-  const { cart, add } = useContext(CartContext);
+  const { cart, add, remove } = useContext(CartContext);
 
   const productFoundInCart = cart.products.find(function (item) {
     return item._id === product._id;
@@ -43,7 +43,13 @@ export function Product() {
       </p>
       {productFoundInCart && (
         <>
-          <button>-</button>
+          <button
+            onClick={function () {
+              remove(product, "products");
+            }}
+          >
+            -
+          </button>
           <span>{productFoundInCart.quantity}</span>
         </>
       )}
