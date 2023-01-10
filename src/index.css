@@ -25,7 +25,8 @@ a {
   content: "";
   width: 10px;
   height: 1px;
-  background: #c4c4c4;
+  /* background: #c4c4c4; */
+  background: #d9d9d9;
   position: absolute;
   bottom: 0;
   width: 100%;
