@@ -29,7 +29,7 @@ export function Provider({ children }) {
 
     if (itemExist) {
       setCart(function (prevCart) {
-        const items = prevCart.items.map(function (i) {
+        const items = prevCart[type].map(function (i) {
           if (i._id === item._id) {
             return { ...i, quantity: i.quantity + 1 };
           } else {
@@ -37,7 +37,7 @@ export function Provider({ children }) {
           }
         });
 
-        return { ...prevCart, items: items };
+        return { ...prevCart, [type]: items };
       });
     }
   }
