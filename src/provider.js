@@ -8,7 +8,7 @@ export function Provider({ children }) {
     boxes: [],
     products: [],
     recipes: [],
-    items: [],
+    // items: [],
   });
 
   console.log(cart);

@@ -73,7 +73,7 @@ export function ProductCategory() {
 
   function Cells() {
     return loadedItemsState.items.map((_, index) => {
-      const productFoundInCart = cart.items.find(function (item) {
+      const productFoundInCart = cart.products.find(function (item) {
         return item._id === loadedItemsState.items[index]._id;
       });
 
