@@ -111,7 +111,7 @@ export function Products() {
               margin: 0,
               padding: 0,
               display: "flex",
-              gap: 9,
+              gap: 12,
             }}
           >
             {productCategories.items
@@ -123,7 +123,7 @@ export function Products() {
                       <div
                         style={{
                           background: "#33A02B",
-                          width: 100,
+                          width: 96,
                           height: 96,
                           borderRadius: 6,
                           overflow: "hidden",
@@ -144,9 +144,9 @@ export function Products() {
                       </div>
                       <p
                         style={{
-                          fontSize: 13,
+                          fontSize: 12,
                           textAlign: "center",
-                          color: "black",
+                          color: "#444",
                           fontWeight: 400,
                         }}
                       >
