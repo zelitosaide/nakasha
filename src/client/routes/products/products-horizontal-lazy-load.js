@@ -23,9 +23,7 @@ export function ProdutoHorizontalLazyLoad({
   const { cart, add } = useContext(CartContext);
 
   const GUTTER_SIZE = 12;
-  // const WIDTH = 112;
   const WIDTH = 108;
-  // x - 12 = 96
 
   function Item({ index, style }) {
     let content;
@@ -38,8 +36,8 @@ export function ProdutoHorizontalLazyLoad({
             highlightColor="#bbb"
           >
             <Skeleton
-              height={style.width - GUTTER_SIZE}
               width={style.width - GUTTER_SIZE}
+              height={120}
               style={{ borderRadius: 6 }}
             />
           </SkeletonTheme>
