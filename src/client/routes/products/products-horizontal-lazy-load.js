@@ -96,7 +96,7 @@ export function ProdutoHorizontalLazyLoad({
               )}
             </span>
 
-            <div>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
               <span
                 style={{
                   fontSize: 10,
@@ -108,6 +108,22 @@ export function ProdutoHorizontalLazyLoad({
               >
                 {items[index].price} MT
               </span>
+              <button
+                style={{
+                  border: "none",
+                  outline: "none",
+                  background: "#33A02B",
+                  color: "white",
+                  width: 20,
+                  height: 18,
+                  marginTop: -3,
+                  fontWeight: 700,
+                  fontSize: 12,
+                  borderRadius: 4,
+                }}
+              >
+                +
+              </button>
             </div>
           </div>
 
