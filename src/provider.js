@@ -42,9 +42,9 @@ export function Provider({ children }) {
     }
   }
 
-  function remove(item) {
+  function remove(item, type) {
     setCart(function (prevCart) {
-      const items = prevCart.items.map(function (i) {
+      const items = prevCart[type].map(function (i) {
         if (i._id === item._id) {
           if (i.quantity === 1) {
             return null;
@@ -57,7 +57,7 @@ export function Provider({ children }) {
 
       return {
         ...prevCart,
-        items: items.filter(function (i) {
+        [type]: items.filter(function (i) {
           return i;
         }),
       };
