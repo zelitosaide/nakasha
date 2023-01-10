@@ -60,7 +60,7 @@ export function ProdutoHorizontalLazyLoad({
             overflow: "hidden",
           }}
         >
-          <div style={{ height: 74, overflow: "hidden" }}>
+          <div style={{ height: 70, overflow: "hidden" }}>
             <Link to={`${items[index].category}/${items[index]._id}`}>
               <img
                 style={{ width: style.width - GUTTER_SIZE }}
@@ -86,10 +86,10 @@ export function ProdutoHorizontalLazyLoad({
                 fontSize: 8,
                 fontWeight: 400,
                 display: "block",
-                color: "#444",
+                color: "#777",
               }}
             >
-              {items[index].name}
+              {items[index].name.slice(0, 16)}...
             </span>
 
             <div>
