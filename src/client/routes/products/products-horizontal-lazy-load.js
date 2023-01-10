@@ -51,7 +51,7 @@ export function ProdutoHorizontalLazyLoad({
       content = (
         <div
           style={{
-            background: "white",
+            background: "#ccc",
             width: style.width - GUTTER_SIZE,
             height: 120,
             borderRadius: 6,
@@ -68,7 +68,7 @@ export function ProdutoHorizontalLazyLoad({
               />
             </Link>
           </div>
-          <div style={{ padding: 6 }}>
+          <div style={{ padding: 6, background: "white", height: 50 }}>
             <span
               style={{
                 fontSize: 10,
