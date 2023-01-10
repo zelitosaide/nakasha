@@ -52,7 +52,6 @@ export function ProdutoHorizontalLazyLoad({
       content = (
         <div
           style={{
-            // background: "#ccc",
             background: "white",
             width: style.width - GUTTER_SIZE,
             // height: style.width - GUTTER_SIZE,
@@ -62,7 +61,7 @@ export function ProdutoHorizontalLazyLoad({
             overflow: "hidden",
           }}
         >
-          <div style={{ height: 80, overflow: "hidden" }}>
+          <div style={{ height: 74, overflow: "hidden" }}>
             <Link to={`${items[index].category}/${items[index]._id}`}>
               <img
                 style={{ width: style.width - GUTTER_SIZE }}
