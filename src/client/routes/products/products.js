@@ -134,7 +134,7 @@ export function Products() {
                           src={productCategory.imageUrl}
                           alt={productCategory.name}
                           style={{
-                            width: 86,
+                            width: 70,
                             position: "absolute",
                             top: "50%",
                             left: "50%",
