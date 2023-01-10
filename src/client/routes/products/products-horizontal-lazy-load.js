@@ -44,7 +44,7 @@ export function ProdutoHorizontalLazyLoad({
         </div>
       );
     } else {
-      const productFoundInCart = cart.items.find(function (item) {
+      const productFoundInCart = cart.products.find(function (item) {
         return item._id === items[index]._id;
       });
 
@@ -122,7 +122,7 @@ export function ProdutoHorizontalLazyLoad({
                     borderRadius: 4,
                   }}
                   onClick={function () {
-                    add(items[index]);
+                    add(items[index], "products");
                   }}
                 >
                   +

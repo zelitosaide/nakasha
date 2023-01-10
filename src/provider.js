@@ -11,6 +11,8 @@ export function Provider({ children }) {
     items: [],
   });
 
+  console.log(cart);
+
   function add(item, type) {
     const itemExist = cart[type].find(function (i) {
       return i._id === item._id;
