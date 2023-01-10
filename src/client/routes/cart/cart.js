@@ -5,6 +5,8 @@ import { CartContext } from "../../../provider";
 export function Cart() {
   const {
     cart: { boxes, products, recipes },
+    add,
+    remove,
   } = useContext(CartContext);
 
   console.log(boxes, products, recipes);
@@ -41,7 +43,7 @@ export function Cart() {
                   key={product._id}
                   style={{
                     display: "flex",
-                    boxShadow: "0px 4px 16px rgba(0, 0, 0, 0.11)",
+                    // boxShadow: "0px 4px 16px rgba(0, 0, 0, 0.11)",
                     borderRadius: 15,
                     padding: 16,
                     gap: 10,
@@ -80,12 +82,40 @@ export function Cart() {
                       >
                         {product.name}
                       </span>
-                      <span>{product.price} MT</span>
+                      <span
+                        style={{
+                          color: "#33A02B",
+                          display: "block",
+                          fontWeight: 700,
+                        }}
+                      >
+                        {product.price} MT
+                      </span>
                     </div>
-                    <div style={{ background: "pink", width: 40 }}>
-                      <button>-</button>
+                    <div
+                      style={{
+                        background: "pink",
+                        width: 40,
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <button
+                        onClick={function () {
+                          remove(product, "products");
+                        }}
+                      >
+                        -
+                      </button>
                       <span>{product.quantity}</span>
-                      <button>+</button>
+                      <button
+                        onClick={function () {
+                          add(product, "products");
+                        }}
+                      >
+                        +
+                      </button>
                     </div>
                   </div>
                 </li>

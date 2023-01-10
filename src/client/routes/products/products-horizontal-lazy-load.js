@@ -171,7 +171,6 @@ export function ProdutoHorizontalLazyLoad({
         {({ onItemsRendered, ref }) => (
           <List
             className="List"
-            // height={WIDTH}
             height={130}
             itemCount={itemCount}
             itemSize={WIDTH}
