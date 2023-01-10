@@ -95,9 +95,10 @@ export function Products() {
         <div className="horizontal-lazy-load-header">
           <p
             style={{
-              fontSize: 13,
-              fontWeight: 600,
+              fontSize: 12,
+              fontWeight: 700,
               paddingBottom: 12,
+              color: "#444",
             }}
           >
             Categorias de Produtos
