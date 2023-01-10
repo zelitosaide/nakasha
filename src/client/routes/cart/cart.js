@@ -43,11 +43,13 @@ export function Cart() {
                     display: "flex",
                     boxShadow: "0px 4px 16px rgba(0, 0, 0, 0.11)",
                     borderRadius: 10,
+                    padding: 16,
                   }}
                 >
                   <img
                     src={product.imageUrl}
                     alt={product.name}
+                    style={{ width: 80 }}
                   />
                   <div>
                     <span>{product.name}</span>
