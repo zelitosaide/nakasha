@@ -61,16 +61,15 @@ export function ProdutoHorizontalLazyLoad({
             overflow: "hidden",
           }}
         >
-          <Link to={`${items[index].category}/${items[index]._id}`}>
-            <img
-              style={{
-                width: style.width - GUTTER_SIZE,
-                height: style.width - GUTTER_SIZE,
-              }}
-              src={items[index].imageUrl}
-              alt={items[index].name}
-            />
-          </Link>
+          <div style={{ height: 80, overflow: "hidden" }}>
+            <Link to={`${items[index].category}/${items[index]._id}`}>
+              <img
+                style={{ width: style.width - GUTTER_SIZE }}
+                src={items[index].imageUrl}
+                alt={items[index].name}
+              />
+            </Link>
+          </div>
           <div
             style={{
               position: "absolute",
