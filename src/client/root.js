@@ -19,7 +19,7 @@ export function Root() {
   ];
 
   const {
-    cart: { items },
+    cart: { items, products, boxes, recipes },
   } = useContext(CartContext);
 
   return (
@@ -126,7 +126,9 @@ export function Root() {
                           >
                             <Cart style={{ width: 30, color: "white" }} />
                           </NavLink>
-                          {!!items.length && (
+                          {(!!products.length ||
+                            !!boxes.length ||
+                            !!recipes.length) && (
                             <div
                               style={{
                                 position: "absolute",
@@ -141,7 +143,7 @@ export function Root() {
                                 fontWeight: "bold",
                               }}
                             >
-                              {items.length}
+                              {products.length + boxes.length + recipes.length}
                             </div>
                           )}
                         </div>
