@@ -147,9 +147,11 @@ export function Products() {
                           fontSize: 13,
                           textAlign: "center",
                           color: "black",
+                          fontWeight: 400,
                         }}
                       >
-                        {productCategory.name}
+                        {productCategory.name.slice(0, 1).toUpperCase() +
+                          productCategory.name.slice(1)}
                       </p>
                     </Link>
                   </li>
