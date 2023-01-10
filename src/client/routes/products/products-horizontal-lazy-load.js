@@ -51,7 +51,7 @@ export function ProdutoHorizontalLazyLoad({
       content = (
         <div
           style={{
-            background: "#ccc",
+            background: "white",
             width: style.width - GUTTER_SIZE,
             height: 120,
             borderRadius: 6,

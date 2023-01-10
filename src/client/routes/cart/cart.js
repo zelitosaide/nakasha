@@ -44,6 +44,7 @@ export function Cart() {
                     boxShadow: "0px 4px 16px rgba(0, 0, 0, 0.11)",
                     borderRadius: 10,
                     padding: 16,
+                    gap: 10,
                   }}
                 >
                   <img
@@ -51,10 +52,41 @@ export function Cart() {
                     alt={product.name}
                     style={{ width: 80 }}
                   />
-                  <div>
-                    <span>{product.name}</span>
-                    <span>{product.name}</span>
-                    <span>{product.price} MT</span>
+                  <div
+                    style={{
+                      display: "flex",
+                      background: "green",
+                      flexGrow: 1,
+                    }}
+                  >
+                    <div style={{ flexGrow: 1 }}>
+                      <span
+                        style={{
+                          display: "block",
+                          fontSize: 12,
+                          fontWeight: 700,
+                          color: "#444",
+                        }}
+                      >
+                        {product.name}
+                      </span>
+                      <span
+                        style={{
+                          display: "block",
+                          fontSize: 8,
+                          fontWeight: 400,
+                          color: "#444",
+                        }}
+                      >
+                        {product.name}
+                      </span>
+                      <span>{product.price} MT</span>
+                    </div>
+                    <div style={{ background: "pink", width: 40 }}>
+                      <button>-</button>
+                      <span>{product.quantity}</span>
+                      <button>+</button>
+                    </div>
                   </div>
                 </li>
               );
