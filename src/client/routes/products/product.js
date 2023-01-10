@@ -1,6 +1,8 @@
+import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 
 import { baseUrl } from "../../../api";
+import { CartContext } from "../../../provider";
 
 export async function loader({ params }) {
   const productId = params.productId;
@@ -10,12 +12,17 @@ export async function loader({ params }) {
 
 export function Product() {
   const product = useLoaderData();
+  const { cart, add } = useContext(CartContext);
+
+  const productFoundInCart = cart.products.find(function (item) {
+    return item._id === product._id;
+  });
 
   return (
     <div>
-      {/* <p>
+      <p>
         <strong>Nome do Produto:</strong> {product.name}
-      </p> */}
+      </p>
       <p>
         <strong>Category:</strong> {product.category}
       </p>
@@ -30,12 +37,23 @@ export function Product() {
       <p>
         <strong>Price:</strong> {product.price}
       </p>
+
       <p>
         <b>Adicionar ao carinho</b>
       </p>
-      <button>-</button>
-      <span>10</span>
-      <button>+</button>
+      {productFoundInCart && (
+        <>
+          <button>-</button>
+          <span>{productFoundInCart.quantity}</span>
+        </>
+      )}
+      <button
+        onClick={function () {
+          add(product, "products");
+        }}
+      >
+        +
+      </button>
     </div>
   );
 }
