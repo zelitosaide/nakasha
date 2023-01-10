@@ -54,7 +54,6 @@ export function ProdutoHorizontalLazyLoad({
           style={{
             background: "white",
             width: style.width - GUTTER_SIZE,
-            // height: style.width - GUTTER_SIZE,
             height: 120,
             borderRadius: 6,
             position: "relative",
@@ -76,9 +75,10 @@ export function ProdutoHorizontalLazyLoad({
                 fontSize: 10,
                 fontWeight: 700,
                 display: "block",
+                color: "#444",
               }}
             >
-              {items[index].name.split("-")[0]} 2kg
+              {items[index].name.split("-")[0].split(" ")[0]} 2kg
             </span>
 
             <span
@@ -86,10 +86,25 @@ export function ProdutoHorizontalLazyLoad({
                 fontSize: 8,
                 fontWeight: 400,
                 display: "block",
+                color: "#444",
               }}
             >
               {items[index].name}
             </span>
+
+            <div>
+              <span
+                style={{
+                  fontSize: 10,
+                  fontWeight: 900,
+                  display: "block",
+                  color: "#33A02B",
+                  paddingTop: 2,
+                }}
+              >
+                {items[index].price} MT
+              </span>
+            </div>
           </div>
 
           {/* <div
