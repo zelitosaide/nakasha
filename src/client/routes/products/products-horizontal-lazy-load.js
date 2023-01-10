@@ -20,7 +20,7 @@ export function ProdutoHorizontalLazyLoad({
 
   const isItemLoaded = (index) => !hasNextPage || index < items.length;
 
-  const { cart, add, remove } = useContext(CartContext);
+  const { cart, add } = useContext(CartContext);
 
   const GUTTER_SIZE = 12;
   // const WIDTH = 112;
