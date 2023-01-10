@@ -42,9 +42,10 @@ export function Cart() {
                   style={{
                     display: "flex",
                     boxShadow: "0px 4px 16px rgba(0, 0, 0, 0.11)",
-                    borderRadius: 10,
+                    borderRadius: 15,
                     padding: 16,
                     gap: 10,
+                    background: "white",
                   }}
                 >
                   <img
@@ -55,7 +56,6 @@ export function Cart() {
                   <div
                     style={{
                       display: "flex",
-                      background: "green",
                       flexGrow: 1,
                     }}
                   >
