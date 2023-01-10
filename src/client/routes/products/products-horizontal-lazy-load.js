@@ -22,7 +22,9 @@ export function ProdutoHorizontalLazyLoad({
   const { cart, add, remove } = useContext(CartContext);
 
   const GUTTER_SIZE = 12;
-  const WIDTH = 112;
+  // const WIDTH = 112;
+  const WIDTH = 108;
+  // x - 12 = 96
 
   function Item({ index, style }) {
     let content;
@@ -52,7 +54,8 @@ export function ProdutoHorizontalLazyLoad({
           style={{
             background: "#ccc",
             width: style.width - GUTTER_SIZE,
-            height: style.width - GUTTER_SIZE,
+            // height: style.width - GUTTER_SIZE,
+            height: 120,
             borderRadius: 6,
             position: "relative",
             overflow: "hidden",
@@ -136,7 +139,8 @@ export function ProdutoHorizontalLazyLoad({
         {({ onItemsRendered, ref }) => (
           <List
             className="List"
-            height={WIDTH}
+            // height={WIDTH}
+            height={130}
             itemCount={itemCount}
             itemSize={WIDTH}
             onItemsRendered={onItemsRendered}
