@@ -20,13 +20,29 @@ export function Cart() {
           color: "#444",
           padding: "0 20px",
           margin: 0,
+          paddingBottom: 10,
         }}
       >
         Carinho
       </h1>
       {products.length && (
-        <div style={{ padding: "0 20px" }}>
-          <h2 style={{ fontSize: 12, color: "#444" }}>Productos</h2>
+        <div
+          style={{
+            padding: "10px 20px",
+            background: "white",
+            borderRadius: 20,
+          }}
+        >
+          <h2
+            style={{
+              fontSize: 12,
+              color: "#33A02B",
+              paddingBottom: 10,
+              margin: 0,
+            }}
+          >
+            Productos do carinho
+          </h2>
           <ul
             style={{
               margin: 0,
@@ -43,7 +59,7 @@ export function Cart() {
                   key={product._id}
                   style={{
                     display: "flex",
-                    boxShadow: "0px 4px 16px rgba(0, 0, 0, 0.03)",
+                    boxShadow: "0px 4px 16px rgba(0, 0, 0, 0.11)",
                     borderRadius: 20,
                     padding: 14,
                     gap: 10,
@@ -104,6 +120,7 @@ export function Cart() {
                           background: "white",
                           borderTopLeftRadius: 6,
                           borderTopRightRadius: 6,
+                          fontWeight: 700,
                         }}
                         onClick={function () {
                           add(product, "products");
@@ -131,6 +148,7 @@ export function Cart() {
                           background: "white",
                           borderBottomLeftRadius: 6,
                           borderBottomRightRadius: 6,
+                          fontWeight: 700,
                         }}
                         onClick={function () {
                           remove(product, "products");
