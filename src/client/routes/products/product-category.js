@@ -109,8 +109,16 @@ export function ProductCategory() {
               </Link>
             </div>
 
-            <div style={{ display: "flex", paddingLeft: 12, paddingRight: 12 }}>
-              <div style={{ flexGrow: 1, background: "pink" }}>
+            <div
+              style={{
+                display: "flex",
+                paddingLeft: 12,
+                paddingRight: 12,
+                paddingTop: 6,
+                height: 60,
+              }}
+            >
+              <div style={{ flexGrow: 1 }}>
                 <span
                   style={{
                     fontSize: 11,
@@ -140,7 +148,15 @@ export function ProductCategory() {
                     <>{loadedItemsState.items[index].name?.slice(0, 14)}...</>
                   )}
                 </span>
-                <span style={{ display: "block", color: "#33A02B" }}>
+                <span
+                  style={{
+                    fontSize: 11,
+                    fontWeight: 900,
+                    display: "block",
+                    color: "#33A02B",
+                    paddingTop: 2,
+                  }}
+                >
                   {loadedItemsState.items[index].price} MT
                 </span>
               </div>
