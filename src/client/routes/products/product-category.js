@@ -109,31 +109,29 @@ export function ProductCategory() {
               </span>
             </div>
             <div>
-              <button>+</button>
-              <span style={{ display: "block" }}>10</span>
-              <button>-</button>
+              <button
+                onClick={function () {
+                  add(loadedItemsState.items[index], "products");
+                }}
+              >
+                +
+              </button>
+              {productFoundInCart && (
+                <>
+                  <span style={{ display: "block" }}>
+                    {productFoundInCart.quantity}
+                  </span>
+                  <button
+                    onClick={function () {
+                      remove(loadedItemsState.items[index], "products");
+                    }}
+                  >
+                    -
+                  </button>
+                </>
+              )}
             </div>
           </div>
-          {/* {loadedItemsState.items[index].name
-            ? loadedItemsState.items[index].name.split(" ")[0]
-            : ""}
-          {productFoundInCart ? (
-            <button
-              onClick={function () {
-                remove(loadedItemsState.items[index]);
-              }}
-            >
-              -
-            </button>
-          ) : null}
-          <span>{productFoundInCart ? productFoundInCart.quantity : ""}</span>
-          <button
-            onClick={function () {
-              add(loadedItemsState.items[index]);
-            }}
-          >
-            +
-          </button> */}
         </div>
       );
     });
