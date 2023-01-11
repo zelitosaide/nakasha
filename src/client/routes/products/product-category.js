@@ -80,11 +80,21 @@ export function ProductCategory() {
           }}
           key={index}
         >
-          <div style={{ height: 80, background: "yellow" }}>
-            <Link to={loadedItemsState.items[index]._id}>
+          <div style={{ height: 80, overflow: "hidden" }}>
+            <Link
+              to={loadedItemsState.items[index]._id}
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: 80,
+                background: "yellow",
+              }}
+            >
               <img
                 src={loadedItemsState.items[index].imageUrl}
                 alt={loadedItemsState.items[index].name}
+                style={{ width: 50 }}
               />
             </Link>
           </div>
