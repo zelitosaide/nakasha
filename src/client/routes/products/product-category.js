@@ -77,6 +77,10 @@ export function ProductCategory() {
             height: 140,
             width: "48%",
             boxSizing: "border-box",
+            padding: 2,
+            background: "white",
+            borderRadius: 15,
+            overflow: "hidden",
           }}
           key={index}
         >
@@ -88,13 +92,12 @@ export function ProductCategory() {
                 justifyContent: "center",
                 alignItems: "center",
                 height: 80,
-                background: "yellow",
               }}
             >
               <img
                 src={loadedItemsState.items[index].imageUrl}
                 alt={loadedItemsState.items[index].name}
-                style={{ width: 50 }}
+                style={{ width: 90 }}
               />
             </Link>
           </div>
