@@ -109,7 +109,9 @@ export function ProductCategory() {
 
   return (
     <div>
-      <h4>Categoria das Produtos: hortalicas</h4>
+      <h4 style={{ margin: 0, padding: 0 }}>
+        Categoria das Produtos: hortalicas
+      </h4>
       <InfiniteScroll
         dataLength={loadedItemsState.items.length}
         next={fetchMoreData}
