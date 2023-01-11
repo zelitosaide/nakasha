@@ -61,13 +61,14 @@ export function Cart() {
                       flexGrow: 1,
                     }}
                   >
-                    <div style={{ flexGrow: 1 }}>
+                    <div style={{ flexGrow: 1, background: "pink" }}>
                       <span
                         style={{
                           display: "block",
                           fontSize: 12,
                           fontWeight: 700,
                           color: "#444",
+                          paddingTop: 5,
                         }}
                       >
                         {product.name}
@@ -77,7 +78,7 @@ export function Cart() {
                           display: "block",
                           fontSize: 8,
                           fontWeight: 400,
-                          color: "#444",
+                          color: "#777",
                         }}
                       >
                         {product.name}
@@ -86,7 +87,9 @@ export function Cart() {
                         style={{
                           color: "#33A02B",
                           display: "block",
-                          fontWeight: 700,
+                          fontWeight: 900,
+                          fontSize: 11,
+                          paddingTop: 5,
                         }}
                       >
                         {product.price} MT
