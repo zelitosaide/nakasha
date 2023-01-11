@@ -3,7 +3,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 import { CartContext } from "../../../provider";
 import { baseUrl } from "../../../api";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 export async function loader({ params }) {
   return params.productCategoryId;
@@ -80,7 +80,15 @@ export function ProductCategory() {
           }}
           key={index}
         >
-          {loadedItemsState.items[index].name
+          <div>
+            <Link to={loadedItemsState.items[index]._id}>
+              <img
+                src={loadedItemsState.items[index].imageUrl}
+                alt={loadedItemsState.items[index].name}
+              />
+            </Link>
+          </div>
+          {/* {loadedItemsState.items[index].name
             ? loadedItemsState.items[index].name.split(" ")[0]
             : ""}
           {productFoundInCart ? (
@@ -99,7 +107,7 @@ export function ProductCategory() {
             }}
           >
             +
-          </button>
+          </button> */}
         </div>
       );
     });
