@@ -73,9 +73,9 @@ export function ProductCategory() {
             border: "1px solid green",
             marginRight: 12,
             marginBottom: 12,
-            padding: 8,
             width: "40%",
             display: "inline-block",
+            height: 140,
           }}
           key={index}
         >
