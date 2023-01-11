@@ -74,7 +74,7 @@ export function ProductCategory() {
             marginRight: index % 2 === 1 ? 20 : 0,
             marginBottom: 16,
             display: "inline-block",
-            height: 140,
+            height: 155,
             width: "calc(50% - 20px)",
             boxSizing: "border-box",
           }}
@@ -82,7 +82,7 @@ export function ProductCategory() {
         >
           <div
             style={{
-              height: 140,
+              height: 155,
               width: "96%",
               marginLeft: index % 2 === 1 ? "4%" : 0,
               boxShadow: "0px 4px 16px rgba(0, 0, 0, 0.11)",
@@ -116,7 +116,7 @@ export function ProductCategory() {
                 paddingLeft: 12,
                 paddingRight: 12,
                 paddingTop: 6,
-                height: 60,
+                height: 75,
               }}
             >
               <div style={{ flexGrow: 1 }}>
