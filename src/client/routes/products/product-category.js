@@ -70,7 +70,6 @@ export function ProductCategory() {
       return (
         <div
           style={{
-            height: 30,
             border: "1px solid green",
             marginRight: 12,
             marginBottom: 12,
@@ -87,6 +86,18 @@ export function ProductCategory() {
                 alt={loadedItemsState.items[index].name}
               />
             </Link>
+          </div>
+          <div>
+            <div>
+              <span>
+                {
+                  loadedItemsState.items[index].name
+                    ?.split("-")[0]
+                    ?.split(" ")[0]
+                }{" "}
+                2kg
+              </span>
+            </div>
           </div>
           {/* {loadedItemsState.items[index].name
             ? loadedItemsState.items[index].name.split(" ")[0]
