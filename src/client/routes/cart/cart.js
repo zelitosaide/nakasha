@@ -44,7 +44,7 @@ export function Cart() {
                   style={{
                     display: "flex",
                     boxShadow: "0px 4px 16px rgba(0, 0, 0, 0.03)",
-                    borderRadius: 15,
+                    borderRadius: 20,
                     padding: 14,
                     gap: 10,
                     background: "white",
@@ -95,29 +95,34 @@ export function Cart() {
                         {product.price} MT
                       </span>
                     </div>
-                    <div
-                      style={{
-                        background: "pink",
-                        width: 40,
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "center",
-                      }}
-                    >
+                    <div style={{ background: "pink" }}>
                       <button
-                        onClick={function () {
-                          remove(product, "products");
-                        }}
-                      >
-                        -
-                      </button>
-                      <span>{product.quantity}</span>
-                      <button
+                        style={{ display: "block" }}
                         onClick={function () {
                           add(product, "products");
                         }}
                       >
                         +
+                      </button>
+                      <span
+                        style={{
+                          display: "block",
+                          textAlign: "center",
+                          color: "white",
+                          background: "#33A02B",
+                          fontSize: 11,
+                          padding: "2px 0",
+                        }}
+                      >
+                        {product.quantity}0
+                      </span>
+                      <button
+                        style={{ display: "block" }}
+                        onClick={function () {
+                          remove(product, "products");
+                        }}
+                      >
+                        -
                       </button>
                     </div>
                   </div>
