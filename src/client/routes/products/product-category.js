@@ -117,7 +117,7 @@ export function ProductCategory() {
           paddingBottom: 10,
         }}
       >
-        {category.slice(0, 1).toUpperCase() + category}
+        {category.slice(0, 1).toUpperCase() + category.slice(1)}
       </h1>
       <div
         style={{
