@@ -72,7 +72,7 @@ export function ProductCategory() {
           style={{
             border: "1px solid green",
             marginRight: index % 2 === 0 ? "4%" : 0,
-            marginBottom: 12,
+            marginBottom: 16,
             display: "inline-block",
             height: 140,
             width: "48%",
