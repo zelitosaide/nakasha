@@ -89,7 +89,7 @@ export function ProductCategory() {
           </div>
           <div>
             <div>
-              <span>
+              <span style={{ display: "block" }}>
                 {
                   loadedItemsState.items[index].name
                     ?.split("-")[0]
@@ -97,12 +97,15 @@ export function ProductCategory() {
                 }{" "}
                 2kg
               </span>
-              <span>
+              <span style={{ display: "block" }}>
                 {loadedItemsState.items[index].name?.length < 14 ? (
                   loadedItemsState.items[index].name
                 ) : (
                   <>{loadedItemsState.items[index].name?.slice(0, 14)}...</>
                 )}
+              </span>
+              <span style={{ display: "block", color: "#33A02B" }}>
+                {loadedItemsState.items[index].price} MT
               </span>
             </div>
           </div>
