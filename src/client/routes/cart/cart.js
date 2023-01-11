@@ -61,14 +61,14 @@ export function Cart() {
                       flexGrow: 1,
                     }}
                   >
-                    <div style={{ flexGrow: 1, background: "pink" }}>
+                    <div style={{ flexGrow: 1 }}>
                       <span
                         style={{
                           display: "block",
                           fontSize: 12,
                           fontWeight: 700,
                           color: "#444",
-                          paddingTop: 5,
+                          paddingTop: 10,
                         }}
                       >
                         {product.name}
