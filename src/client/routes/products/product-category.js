@@ -77,7 +77,6 @@ export function ProductCategory() {
             height: 140,
             width: "calc(50% - 20px)",
             boxSizing: "border-box",
-            background: "pink",
           }}
           key={index}
         >
@@ -88,70 +87,74 @@ export function ProductCategory() {
               marginLeft: index % 2 === 1 ? "4%" : 0,
               boxShadow: "0px 4px 16px rgba(0, 0, 0, 0.11)",
               background: "white",
+              borderRadius: 15,
+              overflow: "hidden",
             }}
-          ></div>
-          {/* <div style={{ height: 80, overflow: "hidden" }}>
-            <Link
-              to={loadedItemsState.items[index]._id}
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                height: 80,
-              }}
-            >
-              <img
-                src={loadedItemsState.items[index].imageUrl}
-                alt={loadedItemsState.items[index].name}
-                style={{ width: 90 }}
-              />
-            </Link>
-          </div>
-          <div style={{ display: "flex" }}>
-            <div style={{ flexGrow: 1, background: "pink" }}>
-              <span style={{ display: "block" }}>
-                {
-                  loadedItemsState.items[index].name
-                    ?.split("-")[0]
-                    ?.split(" ")[0]
-                }{" "}
-                2kg
-              </span>
-              <span style={{ display: "block" }}>
-                {loadedItemsState.items[index].name?.length < 14 ? (
-                  loadedItemsState.items[index].name
-                ) : (
-                  <>{loadedItemsState.items[index].name?.slice(0, 14)}...</>
-                )}
-              </span>
-              <span style={{ display: "block", color: "#33A02B" }}>
-                {loadedItemsState.items[index].price} MT
-              </span>
-            </div>
-            <div>
-              <button
-                onClick={function () {
-                  add(loadedItemsState.items[index], "products");
+          >
+            <div style={{ height: 80, overflow: "hidden", background: "pink" }}>
+              <Link
+                to={loadedItemsState.items[index]._id}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  height: 80,
                 }}
               >
-                +
-              </button>
-              {productFoundInCart && (
-                <>
-                  <span style={{ display: "block" }}>
-                    {productFoundInCart.quantity}
-                  </span>
-                  <button
-                    onClick={function () {
-                      remove(loadedItemsState.items[index], "products");
-                    }}
-                  >
-                    -
-                  </button>
-                </>
-              )}
+                <img
+                  src={loadedItemsState.items[index].imageUrl}
+                  alt={loadedItemsState.items[index].name}
+                  style={{ width: 90 }}
+                />
+              </Link>
             </div>
-          </div> */}
+
+            <div style={{ display: "flex" }}>
+              <div style={{ flexGrow: 1, background: "pink" }}>
+                <span style={{ display: "block" }}>
+                  {
+                    loadedItemsState.items[index].name
+                      ?.split("-")[0]
+                      ?.split(" ")[0]
+                  }{" "}
+                  2kg
+                </span>
+                <span style={{ display: "block" }}>
+                  {loadedItemsState.items[index].name?.length < 14 ? (
+                    loadedItemsState.items[index].name
+                  ) : (
+                    <>{loadedItemsState.items[index].name?.slice(0, 14)}...</>
+                  )}
+                </span>
+                <span style={{ display: "block", color: "#33A02B" }}>
+                  {loadedItemsState.items[index].price} MT
+                </span>
+              </div>
+              <div>
+                <button
+                  onClick={function () {
+                    add(loadedItemsState.items[index], "products");
+                  }}
+                >
+                  +
+                </button>
+                {productFoundInCart && (
+                  <>
+                    <span style={{ display: "block" }}>
+                      {productFoundInCart.quantity}
+                    </span>
+                    <button
+                      onClick={function () {
+                        remove(loadedItemsState.items[index], "products");
+                      }}
+                    >
+                      -
+                    </button>
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
       );
     });
