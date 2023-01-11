@@ -34,7 +34,7 @@ export function Cart() {
               listStyle: "none",
               display: "flex",
               flexDirection: "column",
-              gap: 16,
+              gap: 12,
             }}
           >
             {products.map(function (product) {
@@ -43,9 +43,9 @@ export function Cart() {
                   key={product._id}
                   style={{
                     display: "flex",
-                    // boxShadow: "0px 4px 16px rgba(0, 0, 0, 0.11)",
+                    boxShadow: "0px 4px 16px rgba(0, 0, 0, 0.03)",
                     borderRadius: 15,
-                    padding: 16,
+                    padding: 14,
                     gap: 10,
                     background: "white",
                   }}
@@ -53,7 +53,7 @@ export function Cart() {
                   <img
                     src={product.imageUrl}
                     alt={product.name}
-                    style={{ width: 80 }}
+                    style={{ width: 70 }}
                   />
                   <div
                     style={{
@@ -89,7 +89,7 @@ export function Cart() {
                           display: "block",
                           fontWeight: 900,
                           fontSize: 11,
-                          paddingTop: 5,
+                          paddingTop: 3,
                         }}
                       >
                         {product.price} MT
