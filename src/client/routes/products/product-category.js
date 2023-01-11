@@ -126,7 +126,14 @@ export function ProductCategory() {
                   }{" "}
                   2kg
                 </span>
-                <span style={{ display: "block" }}>
+                <span
+                  style={{
+                    fontSize: 9,
+                    fontWeight: 400,
+                    display: "block",
+                    color: "#777",
+                  }}
+                >
                   {loadedItemsState.items[index].name?.length < 14 ? (
                     loadedItemsState.items[index].name
                   ) : (
