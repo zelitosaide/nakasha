@@ -5,16 +5,6 @@ import { CartContext } from "../../../provider";
 import { baseUrl } from "../../../api";
 import { useLoaderData } from "react-router-dom";
 
-const style = {
-  height: 30,
-  border: "1px solid green",
-  marginRight: 12,
-  marginBottom: 12,
-  padding: 8,
-  width: "40%",
-  display: "inline-block",
-};
-
 export async function loader({ params }) {
   return params.productCategoryId;
 }
@@ -79,7 +69,15 @@ export function ProductCategory() {
 
       return (
         <div
-          style={style}
+          style={{
+            height: 30,
+            border: "1px solid green",
+            marginRight: 12,
+            marginBottom: 12,
+            padding: 8,
+            width: "40%",
+            display: "inline-block",
+          }}
           key={index}
         >
           {loadedItemsState.items[index].name
@@ -109,9 +107,18 @@ export function ProductCategory() {
 
   return (
     <div>
-      <h4 style={{ margin: 0, padding: 0 }}>
-        Categoria das Produtos: hortalicas
-      </h4>
+      <h1
+        style={{
+          fontSize: 12,
+          fontWeight: 700,
+          color: "#444",
+          padding: "0 20px",
+          margin: 0,
+          paddingBottom: 10,
+        }}
+      >
+        {category.slice(0, 1).toUpperCase() + category}
+      </h1>
       <InfiniteScroll
         dataLength={loadedItemsState.items.length}
         next={fetchMoreData}
