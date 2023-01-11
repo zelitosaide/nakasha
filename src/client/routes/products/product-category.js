@@ -72,7 +72,8 @@ export function ProductCategory() {
           style={{
             marginLeft: index % 2 === 0 ? 20 : 0,
             marginRight: index % 2 === 1 ? 20 : 0,
-            marginBottom: 16,
+            marginBottom: 12,
+            marginTop: 4,
             display: "inline-block",
             height: 155,
             width: "calc(50% - 20px)",
@@ -186,10 +187,7 @@ export function ProductCategory() {
                       style={{
                         display: "block",
                         textAlign: "center",
-                        // color: "white",
-                        // background: "#33A02B",
                         fontSize: 11,
-                        // padding: "2px 0",
                       }}
                     >
                       {productFoundInCart.quantity}
