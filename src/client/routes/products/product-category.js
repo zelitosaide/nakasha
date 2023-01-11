@@ -182,12 +182,32 @@ export function ProductCategory() {
                 </button>
                 {productFoundInCart && (
                   <>
-                    <span style={{ display: "block" }}>
+                    <span
+                      style={{
+                        display: "block",
+                        textAlign: "center",
+                        // color: "white",
+                        // background: "#33A02B",
+                        fontSize: 11,
+                        // padding: "2px 0",
+                      }}
+                    >
                       {productFoundInCart.quantity}
                     </span>
                     <button
                       onClick={function () {
                         remove(loadedItemsState.items[index], "products");
+                      }}
+                      style={{
+                        border: "none",
+                        outline: "none",
+                        background: "#33A02B",
+                        color: "white",
+                        width: 20,
+                        height: 18,
+                        fontWeight: 700,
+                        fontSize: 12,
+                        borderRadius: 4,
                       }}
                     >
                       -
