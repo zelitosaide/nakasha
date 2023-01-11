@@ -70,17 +70,13 @@ export function ProductCategory() {
       return (
         <div
           style={{
-            boxShadow: "0px 4px 16px rgba(0, 0, 0, 0.11)",
             marginLeft: index % 2 === 0 ? 20 : 0,
             marginRight: index % 2 === 1 ? 20 : 0,
-            // marginBottom: 16,
             display: "inline-block",
             height: 140,
             width: "calc(50% - 20px)",
             boxSizing: "border-box",
-            background: "white",
-            borderRadius: 15,
-            overflow: "hidden",
+            background: "pink",
           }}
           key={index}
         >
@@ -167,7 +163,7 @@ export function ProductCategory() {
       </h1>
       <div
         style={{
-          // padding: "10px 20px 20px 20px",
+          padding: "20px 0",
           background: "white",
           borderRadius: 20,
         }}
