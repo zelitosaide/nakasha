@@ -28,7 +28,7 @@ export function Cart() {
       {products.length && (
         <div
           style={{
-            padding: "10px 20px",
+            padding: "10px 20px 20px 20px",
             background: "white",
             borderRadius: 20,
           }}
