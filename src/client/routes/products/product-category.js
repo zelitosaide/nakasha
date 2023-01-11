@@ -87,8 +87,8 @@ export function ProductCategory() {
               />
             </Link>
           </div>
-          <div>
-            <div>
+          <div style={{ display: "flex" }}>
+            <div style={{ flexGrow: 1, background: "pink" }}>
               <span style={{ display: "block" }}>
                 {
                   loadedItemsState.items[index].name
@@ -107,6 +107,11 @@ export function ProductCategory() {
               <span style={{ display: "block", color: "#33A02B" }}>
                 {loadedItemsState.items[index].price} MT
               </span>
+            </div>
+            <div>
+              <button>+</button>
+              <span style={{ display: "block" }}>10</span>
+              <button>-</button>
             </div>
           </div>
           {/* {loadedItemsState.items[index].name
