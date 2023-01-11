@@ -91,7 +91,7 @@ export function ProductCategory() {
               overflow: "hidden",
             }}
           >
-            <div style={{ height: 80, overflow: "hidden", background: "pink" }}>
+            <div style={{ height: 80, overflow: "hidden" }}>
               <Link
                 to={loadedItemsState.items[index]._id}
                 style={{
@@ -109,9 +109,16 @@ export function ProductCategory() {
               </Link>
             </div>
 
-            <div style={{ display: "flex" }}>
+            <div style={{ display: "flex", paddingLeft: 12, paddingRight: 12 }}>
               <div style={{ flexGrow: 1, background: "pink" }}>
-                <span style={{ display: "block" }}>
+                <span
+                  style={{
+                    fontSize: 11,
+                    fontWeight: 700,
+                    display: "block",
+                    color: "#444",
+                  }}
+                >
                   {
                     loadedItemsState.items[index].name
                       ?.split("-")[0]
