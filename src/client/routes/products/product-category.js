@@ -70,21 +70,21 @@ export function ProductCategory() {
       return (
         <div
           style={{
-            border: "1px solid green",
-            marginRight: index % 2 === 0 ? "4%" : 0,
-            marginBottom: 16,
+            boxShadow: "0px 4px 16px rgba(0, 0, 0, 0.11)",
+            marginLeft: index % 2 === 0 ? 20 : 0,
+            marginRight: index % 2 === 1 ? 20 : 0,
+            // marginBottom: 16,
             display: "inline-block",
             height: 140,
-            width: "48%",
+            width: "calc(50% - 20px)",
             boxSizing: "border-box",
-            padding: 2,
             background: "white",
             borderRadius: 15,
             overflow: "hidden",
           }}
           key={index}
         >
-          <div style={{ height: 80, overflow: "hidden" }}>
+          {/* <div style={{ height: 80, overflow: "hidden" }}>
             <Link
               to={loadedItemsState.items[index]._id}
               style={{
@@ -145,7 +145,7 @@ export function ProductCategory() {
                 </>
               )}
             </div>
-          </div>
+          </div> */}
         </div>
       );
     });
@@ -167,7 +167,7 @@ export function ProductCategory() {
       </h1>
       <div
         style={{
-          padding: "10px 20px 20px 20px",
+          // padding: "10px 20px 20px 20px",
           background: "white",
           borderRadius: 20,
         }}
