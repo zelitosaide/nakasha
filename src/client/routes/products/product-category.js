@@ -72,6 +72,7 @@ export function ProductCategory() {
           style={{
             marginLeft: index % 2 === 0 ? 20 : 0,
             marginRight: index % 2 === 1 ? 20 : 0,
+            marginBottom: 16,
             display: "inline-block",
             height: 140,
             width: "calc(50% - 20px)",
@@ -80,6 +81,15 @@ export function ProductCategory() {
           }}
           key={index}
         >
+          <div
+            style={{
+              height: 140,
+              width: "96%",
+              marginLeft: index % 2 === 1 ? "4%" : 0,
+              boxShadow: "0px 4px 16px rgba(0, 0, 0, 0.11)",
+              background: "white",
+            }}
+          ></div>
           {/* <div style={{ height: 80, overflow: "hidden" }}>
             <Link
               to={loadedItemsState.items[index]._id}
