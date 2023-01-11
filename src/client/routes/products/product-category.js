@@ -119,14 +119,22 @@ export function ProductCategory() {
       >
         {category.slice(0, 1).toUpperCase() + category}
       </h1>
-      <InfiniteScroll
-        dataLength={loadedItemsState.items.length}
-        next={fetchMoreData}
-        hasMore={loadedItemsState.hasNextPage}
-        loader={<h4>Loading...</h4>}
+      <div
+        style={{
+          padding: "10px 20px 20px 20px",
+          background: "white",
+          borderRadius: 20,
+        }}
       >
-        <Cells />
-      </InfiniteScroll>
+        <InfiniteScroll
+          dataLength={loadedItemsState.items.length}
+          next={fetchMoreData}
+          hasMore={loadedItemsState.hasNextPage}
+          loader={<h4>Loading...</h4>}
+        >
+          <Cells />
+        </InfiniteScroll>
+      </div>
     </div>
   );
 }
