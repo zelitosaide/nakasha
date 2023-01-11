@@ -97,6 +97,13 @@ export function ProductCategory() {
                 }{" "}
                 2kg
               </span>
+              <span>
+                {loadedItemsState.items[index].name?.length < 14 ? (
+                  loadedItemsState.items[index].name
+                ) : (
+                  <>{loadedItemsState.items[index].name?.slice(0, 14)}...</>
+                )}
+              </span>
             </div>
           </div>
           {/* {loadedItemsState.items[index].name
