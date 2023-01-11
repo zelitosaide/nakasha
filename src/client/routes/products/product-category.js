@@ -166,6 +166,17 @@ export function ProductCategory() {
                   onClick={function () {
                     add(loadedItemsState.items[index], "products");
                   }}
+                  style={{
+                    border: "none",
+                    outline: "none",
+                    background: "#33A02B",
+                    color: "white",
+                    width: 20,
+                    height: 18,
+                    fontWeight: 700,
+                    fontSize: 12,
+                    borderRadius: 4,
+                  }}
                 >
                   +
                 </button>
