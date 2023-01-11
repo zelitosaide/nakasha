@@ -95,9 +95,16 @@ export function Cart() {
                         {product.price} MT
                       </span>
                     </div>
-                    <div style={{ background: "pink" }}>
+                    <div>
                       <button
-                        style={{ display: "block" }}
+                        style={{
+                          display: "block",
+                          width: 24,
+                          border: "1px solid #3fc936",
+                          background: "white",
+                          borderTopLeftRadius: 6,
+                          borderTopRightRadius: 6,
+                        }}
                         onClick={function () {
                           add(product, "products");
                         }}
@@ -114,10 +121,17 @@ export function Cart() {
                           padding: "2px 0",
                         }}
                       >
-                        {product.quantity}0
+                        {product.quantity}
                       </span>
                       <button
-                        style={{ display: "block" }}
+                        style={{
+                          display: "block",
+                          width: 24,
+                          border: "1px solid #3fc936",
+                          background: "white",
+                          borderBottomLeftRadius: 6,
+                          borderBottomRightRadius: 6,
+                        }}
                         onClick={function () {
                           remove(product, "products");
                         }}
