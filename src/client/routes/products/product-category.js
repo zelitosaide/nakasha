@@ -89,6 +89,7 @@ export function ProductCategory() {
               background: "white",
               borderRadius: 15,
               overflow: "hidden",
+              padding: 6,
             }}
           >
             <div style={{ height: 80, overflow: "hidden" }}>
