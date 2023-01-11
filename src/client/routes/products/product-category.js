@@ -71,15 +71,16 @@ export function ProductCategory() {
         <div
           style={{
             border: "1px solid green",
-            marginRight: 12,
+            marginRight: index % 2 === 0 ? "4%" : 0,
             marginBottom: 12,
-            width: "40%",
             display: "inline-block",
             height: 140,
+            width: "48%",
+            boxSizing: "border-box",
           }}
           key={index}
         >
-          <div>
+          <div style={{ height: 80, background: "yellow" }}>
             <Link to={loadedItemsState.items[index]._id}>
               <img
                 src={loadedItemsState.items[index].imageUrl}
