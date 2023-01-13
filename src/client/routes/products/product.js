@@ -37,19 +37,37 @@ export function Product() {
           padding: "20px 0",
           background: "white",
           borderRadius: 20,
+          paddingLeft: 20,
+          paddingRight: 20,
         }}
-      ></div>
+      >
+        <div
+          style={{
+            // background: "pink",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <img
+            src={product.imageUrl}
+            alt={product.name}
+            style={{ width: "200px" }}
+          />
+        </div>
+        <div>
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s.
+          </p>
+        </div>
+      </div>
 
       <p>
         <strong>Category:</strong> {product.category}
       </p>
       <p>
         <strong>Image:</strong>{" "}
-        <img
-          src={product.imageUrl}
-          alt={product.name}
-          style={{ width: "200px" }}
-        />
       </p>
       <p>
         <strong>Price:</strong> {product.price}
