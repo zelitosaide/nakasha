@@ -162,7 +162,7 @@ export function ProductCategory() {
                   {loadedItemsState.items[index].price} MT
                 </span>
               </div>
-              <div>
+              <div style={{ background: "pink" }}>
                 <button
                   onClick={function () {
                     add(loadedItemsState.items[index], "products");
@@ -176,7 +176,7 @@ export function ProductCategory() {
                     height: 18,
                     fontWeight: 700,
                     fontSize: 12,
-                    borderRadius: 4,
+                    // borderRadius: 4,
                   }}
                 >
                   +
@@ -188,6 +188,8 @@ export function ProductCategory() {
                         display: "block",
                         textAlign: "center",
                         fontSize: 11,
+                        background: "#33A02B",
+                        color: "white",
                       }}
                     >
                       {productFoundInCart.quantity}
@@ -205,7 +207,7 @@ export function ProductCategory() {
                         height: 18,
                         fontWeight: 700,
                         fontSize: 12,
-                        borderRadius: 4,
+                        // borderRadius: 4,
                       }}
                     >
                       -
