@@ -20,9 +20,26 @@ export function Product() {
 
   return (
     <div>
-      <p>
-        <strong>Nome do Produto:</strong> {product.name}
-      </p>
+      <h1
+        style={{
+          fontSize: 12,
+          fontWeight: 700,
+          color: "#444",
+          padding: "0 20px",
+          margin: 0,
+          paddingBottom: 10,
+        }}
+      >
+        {product.name}
+      </h1>
+      <div
+        style={{
+          padding: "20px 0",
+          background: "white",
+          borderRadius: 20,
+        }}
+      ></div>
+
       <p>
         <strong>Category:</strong> {product.category}
       </p>
