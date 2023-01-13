@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 
 import { baseUrl } from "../../../api";
+import { Cart } from "../../../assets/icons/cart";
 import { CartContext } from "../../../provider";
 
 export async function loader({ params }) {
@@ -60,7 +61,7 @@ export function Product() {
               fontSize: 12,
               fontWeight: 700,
               color: "#444",
-              margin: 0,
+              marginBottom: 0,
             }}
           >
             Descrição do Produto
@@ -71,11 +72,13 @@ export function Product() {
               fontWeight: 400,
               color: "#444",
               marginBottom: 6,
+              marginTop: 6,
+              lineHeight: 1.4,
             }}
           >
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s.
+            Inclui: Tomate(1Kg), Alface(1Kg), Cebola(5kg), Alho(10Kg),
+            Pimenta(2Kg), Brócolis(1Kg), repolho(1Kg), alface(1Kg), Couve(1kg),
+            cebola(1Kg)
           </p>
           <p
             style={{
@@ -92,18 +95,21 @@ export function Product() {
               add(product, "products");
             }}
             style={{
-              display: "block",
+              display: "flex",
               width: "100%",
               marginTop: 10,
               border: "none",
               outline: "none",
-              borderRadius: 20,
+              borderRadius: 22,
               background: "#EF7200",
               color: "white",
-              padding: 13,
+              height: 44,
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
-            Adicionar ao carinho
+            <Cart style={{ width: 26, color: "white" }} />
+            <span style={{ marginLeft: 10 }}>Adicionar ao carinho</span>
           </button>
         </div>
       </div>
