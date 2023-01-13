@@ -106,7 +106,7 @@ export function ProductCategory() {
                 <img
                   src={loadedItemsState.items[index].imageUrl}
                   alt={loadedItemsState.items[index].name}
-                  style={{ width: 90 }}
+                  style={{ width: 80 }}
                 />
               </Link>
             </div>
@@ -162,7 +162,13 @@ export function ProductCategory() {
                   {loadedItemsState.items[index].price} MT
                 </span>
               </div>
-              <div style={{ background: "pink" }}>
+              <div
+                style={{
+                  // background: "pink",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
                 <button
                   onClick={function () {
                     add(loadedItemsState.items[index], "products");
@@ -176,6 +182,7 @@ export function ProductCategory() {
                     height: 18,
                     fontWeight: 700,
                     fontSize: 12,
+                    borderTopLeftRadius: 8,
                     // borderRadius: 4,
                   }}
                 >
