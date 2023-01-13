@@ -63,30 +63,52 @@ export function Product() {
               margin: 0,
             }}
           >
-            Descricao do Produto
+            Descrição do Produto
           </h1>
-          <p style={{ fontSize: 12, fontWeight: 400, color: "#444" }}>
+          <p
+            style={{
+              fontSize: 12,
+              fontWeight: 400,
+              color: "#444",
+              marginBottom: 6,
+            }}
+          >
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
             ever since the 1500s.
           </p>
+          <p
+            style={{
+              color: "#33A02B",
+              fontWeight: 900,
+              fontSize: 18,
+              margin: 0,
+            }}
+          >
+            {product.price} MT
+          </p>
+          <button
+            onClick={function () {
+              add(product, "products");
+            }}
+            style={{
+              display: "block",
+              width: "100%",
+              marginTop: 10,
+              border: "none",
+              outline: "none",
+              borderRadius: 20,
+              background: "#EF7200",
+              color: "white",
+              padding: 13,
+            }}
+          >
+            Adicionar ao carinho
+          </button>
         </div>
       </div>
 
-      <p>
-        <strong>Category:</strong> {product.category}
-      </p>
-      <p>
-        <strong>Image:</strong>{" "}
-      </p>
-      <p>
-        <strong>Price:</strong> {product.price}
-      </p>
-
-      <p>
-        <b>Adicionar ao carinho</b>
-      </p>
-      {productFoundInCart && (
+      {/* {productFoundInCart && (
         <>
           <button
             onClick={function () {
@@ -104,7 +126,7 @@ export function Product() {
         }}
       >
         +
-      </button>
+      </button> */}
     </div>
   );
 }
