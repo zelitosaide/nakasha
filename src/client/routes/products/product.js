@@ -55,7 +55,17 @@ export function Product() {
           />
         </div>
         <div>
-          <p>
+          <h1
+            style={{
+              fontSize: 12,
+              fontWeight: 700,
+              color: "#444",
+              margin: 0,
+            }}
+          >
+            Descricao do Produto
+          </h1>
+          <p style={{ fontSize: 12, fontWeight: 400, color: "#444" }}>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
             ever since the 1500s.
