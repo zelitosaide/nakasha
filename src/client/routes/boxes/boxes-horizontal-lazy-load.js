@@ -43,7 +43,7 @@ export function BoxesHorizontalLazyLoad({
         </div>
       );
     } else {
-      const boxFoundInCart = cart.items.find(function (item) {
+      const boxFoundInCart = cart.boxes.find(function (item) {
         return item._id === items[index]._id;
       });
 

@@ -77,7 +77,7 @@ export function BoxCategory() {
         loader={<h4>Loading...</h4>}
       >
         {loadedItemsState.items.map((i, index) => {
-          const boxFoundInCart = cart.items.find(function (item) {
+          const boxFoundInCart = cart.boxes.find(function (item) {
             return item._id === loadedItemsState.items[index]._id;
           });
 
