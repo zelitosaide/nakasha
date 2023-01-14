@@ -66,7 +66,20 @@ export function Product() {
             Descrição do Produto
           </h1>
 
-          {product.description && (
+          {product.description ? (
+            <p
+              style={{
+                fontSize: 12,
+                fontWeight: 400,
+                color: "#444",
+                marginBottom: 6,
+                marginTop: 6,
+                lineHeight: 1.4,
+              }}
+            >
+              {product.descriptionn}
+            </p>
+          ) : (
             <p
               style={{
                 fontSize: 12,
