@@ -44,7 +44,6 @@ export function Product() {
       >
         <div
           style={{
-            // background: "pink",
             display: "flex",
             justifyContent: "center",
           }}
@@ -66,20 +65,24 @@ export function Product() {
           >
             Descrição do Produto
           </h1>
-          <p
-            style={{
-              fontSize: 12,
-              fontWeight: 400,
-              color: "#444",
-              marginBottom: 6,
-              marginTop: 6,
-              lineHeight: 1.4,
-            }}
-          >
-            Inclui: Tomate(1Kg), Alface(1Kg), Cebola(5kg), Alho(10Kg),
-            Pimenta(2Kg), Brócolis(1Kg), repolho(1Kg), alface(1Kg), Couve(1kg),
-            cebola(1Kg)
-          </p>
+
+          {product.description && (
+            <p
+              style={{
+                fontSize: 12,
+                fontWeight: 400,
+                color: "#444",
+                marginBottom: 6,
+                marginTop: 6,
+                lineHeight: 1.4,
+              }}
+            >
+              Inclui: Tomate(1Kg), Alface(1Kg), Cebola(5kg), Alho(10Kg),
+              Pimenta(2Kg), Brócolis(1Kg), repolho(1Kg), alface(1Kg),
+              Couve(1kg), cebola(1Kg)
+            </p>
+          )}
+
           <p
             style={{
               color: "#33A02B",
