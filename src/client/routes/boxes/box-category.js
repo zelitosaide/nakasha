@@ -73,6 +73,171 @@ export function BoxCategory() {
 
   const category = useLoaderData();
 
+  function Cells() {
+    return loadedItemsState.items.map((_, index) => {
+      const boxFoundInCart = cart.boxes.find(function (item) {
+        return item._id === loadedItemsState.items[index]._id;
+      });
+
+      return (
+        <div
+          style={{
+            marginLeft: index % 2 === 0 ? 20 : 0,
+            marginRight: index % 2 === 1 ? 20 : 0,
+            marginBottom: 12,
+            marginTop: 4,
+            display: "inline-block",
+            height: 155,
+            width: "calc(50% - 20px)",
+            boxSizing: "border-box",
+          }}
+          key={index}
+        >
+          <div
+            style={{
+              height: 155,
+              width: "96%",
+              marginLeft: index % 2 === 1 ? "4%" : 0,
+              boxShadow: "0px 4px 16px rgba(0, 0, 0, 0.11)",
+              background: "white",
+              borderRadius: 15,
+              overflow: "hidden",
+              padding: 6,
+            }}
+          >
+            <div style={{ height: 80, overflow: "hidden" }}>
+              <Link
+                to={loadedItemsState.items[index]._id}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  height: 80,
+                }}
+              >
+                <img
+                  src={loadedItemsState.items[index].imageUrl}
+                  alt={loadedItemsState.items[index].name}
+                  style={{ width: 80 }}
+                />
+              </Link>
+            </div>
+
+            <div
+              style={{
+                display: "flex",
+                paddingLeft: 12,
+                paddingRight: 12,
+                paddingTop: 6,
+                height: 75,
+              }}
+            >
+              <div style={{ flexGrow: 1 }}>
+                <span
+                  style={{
+                    fontSize: 11,
+                    fontWeight: 700,
+                    display: "block",
+                    color: "#444",
+                  }}
+                >
+                  {
+                    loadedItemsState.items[index].name
+                      ?.split("-")[0]
+                      ?.split(" ")[0]
+                  }{" "}
+                  2kg
+                </span>
+                <span
+                  style={{
+                    fontSize: 9,
+                    fontWeight: 400,
+                    display: "block",
+                    color: "#777",
+                  }}
+                >
+                  {loadedItemsState.items[index].name?.length < 14 ? (
+                    loadedItemsState.items[index].name
+                  ) : (
+                    <>{loadedItemsState.items[index].name?.slice(0, 14)}...</>
+                  )}
+                </span>
+                <span
+                  style={{
+                    fontSize: 11,
+                    fontWeight: 900,
+                    display: "block",
+                    color: "#33A02B",
+                    paddingTop: 2,
+                  }}
+                >
+                  {loadedItemsState.items[index].price} MT
+                </span>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <button
+                  onClick={function () {
+                    add(loadedItemsState.items[index], "boxes");
+                  }}
+                  style={{
+                    border: "none",
+                    outline: "none",
+                    background: "#33A02B",
+                    color: "white",
+                    width: 20,
+                    height: 18,
+                    fontWeight: 700,
+                    fontSize: 12,
+                    borderTopLeftRadius: 8,
+                  }}
+                >
+                  +
+                </button>
+                {boxFoundInCart && (
+                  <>
+                    <span
+                      style={{
+                        display: "block",
+                        textAlign: "center",
+                        fontSize: 11,
+                        background: "#33A02B",
+                        color: "white",
+                      }}
+                    >
+                      {boxFoundInCart.quantity}
+                    </span>
+                    <button
+                      onClick={function () {
+                        remove(loadedItemsState.items[index], "boxes");
+                      }}
+                      style={{
+                        border: "none",
+                        outline: "none",
+                        background: "#33A02B",
+                        color: "white",
+                        width: 20,
+                        height: 18,
+                        fontWeight: 700,
+                        fontSize: 12,
+                      }}
+                    >
+                      -
+                    </button>
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    });
+  }
+
   return (
     <div>
       <h1
@@ -100,44 +265,7 @@ export function BoxCategory() {
           hasMore={loadedItemsState.hasNextPage}
           loader={<h4>Loading...</h4>}
         >
-          {loadedItemsState.items.map((i, index) => {
-            const boxFoundInCart = cart.boxes.find(function (item) {
-              return item._id === loadedItemsState.items[index]._id;
-            });
-
-            return (
-              <div
-                style={style}
-                key={index}
-              >
-                {loadedItemsState.items[index].name}
-                {boxFoundInCart ? (
-                  <button
-                    onClick={function () {
-                      remove(loadedItemsState.items[index]);
-                    }}
-                  >
-                    -
-                  </button>
-                ) : null}
-                <span>{boxFoundInCart ? boxFoundInCart.quantity : ""}</span>
-                {!empty && (
-                  <button
-                    onClick={function () {
-                      add(loadedItemsState.items[index]);
-                    }}
-                  >
-                    +
-                  </button>
-                )}
-                {!empty && (
-                  <div>
-                    <Link to={loadedItemsState.items[index]._id}>See more</Link>
-                  </div>
-                )}
-              </div>
-            );
-          })}
+          <Cells />
         </InfiniteScroll>
       </div>
     </div>
