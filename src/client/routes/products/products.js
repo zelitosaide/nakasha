@@ -204,7 +204,6 @@ export function Products() {
                   className="horizontal-lazy-load-header"
                 >
                   <p style={{ fontSize: 11, fontWeight: 400, color: "#444" }}>
-                    {/* Categoria: {item.name} ({state[item.name].totalResults}) */}
                     {item.name.slice(0, 1).toUpperCase() + item.name.slice(1)}{" "}
                   </p>
                   <Link to={item.name}>
