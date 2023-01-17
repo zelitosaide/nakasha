@@ -189,7 +189,7 @@ export function BoxesHorizontalLazyLoad({
       {({ onItemsRendered, ref }) => (
         <List
           className="List"
-          height={220}
+          height={180}
           itemSize={WIDTH}
           itemCount={itemCount}
           onItemsRendered={onItemsRendered}
