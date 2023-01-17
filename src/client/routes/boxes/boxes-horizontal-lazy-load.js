@@ -94,7 +94,11 @@ export function BoxesHorizontalLazyLoad({
                 paddingTop: 2,
               }}
             >
-              {items[index].description}
+              {items[index].description.length < 20 ? (
+                items[index].description
+              ) : (
+                <>{items[index].description.slice(0, 20)}...</>
+              )}
             </span>
 
             <p
