@@ -9,8 +9,6 @@ export function Cart() {
     remove,
   } = useContext(CartContext);
 
-  // console.log(boxes, products, recipes);
-
   return (
     <div>
       <h1

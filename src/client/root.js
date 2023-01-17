@@ -132,11 +132,12 @@ export function Root() {
                             <div
                               style={{
                                 position: "absolute",
-                                fontSize: 12,
+                                fontSize: 11,
                                 padding: "2px 3px",
-                                borderRadius: "10px",
+                                borderRadius: 9,
                                 background: "#ff9633",
-                                minWidth: 12,
+                                minWidth: 18,
+                                minHeightt: 18,
                                 textAlign: "center",
                                 right: 4,
                                 top: 0,
