@@ -117,7 +117,7 @@ export function BoxesHorizontalLazyLoad({
                   borderRadius: 10,
                 }}
                 onClick={function () {
-                  add(items[index]);
+                  add(items[index], "boxes");
                 }}
               >
                 Compre agora!

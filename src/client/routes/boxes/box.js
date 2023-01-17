@@ -22,14 +22,14 @@ export async function loader({ params }) {
 export function Box() {
   const { products = [], ...box } = useLoaderData();
   const {
-    cart: { items },
+    cart: { boxes },
     add,
     remove,
     update,
   } = useContext(CartContext);
   const { boxId } = useParams();
 
-  const boxFoundInCart = items.find(function (item) {
+  const boxFoundInCart = boxes.find(function (item) {
     return item._id === box._id;
   }) || { ...box, products };
 
@@ -67,7 +67,7 @@ export function Box() {
                   return (
                     <li key={product._id}>
                       {product.name}{" "}
-                      {items.find(function (item) {
+                      {boxes.find(function (item) {
                         return item._id === box._id;
                       }) && (
                         <Link
