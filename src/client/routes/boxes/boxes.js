@@ -163,18 +163,20 @@ export function Boxes() {
         <div
           style={{
             height: 180,
-            marginTop: 10,
+            marginTop: 20,
+            marginBottom: 10,
           }}
         >
           <div
             style={{
               height: 180,
-              background: "#f8f8f0",
+              background: "white",
               flexGrow: 1,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               border: "1px solid #d9dddd",
+              borderRadius: 4,
             }}
           >
             <h5>Banner</h5>
