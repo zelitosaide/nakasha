@@ -182,26 +182,28 @@ export function BoxesHorizontalLazyLoad({
   }
 
   return (
-    <InfiniteLoader
-      isItemLoaded={isItemLoaded}
-      itemCount={itemCount}
-      loadMoreItems={loadMoreItems}
-    >
-      {({ onItemsRendered, ref }) => (
-        <List
-          className="List"
-          height={180}
-          itemSize={WIDTH}
-          itemCount={itemCount}
-          onItemsRendered={onItemsRendered}
-          ref={ref}
-          width={300}
-          layout="horizontal"
-          style={{ width: "100%" }}
-        >
-          {Item}
-        </List>
-      )}
-    </InfiniteLoader>
+    <div style={{ marginTop: -5, marginBottom: 6 }}>
+      <InfiniteLoader
+        isItemLoaded={isItemLoaded}
+        itemCount={itemCount}
+        loadMoreItems={loadMoreItems}
+      >
+        {({ onItemsRendered, ref }) => (
+          <List
+            className="List"
+            height={180}
+            itemSize={WIDTH}
+            itemCount={itemCount}
+            onItemsRendered={onItemsRendered}
+            ref={ref}
+            width={300}
+            layout="horizontal"
+            style={{ width: "100%" }}
+          >
+            {Item}
+          </List>
+        )}
+      </InfiniteLoader>
+    </div>
   );
 }
