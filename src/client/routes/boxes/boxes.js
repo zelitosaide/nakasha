@@ -227,44 +227,6 @@ export function Boxes() {
             );
           })}
         </div>
-
-        {/* <div>
-          {boxRows.map(function (item, index) {
-            return (
-              <div
-                id="lazy-load"
-                key={index}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    flexDirection: "row",
-                  }}
-                  className="horizontal-lazy-load-header"
-                >
-                  <p style={{ fontSize: 13 }}>
-                    Categiria: {item.name} ({state[item.name].totalResults})
-                  </p>
-                  <Link to={item.name}>
-                    <span style={{ fontSize: 13, color: "#33A02B" }}>
-                      Ver todos
-                    </span>
-                  </Link>
-                </div>
-                <div>
-                  <BoxesHorizontalLazyLoad
-                    hasNextPage={state[item.name].hasNextPage}
-                    isNextPageLoading={state[item.name].isNextPageLoading}
-                    items={state[item.name].items}
-                    loadNextPage={item.loadNextPage}
-                  />
-                </div>
-              </div>
-            );
-          })}
-        </div> */}
       </div>
     </div>
   );
