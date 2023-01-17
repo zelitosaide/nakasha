@@ -35,8 +35,8 @@ export function BoxesHorizontalLazyLoad({
             highlightColor="#bbb"
           >
             <Skeleton
-              height={220 - GUTTER_SIZE}
               width={style.width - GUTTER_SIZE}
+              height={170}
               style={{ borderRadius: 6 }}
             />
           </SkeletonTheme>
@@ -52,7 +52,7 @@ export function BoxesHorizontalLazyLoad({
           style={{
             background: "white",
             width: style.width - GUTTER_SIZE,
-            height: 220 - GUTTER_SIZE,
+            height: 170,
             borderRadius: 6,
             overflow: "hidden",
             border: "1px solid #ccc",
@@ -172,7 +172,8 @@ export function BoxesHorizontalLazyLoad({
       <div
         style={{
           ...style,
-          // background: index % 2 ? "pink" : "green"
+          width: style.width - GUTTER_SIZE,
+          height: style.width - GUTTER_SIZE,
         }}
       >
         {content}
