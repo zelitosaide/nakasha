@@ -91,7 +91,7 @@ export function BoxesHorizontalLazyLoad({
                 fontWeight: 400,
                 display: "block",
                 color: "#777",
-                paddingTop: 2,
+                paddingTop: 1,
               }}
             >
               {items[index].description.length < 20 ? (
@@ -116,19 +116,21 @@ export function BoxesHorizontalLazyLoad({
             {!boxFoundInCart?.quantity ? (
               <button
                 style={{
-                  fontSize: 11,
+                  fontSize: 8,
                   background: "#EF7200",
                   color: "white",
                   border: "none",
                   outline: "none",
-                  padding: "4px 8px",
                   borderRadius: 10,
+                  width: "100%",
+                  padding: "5px 2px",
+                  marginTop: 4,
                 }}
                 onClick={function () {
                   add(items[index], "boxes");
                 }}
               >
-                Compre agora!
+                Adicionar ao carinho
               </button>
             ) : (
               <Link
