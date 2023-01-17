@@ -101,18 +101,18 @@ export function BoxesHorizontalLazyLoad({
               )}
             </span>
 
-            <p
+            <span
               style={{
-                margin: 0,
+                fontSize: 10,
+                fontWeight: 900,
+                display: "block",
                 color: "#33A02B",
-                fontWeight: 700,
-                fontSize: 15,
                 paddingTop: 4,
-                paddingBottom: 2,
               }}
             >
               {items[index].price} MT
-            </p>
+            </span>
+
             {!boxFoundInCart?.quantity ? (
               <button
                 style={{
