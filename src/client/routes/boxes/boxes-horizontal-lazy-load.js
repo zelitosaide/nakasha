@@ -59,27 +59,19 @@ export function BoxesHorizontalLazyLoad({
         >
           <div
             style={{
-              width: style.width - GUTTER_SIZE,
-              height: style.width - GUTTER_SIZE,
-              // background: "pink",
-              position: "relative",
+              height: 80,
+              overflow: "hidden",
             }}
           >
-            <img
-              style={{
-                width: style.width - GUTTER_SIZE - 10,
-                height: style.width - GUTTER_SIZE - 10,
-                // width: style.width - GUTTER_SIZE,
-                // height: style.width - GUTTER_SIZE,
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-              }}
-              src={items[index].imageUrl}
-              alt={items[index].name}
-            />
+            <Link to={`${items[index].category}/${items[index]._id}`}>
+              <img
+                style={{ width: style.width - GUTTER_SIZE }}
+                src={items[index].imageUrl}
+                alt={items[index].name}
+              />
+            </Link>
           </div>
+
           <div style={{ background: "white", paddingLeft: 10 }}>
             <p
               style={{
