@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 import { CartContext } from "../../../provider";
 import { baseUrl } from "../../../api";
@@ -14,6 +14,10 @@ const style = {
   width: "40%",
   display: "inline-block",
 };
+
+export async function loader({ params }) {
+  return params.boxCategoryId;
+}
 
 export function BoxCategory() {
   const [loadedItemsState, setLoadedItemsState] = useState({
@@ -67,54 +71,75 @@ export function BoxCategory() {
       });
   }
 
+  const category = useLoaderData();
+
   return (
     <div>
-      <h4>Categoria das Caixas: hortalicas</h4>
-      <InfiniteScroll
-        dataLength={loadedItemsState.items.length}
-        next={fetchMoreData}
-        hasMore={loadedItemsState.hasNextPage}
-        loader={<h4>Loading...</h4>}
+      <h1
+        style={{
+          fontSize: 12,
+          fontWeight: 700,
+          color: "#444",
+          padding: "0 20px",
+          margin: 0,
+          paddingBottom: 10,
+        }}
       >
-        {loadedItemsState.items.map((i, index) => {
-          const boxFoundInCart = cart.boxes.find(function (item) {
-            return item._id === loadedItemsState.items[index]._id;
-          });
+        {category.slice(0, 1).toUpperCase() + category.slice(1)}
+      </h1>
+      <div
+        style={{
+          padding: "20px 0",
+          background: "white",
+          borderRadius: 20,
+        }}
+      >
+        <InfiniteScroll
+          dataLength={loadedItemsState.items.length}
+          next={fetchMoreData}
+          hasMore={loadedItemsState.hasNextPage}
+          loader={<h4>Loading...</h4>}
+        >
+          {loadedItemsState.items.map((i, index) => {
+            const boxFoundInCart = cart.boxes.find(function (item) {
+              return item._id === loadedItemsState.items[index]._id;
+            });
 
-          return (
-            <div
-              style={style}
-              key={index}
-            >
-              {loadedItemsState.items[index].name}
-              {boxFoundInCart ? (
-                <button
-                  onClick={function () {
-                    remove(loadedItemsState.items[index]);
-                  }}
-                >
-                  -
-                </button>
-              ) : null}
-              <span>{boxFoundInCart ? boxFoundInCart.quantity : ""}</span>
-              {!empty && (
-                <button
-                  onClick={function () {
-                    add(loadedItemsState.items[index]);
-                  }}
-                >
-                  +
-                </button>
-              )}
-              {!empty && (
-                <div>
-                  <Link to={loadedItemsState.items[index]._id}>See more</Link>
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </InfiniteScroll>
+            return (
+              <div
+                style={style}
+                key={index}
+              >
+                {loadedItemsState.items[index].name}
+                {boxFoundInCart ? (
+                  <button
+                    onClick={function () {
+                      remove(loadedItemsState.items[index]);
+                    }}
+                  >
+                    -
+                  </button>
+                ) : null}
+                <span>{boxFoundInCart ? boxFoundInCart.quantity : ""}</span>
+                {!empty && (
+                  <button
+                    onClick={function () {
+                      add(loadedItemsState.items[index]);
+                    }}
+                  >
+                    +
+                  </button>
+                )}
+                {!empty && (
+                  <div>
+                    <Link to={loadedItemsState.items[index]._id}>See more</Link>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </InfiniteScroll>
+      </div>
     </div>
   );
 }

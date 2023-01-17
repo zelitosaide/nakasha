@@ -21,7 +21,10 @@ import {
   ProductCategory,
   loader as productCategoryLoader,
 } from "./client/routes/products/product-category";
-import { BoxCategory } from "./client/routes/boxes/box-category";
+import {
+  BoxCategory,
+  loader as boxCategoryLoader,
+} from "./client/routes/boxes/box-category";
 import { loader as boxLoader, Box } from "./client/routes/boxes/box";
 import { loader as swapLoader, Swap } from "./client/routes/boxes/swap";
 import { Cart } from "./client/routes/cart/cart";
@@ -125,6 +128,7 @@ const router = createBrowserRouter([
           },
           {
             path: ":boxCategoryId",
+            loader: boxCategoryLoader,
             element: <BoxCategory />,
           },
           {

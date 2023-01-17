@@ -164,7 +164,6 @@ export function ProductCategory() {
               </div>
               <div
                 style={{
-                  // background: "pink",
                   display: "flex",
                   flexDirection: "column",
                 }}
@@ -183,7 +182,6 @@ export function ProductCategory() {
                     fontWeight: 700,
                     fontSize: 12,
                     borderTopLeftRadius: 8,
-                    // borderRadius: 4,
                   }}
                 >
                   +
@@ -214,7 +212,6 @@ export function ProductCategory() {
                         height: 18,
                         fontWeight: 700,
                         fontSize: 12,
-                        // borderRadius: 4,
                       }}
                     >
                       -
