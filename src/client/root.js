@@ -135,13 +135,13 @@ export function Root() {
                                 fontSize: 11,
                                 padding: "2px 3px",
                                 borderRadius: 9,
-                                background: "#ff9633",
+                                background: "#EF7200",
                                 minWidth: 18,
                                 minHeightt: 18,
                                 textAlign: "center",
                                 right: 4,
                                 top: 0,
-                                fontWeight: "bold",
+                                color: "white",
                               }}
                             >
                               {products.length + boxes.length + recipes.length}
