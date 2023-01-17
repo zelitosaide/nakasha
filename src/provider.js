@@ -8,7 +8,6 @@ export function Provider({ children }) {
     boxes: [],
     products: [],
     recipes: [],
-    // items: [],
   });
 
   console.log(cart);
@@ -92,7 +91,7 @@ export function Provider({ children }) {
   }
 
   function update({ _id, products }) {
-    const ranchos = cart.items.map(function (item) {
+    const ranchos = cart.boxes.map(function (item) {
       if (item._id === _id) {
         return { ...item, products };
       } else {
@@ -101,7 +100,7 @@ export function Provider({ children }) {
     });
 
     setCart(function (prevChart) {
-      return { ...prevChart, items: ranchos };
+      return { ...prevChart, boxes: ranchos };
     });
   }
 
