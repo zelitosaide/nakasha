@@ -55,7 +55,6 @@ export function BoxesHorizontalLazyLoad({
             height: 170,
             borderRadius: 6,
             overflow: "hidden",
-            border: "1px solid #ccc",
           }}
         >
           <div
