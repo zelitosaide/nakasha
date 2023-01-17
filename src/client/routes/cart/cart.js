@@ -23,7 +23,7 @@ export function Cart() {
       >
         Carinho
       </h1>
-      {products.length && (
+      {products.length ? (
         <div
           style={{
             padding: "10px 20px 20px 20px",
@@ -161,9 +161,9 @@ export function Cart() {
             })}
           </ul>
         </div>
-      )}
+      ) : null}
 
-      {boxes.length && (
+      {boxes.length ? (
         <div
           style={{
             padding: "10px 20px 20px 20px",
@@ -302,7 +302,7 @@ export function Cart() {
             })}
           </ul>
         </div>
-      )}
+      ) : null}
     </div>
   );
 }
