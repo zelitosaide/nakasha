@@ -148,7 +148,7 @@ export function BoxesHorizontalLazyLoad({
                   justifyContent: "center",
                 }}
               >
-                Ver no carinho
+                Ver detalhes da Caixa
               </Link>
             )}
           </div>
