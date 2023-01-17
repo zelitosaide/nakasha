@@ -123,7 +123,7 @@ export function BoxesHorizontalLazyLoad({
                   outline: "none",
                   borderRadius: 10,
                   width: "100%",
-                  padding: "5px 2px",
+                  height: 20,
                   marginTop: 4,
                 }}
                 onClick={function () {
@@ -136,12 +136,16 @@ export function BoxesHorizontalLazyLoad({
               <Link
                 to={`${items[index].category}/${items[index]._id}`}
                 style={{
-                  fontSize: 11,
+                  fontSize: 8,
                   background: "#33A02B",
-                  border: "1px solid #33A02B",
-                  padding: "3px 8px",
+                  width: "100%",
+                  height: 20,
                   borderRadius: 10,
                   color: "white",
+                  marginTop: 4,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
               >
                 Ver no carinho
