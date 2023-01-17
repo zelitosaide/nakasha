@@ -5,9 +5,9 @@ import { CartContext } from "../../../provider";
 import { baseUrl } from "../../../api";
 
 export async function loader({ params }) {
-  const boxCategoryId = params.boxCategoryId;
+  const productCategory = params.productCategory;
   const response = await fetch(
-    baseUrl + "/products?category=" + boxCategoryId + "&limit=100"
+    baseUrl + "/products?category=" + productCategory + "&limit=100"
   );
   const products = await response.json();
   return products;

@@ -43,8 +43,6 @@ export function Box() {
     <div>
       {boxFoundInCart && (
         <>
-          {/* <h3 style={{ color: "#333" }}>{boxFoundInCart.name}</h3> */}
-
           <p>
             <b>Imagem da Caixa</b>:
             <img
@@ -71,7 +69,7 @@ export function Box() {
                         return item._id === box._id;
                       }) && (
                         <Link
-                          to="swap"
+                          to={"swap/" + product.category}
                           state={{ boxId, productId: product._id }}
                         >
                           swap

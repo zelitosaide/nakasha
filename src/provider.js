@@ -66,7 +66,7 @@ export function Provider({ children }) {
   function clear() {}
 
   function swap({ boxId, productId, product: newProduct }) {
-    const rancho = cart.items.find(function (item) {
+    const rancho = cart.boxes.find(function (item) {
       return boxId === item._id;
     });
 
@@ -76,7 +76,7 @@ export function Provider({ children }) {
       });
 
       rancho.products = products;
-      const ranchos = cart.items.map(function (item) {
+      const ranchos = cart.boxes.map(function (item) {
         if (item._id === boxId) {
           return rancho;
         } else {
@@ -85,7 +85,7 @@ export function Provider({ children }) {
       });
 
       setCart(function (prevCart) {
-        return { ...prevCart, items: ranchos };
+        return { ...prevCart, boxes: ranchos };
       });
     }
   }

@@ -133,7 +133,7 @@ const router = createBrowserRouter([
             element: <Box />,
             children: [
               {
-                path: "swap",
+                path: "swap/:productCategory",
                 loader: swapLoader,
                 element: <Swap />,
               },
