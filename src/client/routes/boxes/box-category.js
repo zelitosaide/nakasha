@@ -5,16 +5,6 @@ import { Link, useLoaderData } from "react-router-dom";
 import { CartContext } from "../../../provider";
 import { baseUrl } from "../../../api";
 
-const style = {
-  height: 50,
-  border: "1px solid green",
-  marginRight: 12,
-  marginBottom: 12,
-  padding: 8,
-  width: "40%",
-  display: "inline-block",
-};
-
 export async function loader({ params }) {
   return params.boxCategoryId;
 }
@@ -23,10 +13,6 @@ export function BoxCategory() {
   const [loadedItemsState, setLoadedItemsState] = useState({
     hasNextPage: true,
     items: Array.from({ length: 20 }).fill(0),
-  });
-
-  const empty = loadedItemsState.items.every(function (item) {
-    return !item;
   });
 
   const [page, setPage] = useState(1);
@@ -145,8 +131,7 @@ export function BoxCategory() {
                     loadedItemsState.items[index].name
                       ?.split("-")[0]
                       ?.split(" ")[0]
-                  }{" "}
-                  2kg
+                  }
                 </span>
                 <span
                   style={{
