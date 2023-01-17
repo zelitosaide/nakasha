@@ -91,6 +91,7 @@ export function BoxesHorizontalLazyLoad({
                 fontWeight: 400,
                 display: "block",
                 color: "#777",
+                paddingTop: 2,
               }}
             >
               {items[index].description}
