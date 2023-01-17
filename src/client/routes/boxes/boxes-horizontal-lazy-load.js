@@ -72,7 +72,7 @@ export function BoxesHorizontalLazyLoad({
             </Link>
           </div>
 
-          <div style={{ padding: 6, background: "white", height: 50 }}>
+          <div style={{ padding: "10px 8px", background: "white", height: 50 }}>
             <span
               style={{
                 fontSize: 10,
@@ -85,9 +85,17 @@ export function BoxesHorizontalLazyLoad({
                 items[index].name.slice(1)}
             </span>
 
-            <p style={{ margin: 0, fontSize: 10, paddingTop: 2 }}>
+            <span
+              style={{
+                fontSize: 8,
+                fontWeight: 400,
+                display: "block",
+                color: "#777",
+              }}
+            >
               {items[index].description}
-            </p>
+            </span>
+
             <p
               style={{
                 margin: 0,
