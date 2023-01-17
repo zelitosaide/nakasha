@@ -68,6 +68,7 @@ export function ProdutoHorizontalLazyLoad({
               />
             </Link>
           </div>
+
           <div style={{ padding: 6, background: "white", height: 50 }}>
             <span
               style={{
