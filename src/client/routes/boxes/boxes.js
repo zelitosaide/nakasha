@@ -94,9 +94,10 @@ export function Boxes() {
         <div className="horizontal-lazy-load-header">
           <p
             style={{
-              fontSize: 13,
-              fontWeight: 600,
+              fontSize: 12,
+              fontWeight: 700,
               paddingBottom: 12,
+              color: "#444",
             }}
           >
             Categorias de Caixas
@@ -109,7 +110,7 @@ export function Boxes() {
               margin: 0,
               padding: 0,
               display: "flex",
-              gap: 9,
+              justifyContent: "space-between",
             }}
           >
             {boxCategories.items.slice(0, 3).map(function (boxCategory) {
@@ -119,7 +120,7 @@ export function Boxes() {
                     <div
                       style={{
                         background: "#33A02B",
-                        width: 100,
+                        width: 96,
                         height: 96,
                         borderRadius: 6,
                         overflow: "hidden",
@@ -130,7 +131,7 @@ export function Boxes() {
                         src={boxCategory.imageUrl}
                         alt={boxCategory.name}
                         style={{
-                          width: 86,
+                          width: 70,
                           position: "absolute",
                           top: "50%",
                           left: "50%",
@@ -140,12 +141,14 @@ export function Boxes() {
                     </div>
                     <p
                       style={{
-                        fontSize: 13,
+                        fontSize: 12,
                         textAlign: "center",
-                        color: "black",
+                        color: "#444",
+                        fontWeight: 400,
                       }}
                     >
-                      {boxCategory.name}
+                      {boxCategory.name.slice(0, 1).toUpperCase() +
+                        boxCategory.name.slice(1)}
                     </p>
                   </Link>
                 </li>
