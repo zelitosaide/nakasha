@@ -1,5 +1,6 @@
 import { useEffect, useContext } from "react";
 import { Link, Outlet, useLoaderData, useParams } from "react-router-dom";
+import { FixedSizeList as List } from "react-window";
 
 import { CartContext } from "../../../provider";
 import { baseUrl } from "../../../api";
@@ -39,6 +40,15 @@ export function Box() {
       update({ _id: box._id, products });
     }
   }, []);
+
+  const Column = ({ index, style }) => (
+    <div
+      className={index % 2 ? "ListItemOdd" : "ListItemEven"}
+      style={style}
+    >
+      Column {index}
+    </div>
+  );
 
   return (
     <div>
@@ -134,7 +144,7 @@ export function Box() {
 
               {boxFoundInCart.products && (
                 <>
-                  <ul>
+                  {/* <ul>
                     {boxFoundInCart.products.map(function (product) {
                       return (
                         <li key={product._id}>
@@ -152,7 +162,18 @@ export function Box() {
                         </li>
                       );
                     })}
-                  </ul>
+                  </ul> */}
+                  <List
+                    className="List"
+                    height={75}
+                    itemCount={1000}
+                    itemSize={100}
+                    layout="horizontal"
+                    width={300}
+                    style={{ width: "100%" }}
+                  >
+                    {Column}
+                  </List>
                 </>
               )}
 
