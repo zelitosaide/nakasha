@@ -41,14 +41,28 @@ export function Box() {
     }
   }, []);
 
-  const Column = ({ index, style }) => (
-    <div
-      className={index % 2 ? "ListItemOdd" : "ListItemEven"}
-      style={style}
-    >
-      Column {index}
-    </div>
-  );
+  function Column({ index, style }) {
+    console.log(boxFoundInCart.products[index]);
+    let content;
+    if (!boxFoundInCart.products) {
+      content = "Loading";
+    } else {
+      content = (
+        <img
+          src={boxFoundInCart.products[index].imageUrl}
+          alt={boxFoundInCart.products[index].name}
+        />
+      );
+    }
+    return (
+      <div
+        className={index % 2 ? "ListItemOdd" : "ListItemEven"}
+        style={style}
+      >
+        {content}
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -166,7 +180,7 @@ export function Box() {
                   <List
                     className="List"
                     height={75}
-                    itemCount={1000}
+                    itemCount={boxFoundInCart.products.length}
                     itemSize={100}
                     layout="horizontal"
                     width={300}
