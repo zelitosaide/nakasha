@@ -130,6 +130,46 @@ export function Box() {
               >
                 {boxFoundInCart.price} MT
               </p>
+
+              <h1
+                style={{
+                  fontSize: 12,
+                  fontWeight: 700,
+                  color: "#444",
+                  marginBottom: 0,
+                }}
+              >
+                Lista dos Produtos
+              </h1>
+
+              {boxFoundInCart.products && (
+                <>
+                  <ul>
+                    {boxFoundInCart.products.map(function (product) {
+                      return (
+                        <li key={product._id}>
+                          {product.name}{" "}
+                          {boxes.find(function (item) {
+                            return item._id === box._id;
+                          }) && (
+                            <Link
+                              to={"swap/" + product.category}
+                              state={{ boxId, productId: product._id }}
+                            >
+                              swap
+                            </Link>
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </>
+              )}
+
+              <div>
+                <Outlet />
+              </div>
+
               <button
                 onClick={function () {
                   add(boxFoundInCart, "boxes");
@@ -152,61 +192,6 @@ export function Box() {
                 <span style={{ marginLeft: 10 }}>Adicionar ao carinho</span>
               </button>
             </div>
-
-            {/*  */}
-
-            {boxFoundInCart.products && (
-              <>
-                <p>
-                  <b>Lista dos Produtos:</b>
-                </p>
-                <ul>
-                  {boxFoundInCart.products.map(function (product) {
-                    return (
-                      <li key={product._id}>
-                        {product.name}{" "}
-                        {boxes.find(function (item) {
-                          return item._id === box._id;
-                        }) && (
-                          <Link
-                            to={"swap/" + product.category}
-                            state={{ boxId, productId: product._id }}
-                          >
-                            swap
-                          </Link>
-                        )}
-                      </li>
-                    );
-                  })}
-                </ul>
-              </>
-            )}
-
-            <div>
-              <Outlet />
-            </div>
-
-            <p>
-              <b>Adicionar ao carinho</b>
-            </p>
-            {!!boxFoundInCart.quantity && (
-              <button
-                onClick={function () {
-                  remove(box);
-                }}
-              >
-                -
-              </button>
-            )}
-
-            <span>{!!boxFoundInCart.quantity && boxFoundInCart.quantity}</span>
-            <button
-              onClick={function () {
-                add({ ...box, products });
-              }}
-            >
-              +
-            </button>
           </>
         )}
       </div>
