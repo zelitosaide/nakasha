@@ -52,7 +52,8 @@ export function Box() {
           paddingBottom: 10,
         }}
       >
-        {boxFoundInCart.name}
+        {boxFoundInCart.name.slice(0, 1).toUpperCase() +
+          boxFoundInCart.name.slice(1)}
       </h1>
       <div
         style={{
@@ -120,17 +121,6 @@ export function Box() {
                 </p>
               )}
 
-              <p
-                style={{
-                  color: "#33A02B",
-                  fontWeight: 900,
-                  fontSize: 18,
-                  margin: 0,
-                }}
-              >
-                {boxFoundInCart.price} MT
-              </p>
-
               <h1
                 style={{
                   fontSize: 12,
@@ -139,7 +129,7 @@ export function Box() {
                   marginBottom: 0,
                 }}
               >
-                Lista dos Produtos
+                Produtos da Caixa
               </h1>
 
               {boxFoundInCart.products && (
@@ -169,6 +159,17 @@ export function Box() {
               <div>
                 <Outlet />
               </div>
+
+              <p
+                style={{
+                  color: "#33A02B",
+                  fontWeight: 900,
+                  fontSize: 18,
+                  margin: 0,
+                }}
+              >
+                {boxFoundInCart.price} MT
+              </p>
 
               <button
                 onClick={function () {
