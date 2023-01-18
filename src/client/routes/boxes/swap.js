@@ -23,9 +23,15 @@ export function Swap() {
 
   return (
     <>
-      <p>
-        <b>Escolha um producto para troca</b>
-      </p>
+      <h1
+        style={{
+          fontSize: 12,
+          fontWeight: 700,
+          color: "#444",
+        }}
+      >
+        Escolha um producto para troca
+      </h1>
       {!!products.length && (
         <div>
           {products.map(function (product) {
