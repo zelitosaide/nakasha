@@ -76,17 +76,33 @@ export function Box() {
             border: "1px solid #EBEBEB",
           }}
         >
-          <div style={{ height: 50, overflow: "hidden" }}>
+          <div style={{ height: 40, overflow: "hidden" }}>
             <Link
               to
               // to={`${items[index].category}/${items[index]._id}`}
             >
               <img
-                style={{ width: style.width - GUTTER_SIZE, height: 50 }}
+                style={{ width: style.width - GUTTER_SIZE, height: 40 }}
                 src={boxFoundInCart.products[index].imageUrl}
                 alt={boxFoundInCart.products[index].name}
               />
             </Link>
+          </div>
+          <div style={{ padding: 2, background: "white", height: 30 }}>
+            <span
+              style={{
+                fontSize: 10,
+                fontWeight: 400,
+                display: "block",
+                color: "white",
+                background: "#33A02B",
+                textAlign: "center",
+                marginTop: 6,
+                padding: 2,
+              }}
+            >
+              {boxFoundInCart.products[index].name}
+            </span>
           </div>
         </div>
       );
@@ -225,7 +241,7 @@ export function Box() {
                   </ul> */}
                   <List
                     className="List"
-                    height={74}
+                    height={78}
                     itemCount={boxFoundInCart.products.length}
                     itemSize={WIDTH}
                     layout="horizontal"
