@@ -42,8 +42,8 @@ export function Box() {
     }
   }, []);
 
-  const GUTTER_SIZE = 12;
-  const WIDTH = 102;
+  const GUTTER_SIZE = 8;
+  const WIDTH = 70;
 
   function Column({ index, style }) {
     console.log(boxFoundInCart.products[index]);
@@ -67,7 +67,7 @@ export function Box() {
       content = (
         <div
           style={{
-            background: "yellow",
+            background: "#33A02B",
             width: style.width - GUTTER_SIZE,
             height: 70,
             borderRadius: 3,
@@ -189,7 +189,7 @@ export function Box() {
               </h1>
 
               {boxFoundInCart.products && (
-                <>
+                <div style={{ paddingTop: 10, paddingBottom: 10 }}>
                   {/* <ul>
                     {boxFoundInCart.products.map(function (product) {
                       return (
@@ -211,16 +211,16 @@ export function Box() {
                   </ul> */}
                   <List
                     className="List"
-                    height={100}
+                    height={78}
                     itemCount={boxFoundInCart.products.length}
-                    itemSize={100}
+                    itemSize={WIDTH}
                     layout="horizontal"
                     width={300}
                     style={{ width: "100%" }}
                   >
                     {Column}
                   </List>
-                </>
+                </div>
               )}
 
               <div>
