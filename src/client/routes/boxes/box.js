@@ -67,7 +67,7 @@ export function Box() {
       content = (
         <div
           style={{
-            background: "#33A02B",
+            background: "white",
             width: style.width - GUTTER_SIZE,
             height: 70,
             borderRadius: 3,
@@ -76,29 +76,30 @@ export function Box() {
             border: "1px solid #EBEBEB",
           }}
         >
-          <div style={{ height: 40, overflow: "hidden" }}>
+          <div style={{ height: 50, overflow: "hidden" }}>
             <Link
               to
               // to={`${items[index].category}/${items[index]._id}`}
             >
               <img
-                style={{ width: style.width - GUTTER_SIZE, height: 40 }}
+                style={{ width: style.width - GUTTER_SIZE, height: 50 }}
                 src={boxFoundInCart.products[index].imageUrl}
                 alt={boxFoundInCart.products[index].name}
               />
             </Link>
           </div>
-          <div style={{ padding: 2, background: "white", height: 30 }}>
+          <div style={{ background: "white", height: 20 }}>
             <span
               style={{
                 fontSize: 10,
                 fontWeight: 400,
-                display: "block",
+                display: "flex",
                 color: "white",
                 background: "#33A02B",
-                textAlign: "center",
-                marginTop: 6,
-                padding: 2,
+                height: 20,
+                justifyContent: "center",
+                alignItems: "center",
+                paddingBottom: 2,
               }}
             >
               {boxFoundInCart.products[index].name}
