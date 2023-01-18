@@ -28,25 +28,6 @@ a {
   width: 100%;
 }
 
-.active svg,
-.active span {
-  color: white !important;
-}
-
-.List {
-  border: 1px solid #d9dddd;
-}
-
-.ListItemEven,
-.ListItemOdd {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.ListItemEven {
-  background-color: #f8f8f0;
-}
 /* 
 .ListItemOdd {
   background: #33a02b;

@@ -73,8 +73,22 @@ export function Box() {
             borderRadius: 3,
             position: "relative",
             overflow: "hidden",
+            border: "1px solid #EBEBEB",
           }}
-        ></div>
+        >
+          <div style={{ height: 50, overflow: "hidden" }}>
+            <Link
+              to
+              // to={`${items[index].category}/${items[index]._id}`}
+            >
+              <img
+                style={{ width: style.width - GUTTER_SIZE, height: 50 }}
+                src={boxFoundInCart.products[index].imageUrl}
+                alt={boxFoundInCart.products[index].name}
+              />
+            </Link>
+          </div>
+        </div>
       );
       // content = (
       //   <img
@@ -211,7 +225,7 @@ export function Box() {
                   </ul> */}
                   <List
                     className="List"
-                    height={78}
+                    height={74}
                     itemCount={boxFoundInCart.products.length}
                     itemSize={WIDTH}
                     layout="horizontal"
