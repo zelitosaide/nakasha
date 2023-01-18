@@ -1,6 +1,7 @@
 import { useEffect, useContext } from "react";
 import { Link, Outlet, useLoaderData, useParams } from "react-router-dom";
 import { FixedSizeList as List } from "react-window";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 import { CartContext } from "../../../provider";
 import { baseUrl } from "../../../api";
@@ -41,23 +42,54 @@ export function Box() {
     }
   }, []);
 
+  const GUTTER_SIZE = 12;
+  const WIDTH = 102;
+
   function Column({ index, style }) {
     console.log(boxFoundInCart.products[index]);
     let content;
     if (!boxFoundInCart.products) {
-      content = "Loading";
+      content = (
+        <div>
+          <SkeletonTheme
+            baseColor="#ccc"
+            highlightColor="#bbb"
+          >
+            <Skeleton
+              width={style.width - GUTTER_SIZE}
+              height={70}
+              style={{ borderRadius: 3 }}
+            />
+          </SkeletonTheme>
+        </div>
+      );
     } else {
       content = (
-        <img
-          src={boxFoundInCart.products[index].imageUrl}
-          alt={boxFoundInCart.products[index].name}
-        />
+        <div
+          style={{
+            background: "yellow",
+            width: style.width - GUTTER_SIZE,
+            height: 70,
+            borderRadius: 3,
+            position: "relative",
+            overflow: "hidden",
+          }}
+        ></div>
       );
+      // content = (
+      //   <img
+      //     src={boxFoundInCart.products[index].imageUrl}
+      //     alt={boxFoundInCart.products[index].name}
+      //   />
+      // );
     }
     return (
       <div
-        className={index % 2 ? "ListItemOdd" : "ListItemEven"}
-        style={style}
+        style={{
+          ...style,
+          width: style.width - GUTTER_SIZE,
+          height: style.width - GUTTER_SIZE,
+        }}
       >
         {content}
       </div>
@@ -179,7 +211,7 @@ export function Box() {
                   </ul> */}
                   <List
                     className="List"
-                    height={75}
+                    height={100}
                     itemCount={boxFoundInCart.products.length}
                     itemSize={100}
                     layout="horizontal"
