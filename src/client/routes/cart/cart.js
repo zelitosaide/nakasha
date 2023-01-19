@@ -443,7 +443,7 @@ export function Cart() {
         {total ? (
           <div
             style={{
-              marginTop: 20,
+              marginTop: 30,
               display: "flex",
               justifyContent: "space-between",
             }}
@@ -471,7 +471,7 @@ export function Cart() {
                 fontWeight: 400,
               }}
             >
-              Checkout
+              Checkout »
             </button>
           </div>
         ) : null}
