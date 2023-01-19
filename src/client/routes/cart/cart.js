@@ -9,6 +9,14 @@ export function Cart() {
     remove,
   } = useContext(CartContext);
 
+  let total =
+    boxes.reduce(function (sum, box) {
+      return sum + box.price * box.quantity;
+    }, 0) +
+    products.reduce(function (sum, product) {
+      return sum + product.price * product.quantity;
+    }, 0);
+
   return (
     <div>
       <h1
@@ -429,6 +437,28 @@ export function Cart() {
                 );
               })}
             </ul>
+          </div>
+        ) : null}
+
+        {total ? (
+          <div
+            style={{
+              marginTop: 20,
+              display: "flex",
+              justifyContent: "space-between",
+            }}
+          >
+            <span
+              style={{
+                fontSize: 12,
+                color: "#444",
+                fontWeight: "900",
+                paddingLeft: 10,
+              }}
+            >
+              Total: {total} MT
+            </span>
+            <button>Checkout</button>
           </div>
         ) : null}
       </div>
