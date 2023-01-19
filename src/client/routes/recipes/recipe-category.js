@@ -72,9 +72,8 @@ export function RecipeCategory() {
   return (
     <div
       style={{
-        marginTop: 70,
-        padding: "10px 20px",
-        marginBottom: 100,
+        paddingLeft: 20,
+        paddingRight: 20,
       }}
     >
       <h4>Categoria da Receita: breakfast</h4>
