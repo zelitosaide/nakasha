@@ -5,6 +5,7 @@ import vegetais from "../../../assets/images/vegetais.png";
 import frutas from "../../../assets/images/frutas.png";
 import mercearia from "../../../assets/images/mercearia.png";
 import { RecipesHorizontalLazyLoad } from "./recipes-horizontal-lazy-load";
+import { baseUrl } from "../../../api";
 
 export function Recipes() {
   const [state, setState] = useState({
@@ -15,11 +16,10 @@ export function Recipes() {
   const [page, setPage] = useState(1);
 
   const LIMIT = 5;
-  const baseUrl = "http://localhost:5000/";
 
   async function loadNextPage() {
     return fetch(
-      `${baseUrl}recipes?limit=${LIMIT}&page=${page}&category=breakfast`
+      `${baseUrl}/recipes?limit=${LIMIT}&page=${page}&category=breakfast`
     )
       .then(function (response) {
         setState(function (prevState) {
