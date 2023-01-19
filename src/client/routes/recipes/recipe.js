@@ -42,8 +42,8 @@ export function Recipe() {
     <div>
       <div
         style={{
-          marginTop: 70,
-          padding: "10px 20px",
+          paddingLeft: 20,
+          paddingRight: 20,
         }}
       >
         {recipeFoundInCart && (
