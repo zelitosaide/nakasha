@@ -3,6 +3,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { Link } from "react-router-dom";
 
 import { CartContext } from "../../../provider";
+import { baseUrl } from "../../../api";
 
 const style = {
   height: 60,
@@ -27,10 +28,9 @@ export function RecipeCategory() {
   const [page, setPage] = useState(1);
   const LIMIT = 20;
   const { cart, add, remove } = useContext(CartContext);
-  const baseUrl = "http://localhost:5000/";
 
   useEffect(function () {
-    fetch(`${baseUrl}recipes?limit=${LIMIT}&page=${page}&category=breakfast`)
+    fetch(`${baseUrl}/recipes?limit=${LIMIT}&page=${page}&category=breakfast`)
       .then(function (response) {
         return response.json();
       })
@@ -50,7 +50,7 @@ export function RecipeCategory() {
 
   async function fetchMoreData() {
     return fetch(
-      `${baseUrl}recipes?limit=${LIMIT}&page=${page}&category=breakfast`
+      `${baseUrl}/recipes?limit=${LIMIT}&page=${page}&category=breakfast`
     )
       .then(function (response) {
         return response.json();
@@ -85,7 +85,7 @@ export function RecipeCategory() {
         loader={<h4>Loading...</h4>}
       >
         {loadedItemsState.items.map((i, index) => {
-          const recipeFoundInCart = cart.items.find(function (item) {
+          const recipeFoundInCart = cart.recipes.find(function (item) {
             return item._id === loadedItemsState.items[index]._id;
           });
 

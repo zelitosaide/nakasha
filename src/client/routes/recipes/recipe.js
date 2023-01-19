@@ -2,17 +2,16 @@ import { useContext, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 
 import { CartContext } from "../../../provider";
-
-const baseURL = "http://localhost:5000/";
+import { baseUrl } from "../../../api";
 
 export async function loader({ params }) {
   const recipeId = params.recipeId;
-  const recipeResponse = await fetch(baseURL + "recipes/" + recipeId);
+  const recipeResponse = await fetch(baseUrl + "/recipes/" + recipeId);
   const recipe = await recipeResponse.json();
 
   if (recipe.recipeItemsId) {
     const recipeItemsResponse = await fetch(
-      baseURL + "recipeItems/" + recipe.recipeItemsId
+      baseUrl + "/recipeItems/" + recipe.recipeItemsId
     );
     const { ingredients } = await recipeItemsResponse.json();
     return { ...recipe, ingredients };
@@ -23,13 +22,13 @@ export async function loader({ params }) {
 export function Recipe() {
   const { ingredients = [], ...recipe } = useLoaderData();
   const {
-    cart: { items },
+    cart: { recipes },
     add,
     remove,
     update,
   } = useContext(CartContext);
 
-  const recipeFoundInCart = items.find(function (item) {
+  const recipeFoundInCart = recipes.find(function (item) {
     return item._id === recipe._id;
   }) || { ...recipe, ingredients };
 
@@ -66,7 +65,7 @@ export function Recipe() {
                 </p>
                 <ul>
                   {recipeFoundInCart.ingredients.map(function (ingredient) {
-                    const ingredientFoundInCart = items.find(function (item) {
+                    const ingredientFoundInCart = recipes.find(function (item) {
                       return item._id === ingredient._id;
                     });
 
@@ -79,7 +78,7 @@ export function Recipe() {
                             {!!ingredientFoundInCart && (
                               <button
                                 onClick={function () {
-                                  remove(ingredient);
+                                  remove(ingredient, "recipes");
                                 }}
                               >
                                 -
@@ -91,7 +90,7 @@ export function Recipe() {
                             </span>
                             <button
                               onClick={function () {
-                                add(ingredient);
+                                add(ingredient, "recipes");
                               }}
                             >
                               +
