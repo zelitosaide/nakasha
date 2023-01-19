@@ -46,7 +46,6 @@ export function Box() {
   const WIDTH = 70;
 
   function Column({ index, style }) {
-    console.log(boxFoundInCart.products[index]);
     let content;
     if (!boxFoundInCart.products) {
       content = (
@@ -117,12 +116,6 @@ export function Box() {
           </div>
         </div>
       );
-      // content = (
-      //   <img
-      //     src={boxFoundInCart.products[index].imageUrl}
-      //     alt={boxFoundInCart.products[index].name}
-      //   />
-      // );
     }
     return (
       <div
@@ -231,25 +224,6 @@ export function Box() {
 
               {boxFoundInCart.products && (
                 <div style={{ paddingTop: 10, paddingBottom: 10 }}>
-                  {/* <ul>
-                    {boxFoundInCart.products.map(function (product) {
-                      return (
-                        <li key={product._id}>
-                          {product.name}{" "}
-                          {boxes.find(function (item) {
-                            return item._id === box._id;
-                          }) && (
-                            <Link
-                              to={"swap/" + product.category}
-                              state={{ boxId, productId: product._id }}
-                            >
-                              swap
-                            </Link>
-                          )}
-                        </li>
-                      );
-                    })}
-                  </ul> */}
                   <List
                     className="List"
                     height={78}
