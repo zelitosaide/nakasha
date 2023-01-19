@@ -462,7 +462,7 @@ export function Cart() {
               style={{
                 border: "none",
                 outline: "none",
-                borderRadius: 4,
+                borderRadius: 6,
                 background: "#33A02B",
                 color: "white",
                 padding: "6px 8px",
