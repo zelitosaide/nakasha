@@ -51,8 +51,8 @@ export function Recipes() {
       {/*  */}
       <div
         style={{
-          marginTop: 70,
-          padding: "10px 20px",
+          paddingLeft: 20,
+          paddingRight: 20,
         }}
       >
         <h5 style={{ color: "#333" }}>Categorias de Receitas</h5>
