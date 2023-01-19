@@ -37,7 +37,7 @@ export function RecipesHorizontalLazyLoad({
             {boxFoundInCart && (
               <button
                 onClick={function () {
-                  remove(items[index]);
+                  remove(items[index], "recipes");
                 }}
               >
                 -
@@ -46,7 +46,7 @@ export function RecipesHorizontalLazyLoad({
             <span>{boxFoundInCart && boxFoundInCart.quantity}</span>
             <button
               onClick={function () {
-                add(items[index]);
+                add(items[index], "recipes");
               }}
             >
               +
