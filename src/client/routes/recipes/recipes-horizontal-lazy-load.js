@@ -25,7 +25,7 @@ export function RecipesHorizontalLazyLoad({
     if (!isItemLoaded(index)) {
       content = "Loading...";
     } else {
-      const boxFoundInCart = cart.items.find(function (item) {
+      const boxFoundInCart = cart.recipes.find(function (item) {
         return item._id === items[index]._id;
       });
 
