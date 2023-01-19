@@ -77,16 +77,26 @@ export function Box() {
           }}
         >
           <div style={{ height: 50, overflow: "hidden" }}>
-            <Link
-              to
-              // to={`${items[index].category}/${items[index]._id}`}
-            >
+            {boxes.find(function (item) {
+              return item._id === box._id;
+            }) ? (
+              <Link
+                to={"swap/" + boxFoundInCart.products[index].category}
+                state={{ boxId, productId: boxFoundInCart.products[index]._id }}
+              >
+                <img
+                  style={{ width: style.width - GUTTER_SIZE, height: 50 }}
+                  src={boxFoundInCart.products[index].imageUrl}
+                  alt={boxFoundInCart.products[index].name}
+                />
+              </Link>
+            ) : (
               <img
                 style={{ width: style.width - GUTTER_SIZE, height: 50 }}
                 src={boxFoundInCart.products[index].imageUrl}
                 alt={boxFoundInCart.products[index].name}
               />
-            </Link>
+            )}
           </div>
           <div style={{ background: "white", height: 20 }}>
             <span
