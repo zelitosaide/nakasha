@@ -297,6 +297,140 @@ export function Cart() {
             </ul>
           </div>
         ) : null}
+
+        {recipes.length ? (
+          <div style={{ marginTop: 20 }}>
+            <h2
+              style={{
+                fontSize: 12,
+                color: "#33A02B",
+                paddingBottom: 10,
+                margin: 0,
+              }}
+            >
+              Receitas do carinho
+            </h2>
+            <ul
+              style={{
+                margin: 0,
+                padding: 0,
+                listStyle: "none",
+                display: "flex",
+                flexDirection: "column",
+                gap: 12,
+              }}
+            >
+              {recipes.map(function (recipe) {
+                return (
+                  <li
+                    key={recipe._id}
+                    style={{
+                      display: "flex",
+                      boxShadow: "0px 4px 16px rgba(0, 0, 0, 0.11)",
+                      borderRadius: 20,
+                      padding: 14,
+                      gap: 10,
+                      background: "white",
+                    }}
+                  >
+                    <img
+                      src={recipe.imageUrl}
+                      alt={recipe.name}
+                      style={{ width: 70 }}
+                    />
+                    <div
+                      style={{
+                        display: "flex",
+                        flexGrow: 1,
+                      }}
+                    >
+                      <div style={{ flexGrow: 1 }}>
+                        <span
+                          style={{
+                            display: "block",
+                            fontSize: 12,
+                            fontWeight: 700,
+                            color: "#444",
+                            paddingTop: 10,
+                          }}
+                        >
+                          {recipe.name}
+                        </span>
+                        <span
+                          style={{
+                            display: "block",
+                            fontSize: 8,
+                            fontWeight: 400,
+                            color: "#777",
+                          }}
+                        >
+                          {recipe.name}
+                        </span>
+                        <span
+                          style={{
+                            color: "#33A02B",
+                            display: "block",
+                            fontWeight: 900,
+                            fontSize: 11,
+                            paddingTop: 3,
+                          }}
+                        >
+                          {recipe.price} MT
+                        </span>
+                      </div>
+                      <div>
+                        <button
+                          style={{
+                            display: "block",
+                            width: 24,
+                            border: "1px solid #3fc936",
+                            background: "white",
+                            borderTopLeftRadius: 6,
+                            borderTopRightRadius: 6,
+                            fontWeight: 700,
+                          }}
+                          onClick={function () {
+                            add(recipe, "recipes");
+                          }}
+                        >
+                          +
+                        </button>
+                        <span
+                          style={{
+                            display: "block",
+                            textAlign: "center",
+                            color: "white",
+                            background: "#33A02B",
+                            fontSize: 11,
+                            padding: "2px 0",
+                          }}
+                        >
+                          {recipe.quantity}
+                        </span>
+                        <button
+                          style={{
+                            display: "block",
+                            width: 24,
+                            border: "1px solid #3fc936",
+                            background: "white",
+                            borderBottomLeftRadius: 6,
+                            borderBottomRightRadius: 6,
+                            fontWeight: 700,
+                          }}
+                          onClick={function () {
+                            remove(recipe, "recipes");
+                          }}
+                        >
+                          -
+                        </button>
+                      </div>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ) : null}
       </div>
     </div>
   );
