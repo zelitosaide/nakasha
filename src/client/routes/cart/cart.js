@@ -458,7 +458,21 @@ export function Cart() {
             >
               Total: {total} MT
             </span>
-            <button>Checkout</button>
+            <button
+              style={{
+                border: "none",
+                outline: "none",
+                borderRadius: 4,
+                background: "#33A02B",
+                color: "white",
+                padding: "6px 8px",
+                marginRight: 10,
+                fontSize: 12,
+                fontWeight: 400,
+              }}
+            >
+              Checkout
+            </button>
           </div>
         ) : null}
       </div>
